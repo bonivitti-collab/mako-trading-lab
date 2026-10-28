@@ -231,7 +231,7 @@ export default function HeaderNav() {
             className="hidden sm:inline-flex items-center gap-2 text-xs font-mono px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white text-slate-700 hover:border-slate-300 transition-all shadow-xs"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Slots: <strong className="text-slate-900">1/3</strong></span>
+            <span>Contas MT5: <strong className="text-slate-900">Ativas</strong></span>
           </Link>
 
           <Link 

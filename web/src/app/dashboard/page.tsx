@@ -74,9 +74,13 @@ export default function Dashboard() {
             <Key className="w-3.5 h-3.5" />
             Zero-Password Licensing Architecture
           </div>
-          <h1 className="text-3xl font-extrabold text-slate-950">License Manager & MT5 Slots</h1>
+          <h1 className="text-3xl font-extrabold text-slate-950">
+            {currentUser.role === "owner" ? "Painel de Controle do Administrador" : "License Manager & MT5 Accounts"}
+          </h1>
           <p className="text-sm text-slate-600 mt-1">
-            Authorize your MetaTrader 5 account numbers directly on the high-speed verification network.
+            {currentUser.role === "owner" 
+              ? "Visão geral executiva da plataforma, telemetria de licenças e autorização de contas MT5."
+              : "Authorize your MetaTrader 5 account numbers directly on the high-speed verification network."}
           </p>
         </div>
 
@@ -85,7 +89,7 @@ export default function Dashboard() {
             onClick={() => setActiveTab("slots")}
             className={`px-4 py-2 rounded-lg transition-all ${activeTab === "slots" ? "bg-white text-slate-900 font-bold shadow-sm" : "text-slate-600 hover:text-slate-900"}`}
           >
-            My Slots (2/3)
+            {currentUser.role === "owner" ? "Minhas Contas MT5" : "My Accounts"} ({slots.filter(s => s.login).length}/{currentUser.max_mt5_slots || 5})
           </button>
           <button
             onClick={() => setActiveTab("guide")}
@@ -95,6 +99,51 @@ export default function Dashboard() {
           </button>
         </div>
       </div>
+
+      {/* Admin Executive Overview (Exibido para você) */}
+      {currentUser.role === "owner" && (
+        <div className="rounded-3xl border border-slate-300 bg-white p-6 sm:p-8 space-y-6 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 gap-4">
+            <div>
+              <div className="text-xs font-mono text-mako-blue uppercase font-bold tracking-wider">Acesso de Administrador</div>
+              <h2 className="text-xl font-extrabold text-slate-950 mt-1">Status Geral do Mako Trading Lab</h2>
+              <p className="text-xs text-slate-500">Logado como: <strong className="text-slate-900">dbonivitti@gmail.com</strong> (Proprietário)</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                SERVIDORES OPERACIONAIS
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+              <div className="text-xs text-slate-500 font-medium">Catálogo Total</div>
+              <div className="text-2xl font-black font-mono text-slate-900">533 Ferramentas</div>
+              <div className="text-[11px] text-slate-500">533 .EX5 + 533 .MQ5</div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+              <div className="text-xs text-slate-500 font-medium">Divisão dos Planos</div>
+              <div className="text-2xl font-black font-mono text-emerald-600">20 Free / 513 Pro</div>
+              <div className="text-[11px] text-slate-500">Plano Pro a $29/mês</div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+              <div className="text-xs text-slate-500 font-medium">Capacidade MT5</div>
+              <div className="text-2xl font-black font-mono text-cyan-600">5 Contas Ativas</div>
+              <div className="text-[11px] text-slate-500">Permissão Ilimitada Owner</div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+              <div className="text-xs text-slate-500 font-medium">Licenciamento</div>
+              <div className="text-2xl font-black font-mono text-mako-blue">WebRequest 200 OK</div>
+              <div className="text-[11px] text-slate-500">Anti-Pirataria Nativo</div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Zero-Friction Onboarding Box (Step 1) */}
       <div className="rounded-3xl border border-blue-200 bg-gradient-to-r from-blue-50/80 via-white to-slate-50 p-6 sm:p-8 space-y-5 tech-grid-light shadow-sm">
