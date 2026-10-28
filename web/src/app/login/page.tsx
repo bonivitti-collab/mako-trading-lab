@@ -23,6 +23,21 @@ export default function LoginPage() {
     setSuccessMessage(null);
 
     try {
+      // Direct Admin Credentials Shortcut for Owner
+      if (email === "dbonivitti@gmail.com" && password === "mako!26") {
+        setSuccessMessage("Owner Authenticated! Accessing Full MT5 Slot Dashboard...");
+        if (typeof window !== "undefined") {
+          localStorage.setItem("mako_user", JSON.stringify({
+            email: "dbonivitti@gmail.com",
+            role: "owner",
+            plan_tier: "studio",
+            max_mt5_slots: 5
+          }));
+        }
+        setTimeout(() => router.push("/dashboard"), 600);
+        return;
+      }
+
       if (isSignUp) {
         const { data, error } = await supabase.auth.signUp({
           email,

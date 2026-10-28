@@ -1,15 +1,35 @@
 "use client";
 
-import { useState } from "react";
-import { Shield, Copy, Check, AlertCircle, RefreshCw, Plus, Trash2, Key, CheckCircle2, Lock, HelpCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Shield, Copy, Check, AlertCircle, RefreshCw, Plus, Trash2, Key, CheckCircle2, Lock, HelpCircle, UserCheck } from "lucide-react";
 
 export default function Dashboard() {
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [activeTab, setActiveTab] = useState<"slots" | "guide">("slots");
+  const [currentUser, setCurrentUser] = useState<any>({
+    email: "dbonivitti@gmail.com",
+    role: "owner",
+    plan_tier: "studio",
+    max_mt5_slots: 5
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("mako_user");
+      if (stored) {
+        try {
+          setCurrentUser(JSON.parse(stored));
+        } catch(e) {}
+      }
+    }
+  }, []);
+
   const [slots, setSlots] = useState([
     { id: 1, login: "88991122", label: "FTMO 100K Challenge (Demo)", cooldownDays: 0, status: "Active" },
     { id: 2, login: "12345678", label: "IC Markets Live (Raw ECN)", cooldownDays: 4, status: "Active" },
-    { id: 3, login: "", label: "", cooldownDays: 0, status: "Empty Slot" }
+    { id: 3, login: "99887766", label: "Apex Trader Funding (Funded)", cooldownDays: 0, status: "Active" },
+    { id: 4, login: "", label: "", cooldownDays: 0, status: "Empty Slot" },
+    { id: 5, login: "", label: "", cooldownDays: 0, status: "Empty Slot" }
   ]);
   const [newLogin, setNewLogin] = useState("");
   const [newLabel, setNewLabel] = useState("");
@@ -114,24 +134,28 @@ export default function Dashboard() {
 
       {/* Account Slots Management (Step 2) */}
       <div className="space-y-5">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
               Active MT5 Account Slots
-              <span className="text-xs font-mono font-normal text-slate-500">(2 of 3 allocated)</span>
+              <span className="text-xs font-mono font-normal text-slate-500">
+                ({slots.filter(s => s.login).length} of {currentUser.max_mt5_slots || 5} allocated)
+              </span>
             </h2>
-            <p className="text-xs text-slate-500">Tools attached to these accounts will validate automatically.</p>
+            <p className="text-xs text-slate-500">
+              Account: <strong className="text-slate-800">{currentUser.email}</strong> • Tools attached to these MT5 accounts validate automatically.
+            </p>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5 font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              PRO Tier Active
+            <span className="text-xs font-mono text-cyan-800 bg-cyan-50 border border-cyan-200 px-3.5 py-1 rounded-full flex items-center gap-1.5 font-bold">
+              <span className="w-2 h-2 rounded-full bg-cyan-500"></span>
+              {currentUser.role === "owner" ? "OWNER / STUDIO PASS" : "PRO Tier Active"}
             </span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {slots.map((slot, idx) => (
             <div 
               key={slot.id} 
