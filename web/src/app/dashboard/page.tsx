@@ -145,6 +145,55 @@ export default function Dashboard() {
         </div>
       )}
 
+      {/* What is an MT5 Account Slot? (Guia Visual Ultra Didático) */}
+      <div className="rounded-3xl border border-slate-300 bg-white p-6 sm:p-8 space-y-6 shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-xl bg-blue-50 text-mako-blue border border-blue-200">
+            <HelpCircle className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-base font-extrabold text-slate-950">
+              O que é uma Conta MT5 e como funciona a liberação?
+            </h3>
+            <p className="text-xs text-slate-500">
+              Guia rápido para iniciantes • Zero senhas • Configuração feita em menos de 1 minuto
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-700">
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="font-mono font-bold text-mako-blue flex items-center gap-1.5">
+              <span className="w-5 h-5 rounded-full bg-blue-100 text-mako-blue flex items-center justify-center text-[11px]">1</span>
+              <span>O que é o número da conta?</span>
+            </div>
+            <p className="text-slate-600 leading-relaxed">
+              É apenas o <strong>login numérico</strong> que sua corretora (ou mesa proprietária como FTMO) te envia (ex: <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono font-bold text-slate-900">88991122</code>). Ele aparece no topo esquerdo do seu MetaTrader 5.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="font-mono font-bold text-mako-blue flex items-center gap-1.5">
+              <span className="w-5 h-5 rounded-full bg-blue-100 text-mako-blue flex items-center justify-center text-[11px]">2</span>
+              <span>Preciso colocar minha senha?</span>
+            </div>
+            <p className="text-slate-600 leading-relaxed">
+              <strong>NUNCA.</strong> O Mako Trading Lab é 100% seguro e <em>Zero-Password</em>. Nós nunca pedimos nem temos acesso à sua senha de negociação ou do seu saldo. Apenas autorizamos o número da conta.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="font-mono font-bold text-mako-blue flex items-center gap-1.5">
+              <span className="w-5 h-5 rounded-full bg-blue-100 text-mako-blue flex items-center justify-center text-[11px]">3</span>
+              <span>Como o robô sabe que paguei?</span>
+            </div>
+            <p className="text-slate-600 leading-relaxed">
+              Quando você arrasta o robô pro gráfico, ele lê o número da sua conta e checa em milissegundos se ela está na sua lista abaixo. Estando cadastrada, ele liga imediatamente!
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Zero-Friction Onboarding Box (Step 1) */}
       <div className="rounded-3xl border border-blue-200 bg-gradient-to-r from-blue-50/80 via-white to-slate-50 p-6 sm:p-8 space-y-5 tech-grid-light shadow-sm">
         <div className="flex items-center justify-between">
