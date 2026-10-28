@@ -239,7 +239,7 @@ export default function HeaderNav() {
             className="text-xs font-bold px-4 sm:px-5 py-2.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 transition-all flex items-center gap-2"
           >
             <span>View Plans</span>
-            <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-white/20 text-[10px] font-mono">$10 - $29</span>
+            <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-white/20 text-[10px] font-mono">$29/mo</span>
           </Link>
 
           {/* Mobile hamburger button */}

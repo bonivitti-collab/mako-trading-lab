@@ -7,7 +7,7 @@ import productsData from "@/lib/products.json";
 import { 
   Search, Download, Terminal, Shield, Zap, CheckCircle2, 
   ChevronRight, Cpu, SlidersHorizontal, ArrowUpRight, Copy, Check,
-  Sparkles, ExternalLink, Activity, Info, X, Play, Code2, BookOpen, Compass
+  Sparkles, ExternalLink, Activity, Info, X, Play, Code2, BookOpen, Compass, Lock
 } from "lucide-react";
 
 export default function Home() {
@@ -320,19 +320,27 @@ export default function Home() {
                     <Code2 className="w-3.5 h-3.5 text-mako-blue" />
                     <span>.MQ5</span>
                   </a>
-                  <a 
-                    href={`/downloads/${p.slug}.ex5`} 
-                    download
-                    title="Download Compiled MT5 Binary (.ex5)"
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      p.is_pro
-                        ? "bg-mako-blue hover:bg-blue-600 text-white shadow-sm shadow-blue-500/20"
-                        : "bg-blue-50 hover:bg-blue-100 text-mako-blue border border-blue-200"
-                    }`}
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>.EX5</span>
-                  </a>
+
+                  {p.is_pro ? (
+                    <a 
+                      href={`/downloads/${p.slug}.ex5`} 
+                      download
+                      title="Download Compiled MT5 Binary (.ex5)"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-mako-blue hover:bg-blue-600 text-white shadow-sm shadow-blue-500/20 transition-all"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>.EX5</span>
+                    </a>
+                  ) : (
+                    <a 
+                      href="#pricing"
+                      title="Compiled .EX5 available with Mako Pro Pass"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-400 border border-slate-200 transition-all cursor-pointer"
+                    >
+                      <Lock className="w-3.5 h-3.5 text-slate-400" />
+                      <span className="text-[11px] font-mono">.EX5 (PRO)</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -432,14 +440,26 @@ export default function Home() {
                   <Code2 className="w-4 h-4 text-mako-blue" />
                   <span>Download .MQ5 Source</span>
                 </a>
-                <a 
-                  href={`/downloads/${selectedProduct.slug}.ex5`} 
-                  download
-                  className="px-6 py-2.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download .EX5 Binary</span>
-                </a>
+                
+                {selectedProduct.is_pro ? (
+                  <a 
+                    href={`/downloads/${selectedProduct.slug}.ex5`} 
+                    download
+                    className="px-6 py-2.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download .EX5 Binary</span>
+                  </a>
+                ) : (
+                  <a 
+                    href="#pricing"
+                    onClick={() => setSelectedProduct(null)}
+                    className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 border border-slate-200 font-bold text-xs flex items-center gap-1.5 transition-all"
+                  >
+                    <Lock className="w-4 h-4 text-slate-400" />
+                    <span>.EX5 Binary (Mako Pro Pass)</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -472,7 +492,7 @@ export default function Home() {
                 <ul className="space-y-3.5 text-xs text-slate-700 font-medium">
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                    <span><strong>20 Essential Starter Utilities</strong> (.EX5 & .MQ5)</span>
+                    <span><strong>20 Essential Starter Utilities</strong> (.MQ5 Source Code)</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
@@ -485,6 +505,10 @@ export default function Home() {
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                     <span>Full Access to Prop Firm Rules Matrix & Diagnostics</span>
+                  </li>
+                  <li className="flex items-center gap-2.5 text-slate-400">
+                    <span className="w-4 h-4 text-center text-xs font-bold font-mono">✕</span>
+                    <span className="line-through">Pre-Compiled .EX5 Binaries (Compile via F7)</span>
                   </li>
                   <li className="flex items-center gap-2.5 text-slate-400">
                     <span className="w-4 h-4 text-center text-xs font-bold font-mono">✕</span>
