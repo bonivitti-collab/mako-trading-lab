@@ -19,12 +19,12 @@ export default function Home() {
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
 
   const categories = [
-    { id: "all", label: "All Algorithms", count: 500 },
-    { id: "risk_utilities", label: "Risk & Utilities", count: 100 },
-    { id: "volume_orderflow", label: "Volume & Order Flow", count: 100 },
-    { id: "trend_oscillators", label: "Trend & Momentum", count: 100 },
-    { id: "price_action_smc", label: "Price Action & SMC", count: 100 },
-    { id: "expert_advisors", label: "Expert Advisors (Bots)", count: 100 },
+    { id: "all", label: "All Algorithms", count: 533 },
+    { id: "risk_utilities", label: "Risk & Utilities", count: 107 },
+    { id: "volume_orderflow", label: "Volume & Order Flow", count: 107 },
+    { id: "trend_oscillators", label: "Trend & Momentum", count: 107 },
+    { id: "price_action_smc", label: "Price Action & SMC", count: 106 },
+    { id: "expert_advisors", label: "Expert Advisors (Bots)", count: 106 },
   ];
 
   const filteredProducts = useMemo(() => {
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="relative max-w-3xl space-y-7">
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-mako-blue text-xs font-mono font-bold">
             <span className="w-2 h-2 rounded-full bg-mako-blue animate-pulse"></span>
-            <span>Proprietary MT5 Algorithm Hub • 500 Compiled .EX5 Binaries</span>
+            <span>Proprietary MT5 Algorithm Hub • 500+ Compiled .EX5 Binaries</span>
           </div>
           
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-950 leading-[1.12]">
@@ -106,11 +106,11 @@ export default function Home() {
           {/* Social Proof & Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-200">
             <div className="space-y-1">
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-slate-950">500</div>
+              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-slate-950">500+</div>
               <div className="text-xs text-slate-500 font-medium">Compiled .EX5 Binaries</div>
             </div>
             <div className="space-y-1">
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-600">186 FREE</div>
+              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-600">200 FREE</div>
               <div className="text-xs text-slate-500 font-medium">Zero-Cost Starters</div>
             </div>
             <div className="space-y-1">
@@ -133,7 +133,7 @@ export default function Home() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input 
               type="text" 
-              placeholder="Search 500 tools by keyword (e.g. FVG, PropFirm, Scalper, SMC, VWAP, Trail)..."
+              placeholder="Search 500+ tools by keyword (e.g. FVG, PropFirm, Scalper, SMC, VWAP, Trail)..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-11 pr-10 py-3 bg-white border border-slate-300 rounded-2xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-mako-blue focus:ring-2 focus:ring-blue-100 transition-all font-mono shadow-sm"
@@ -310,29 +310,28 @@ export default function Home() {
                   <span>Audit Logic</span>
                 </button>
 
-                <div className="flex items-center gap-2">
-                  {!p.is_pro && (
-                    <a 
-                      href={`/downloads/${p.slug}.mq5`} 
-                      download
-                      title="Download MQL5 Source Code"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all"
-                    >
-                      <Code2 className="w-3.5 h-3.5 text-mako-blue" />
-                      <span>.MQ5</span>
-                    </a>
-                  )}
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <a 
+                    href={`/downloads/${p.slug}.mq5`} 
+                    download
+                    title="Download MQL5 Source Code (.mq5)"
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all"
+                  >
+                    <Code2 className="w-3.5 h-3.5 text-mako-blue" />
+                    <span>.MQ5</span>
+                  </a>
                   <a 
                     href={`/downloads/${p.slug}.ex5`} 
                     download
-                    className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    title="Download Compiled MT5 Binary (.ex5)"
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                       p.is_pro
                         ? "bg-mako-blue hover:bg-blue-600 text-white shadow-sm shadow-blue-500/20"
                         : "bg-blue-50 hover:bg-blue-100 text-mako-blue border border-blue-200"
                     }`}
                   >
                     <Download className="w-3.5 h-3.5" />
-                    <span>Download .EX5</span>
+                    <span>.EX5</span>
                   </a>
                 </div>
               </div>
@@ -425,16 +424,14 @@ export default function Home() {
               </button>
 
               <div className="flex items-center gap-2">
-                {!selectedProduct.is_pro && (
-                  <a 
-                    href={`/downloads/${selectedProduct.slug}.mq5`} 
-                    download
-                    className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 font-mono font-bold text-xs flex items-center gap-1.5 transition-all"
-                  >
-                    <Code2 className="w-4 h-4 text-mako-blue" />
-                    <span>Download .MQ5 Source</span>
-                  </a>
-                )}
+                <a 
+                  href={`/downloads/${selectedProduct.slug}.mq5`} 
+                  download
+                  className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 font-mono font-bold text-xs flex items-center gap-1.5 transition-all"
+                >
+                  <Code2 className="w-4 h-4 text-mako-blue" />
+                  <span>Download .MQ5 Source</span>
+                </a>
                 <a 
                   href={`/downloads/${selectedProduct.slug}.ex5`} 
                   download

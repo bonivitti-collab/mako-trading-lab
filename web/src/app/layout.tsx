@@ -80,7 +80,7 @@ export default function RootLayout({
       "priceCurrency": "USD",
       "lowPrice": "0.00",
       "highPrice": "29.00",
-      "offerCount": "500"
+      "offerCount": "533"
     },
     "description": "Institutional repository of 500+ verified MetaTrader 5 Expert Advisors and technical indicators with zero-password licensing."
   };
@@ -105,7 +105,7 @@ export default function RootLayout({
               <span className="text-slate-300 hidden sm:inline">|</span>
               <div className="hidden sm:flex items-center gap-2">
                 <span className="text-slate-500">CATALOG:</span>
-                <span className="text-slate-900 font-bold">500 VERIFIED .EX5 BINARIES</span>
+                <span className="text-slate-900 font-bold">500+ VERIFIED .EX5 & .MQ5 TOOLS</span>
               </div>
               <span className="text-slate-300 hidden md:inline">|</span>
               <div className="hidden md:flex items-center gap-2">
