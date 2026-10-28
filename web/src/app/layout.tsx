@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mako Trading Lab — MetaTrader 5 All-Access Pass",
-    description: "Access 500+ institutional MT5 indicators, prop-firm risk guards, and generative MQL5 bots for $10/month.",
+    description: "Access 500+ institutional MT5 indicators, prop-firm risk guards, and generative MQL5 bots for $29/month.",
     images: ["/mako_logo.png"],
   },
   robots: {

@@ -73,7 +73,7 @@ export default function Home() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Bypass the $30 individual minimum of MQL5 Market. Pay <strong>$10/month</strong> for unlimited downloads across 500+ prop-firm risk guards, order flow heatmaps, and automated bots — or upgrade to our <strong>Studio Pass ($29/mo)</strong> to generate custom bots compiled instantly in the cloud.
+            Bypass the $30 individual minimum of MQL5 Market. Access essential starter utilities for free, or get the <strong>Mako Pro Pass ($29/mo)</strong> for unlimited downloads across our entire 500+ quantitative arsenal — including automated bots, order flow heatmaps, and prop-firm drawdown shields.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -110,8 +110,8 @@ export default function Home() {
               <div className="text-xs text-slate-500 font-medium">Compiled .EX5 Binaries</div>
             </div>
             <div className="space-y-1">
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-600">200 FREE</div>
-              <div className="text-xs text-slate-500 font-medium">Zero-Cost Starters</div>
+              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-600">20 FREE</div>
+              <div className="text-xs text-slate-500 font-medium">Starter Utilities</div>
             </div>
             <div className="space-y-1">
               <div className="text-2xl sm:text-3xl font-extrabold font-mono text-mako-blue">0 ERRORS</div>
@@ -446,138 +446,115 @@ export default function Home() {
         </div>
       )}
 
-      {/* Pricing / Pass Section (3-Tier Ladder: Free, Pro $10, Studio Cloud $29) */}
+      {/* Pricing / Pass Section (2 Strategic Tiers: Free Starter vs Mako Pro Pass $29) */}
       <section id="pricing" className="pt-16 border-t border-slate-200 text-center space-y-10">
         <div className="max-w-2xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-mako-blue text-xs font-mono font-bold">
             <Sparkles className="w-3.5 h-3.5" />
             Transparent Pricing • No $30 Single Lock-in
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950">Pick Your Quantitative Trading Pass</h2>
-          <p className="text-sm text-slate-600">Cancel anytime. Your MT5 accounts remain authorized as long as your membership is active.</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950">Simple, Institutional Access</h2>
+          <p className="text-sm text-slate-600">Start with our essential zero-cost utilities, or unlock the entire 500+ quantitative algorithmic arsenal.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto text-left">
-          {/* Tier 1: Free Starter */}
-          <div className="rounded-3xl border border-slate-300 bg-white p-7 sm:p-8 space-y-6 flex flex-col justify-between white-card">
-            <div className="space-y-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+          {/* Tier 1: Free Starter (Taste / Gateway) */}
+          <div className="rounded-3xl border border-slate-300 bg-white p-7 sm:p-9 space-y-6 flex flex-col justify-between white-card shadow-sm hover:shadow-md transition-shadow">
+            <div className="space-y-6">
               <div>
-                <div className="text-xs font-mono text-emerald-700 uppercase tracking-wider font-bold">Starter Pass</div>
+                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider font-bold">Starter Edition</div>
                 <div className="text-4xl font-extrabold text-slate-950 mt-1">$0 <span className="text-xs text-slate-500 font-normal">/ forever</span></div>
-                <p className="text-xs text-slate-500 mt-2">Test our verified algorithms on your live or demo MT5 charts with zero financial commitment.</p>
+                <p className="text-xs text-slate-500 mt-2">Essential utility pack to verify our clean code quality on your demo or live MT5 charts.</p>
               </div>
 
-              <ul className="space-y-3 text-xs text-slate-700 font-medium">
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span>Access to <strong>186 Free Tools (.ex5 + .mq5)</strong></span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span><strong>1 MT5 Account Slot</strong> (Live or Demo)</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span>1 AI Prompt Generation per month</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span>24-Hour Offline Cache Protection</span>
-                </li>
-              </ul>
+              <div className="pt-4 border-t border-slate-100">
+                <div className="text-xs font-mono uppercase text-slate-400 font-bold mb-3 tracking-wider">What&apos;s Included:</div>
+                <ul className="space-y-3.5 text-xs text-slate-700 font-medium">
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span><strong>20 Essential Starter Utilities</strong> (.EX5 & .MQ5)</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Risk Calculator, Spread Radar & Sessions HUD</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span><strong>1 MT5 Account Slot</strong> (Live or Demo)</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Full Access to Prop Firm Rules Matrix & Diagnostics</span>
+                  </li>
+                  <li className="flex items-center gap-2.5 text-slate-400">
+                    <span className="w-4 h-4 text-center text-xs font-bold font-mono">✕</span>
+                    <span className="line-through">Automated Expert Advisors (EAs)</span>
+                  </li>
+                  <li className="flex items-center gap-2.5 text-slate-400">
+                    <span className="w-4 h-4 text-center text-xs font-bold font-mono">✕</span>
+                    <span className="line-through">Institutional SMC & Order Flow Engine</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <Link 
               href="/dashboard"
-              className="block w-full py-3 text-center text-xs font-bold rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-800 transition-all shadow-sm"
+              className="block w-full py-3.5 text-center text-xs font-bold rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-800 transition-all shadow-sm"
             >
               Start Free (1 MT5 Slot)
             </Link>
           </div>
 
-          {/* Tier 2: Pro Pass $10/mo */}
-          <div className="relative rounded-3xl border-2 border-mako-blue bg-white p-7 sm:p-8 space-y-6 shadow-lg shadow-blue-500/10 flex flex-col justify-between white-card">
-            <div className="absolute -top-3.5 right-6 px-3.5 py-0.5 rounded-full bg-mako-blue text-[10px] font-mono font-bold text-white uppercase tracking-wider shadow-sm">
-              MOST POPULAR
+          {/* Tier 2: Mako Pro Pass ($29/mo - All Inclusive) */}
+          <div className="relative rounded-3xl border-2 border-mako-blue bg-white p-7 sm:p-9 space-y-6 shadow-xl shadow-blue-500/10 flex flex-col justify-between white-card">
+            <div className="absolute -top-3.5 right-6 px-3.5 py-0.5 rounded-full bg-gradient-to-r from-mako-blue to-cyan-500 text-[10px] font-mono font-bold text-white uppercase tracking-wider shadow-md">
+              ALL-ACCESS PASS
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-6">
               <div>
                 <div className="text-xs font-mono text-mako-blue uppercase tracking-wider font-bold">Mako Pro Pass</div>
-                <div className="text-4xl font-extrabold text-slate-950 mt-1">$10 <span className="text-xs text-slate-500 font-normal">/ month</span></div>
-                <p className="text-xs text-slate-600 mt-2">Unlimited institutional algorithms, multi-account licensing and custom AI prompt generator.</p>
+                <div className="text-4xl font-extrabold text-slate-950 mt-1">$29 <span className="text-xs text-slate-500 font-normal">/ month</span></div>
+                <p className="text-xs text-slate-600 mt-2">Bypass individual \$30 minimums. The complete quantitative institutional arsenal for funded traders.</p>
               </div>
 
-              <ul className="space-y-3 text-xs text-slate-800 font-medium">
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                  <span><strong>Unlimited Downloads</strong> for all 500+ MT5 Tools (.ex5)</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                  <span><strong>3 Simultaneous MT5 Slots</strong> (Real, Demo, PropFirm)</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                  <span><strong>20 Custom MQL5 Generations</strong> via AI Studio / mo</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                  <span>Continuous updates & new institutional tools monthly</span>
-                </li>
-              </ul>
-            </div>
-
-            <a 
-              href="https://buy.stripe.com/test_placeholder_10"
-              className="block w-full py-3.5 text-center text-xs font-bold rounded-xl bg-mako-blue hover:bg-blue-600 text-white shadow-md shadow-blue-500/25 transition-all"
-            >
-              Get Pro Pass ($10/mo)
-            </a>
-          </div>
-
-          {/* Tier 3: Studio Pass $29/mo (UNLIMITED CLOUD COMPILATION) */}
-          <div className="relative rounded-3xl border border-slate-900 bg-slate-950 text-white p-7 sm:p-8 space-y-6 shadow-2xl flex flex-col justify-between">
-            <div className="absolute -top-3.5 right-6 px-3.5 py-0.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-[10px] font-mono font-bold text-slate-950 uppercase tracking-wider shadow-md">
-              POWER TRADER & BUILDER
-            </div>
-
-            <div className="space-y-5">
-              <div>
-                <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider font-bold">Studio Unlimited</div>
-                <div className="text-4xl font-extrabold text-white mt-1">$29 <span className="text-xs text-slate-400 font-normal">/ month</span></div>
-                <p className="text-xs text-slate-400 mt-2">Unlimited bots generated via AI and compiled directly into .EX5 binaries in our cloud runner.</p>
+              <div className="pt-4 border-t border-slate-100">
+                <div className="text-xs font-mono uppercase text-mako-blue font-bold mb-3 tracking-wider">Everything Unlocked:</div>
+                <ul className="space-y-3.5 text-xs text-slate-800 font-medium">
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
+                    <span><strong>Full 500+ MT5 Algorithm Catalog</strong> (533 Tools)</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
+                    <span><strong>Dual Downloads:</strong> Compiled .EX5 + .MQ5 Source for All</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
+                    <span><strong>All 106 Automated Expert Advisors (EAs)</strong></span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
+                    <span>Prop-Firm Hard Equity Shields & Emergency Liquidators</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
+                    <span><strong>Mako AI Studio:</strong> Generate & customize MQL5 strategies</span>
+                  </li>
+                  <li className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
+                    <span><strong>3 to 5 Active MT5 Slots</strong> (Challenge + Funded Accounts)</span>
+                  </li>
+                </ul>
               </div>
-
-              <ul className="space-y-3 text-xs text-slate-200 font-medium">
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span><strong>Everything in Pro</strong> (Full 500+ Catalog Access)</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span><strong>5 Simultaneous MT5 Slots</strong> (Prop Challenges + Real)</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span><strong>UNLIMITED Custom AI Bot Generations</strong></span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span><strong>⚡ Automated Cloud .EX5 Compilation</strong> (Zero F7 needed)</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>Direct download of ready-to-trade binaries</span>
-                </li>
-              </ul>
             </div>
 
             <a 
               href="https://buy.stripe.com/test_placeholder_29"
-              className="block w-full py-3.5 text-center text-xs font-bold rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-slate-950 font-mono shadow-lg shadow-cyan-500/20 transition-all"
+              className="block w-full py-4 text-center text-xs font-bold rounded-xl bg-mako-blue hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5"
             >
-              Subscribe Studio ($29/mo)
+              Get All-Access Pass ($29/mo)
             </a>
           </div>
         </div>

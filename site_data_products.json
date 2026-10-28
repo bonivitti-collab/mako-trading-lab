@@ -7,7 +7,7 @@
     "is_pro": false,
     "version": "1.20",
     "short_desc": "Real-time on-chart lot size & risk calculator with interactive Stop Loss drag lines.",
-    "badge": "FREE",
+    "badge": "STARTER FREE",
     "what_it_does": "Provides high-precision algorithmic execution for Risk & Lot Calculator HUD, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -67,7 +67,7 @@
     "is_pro": false,
     "version": "1.00",
     "short_desc": "Displays current spread, session average, and latency alerts before high impact releases.",
-    "badge": "FREE",
+    "badge": "STARTER FREE",
     "what_it_does": "Provides high-precision algorithmic execution for Spread & Slippage Radar, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -91,7 +91,7 @@
     "is_pro": false,
     "version": "1.00",
     "short_desc": "One-click panic script to instantly liquidate all open trades and pending orders on all pairs.",
-    "badge": "FREE",
+    "badge": "STARTER FREE",
     "what_it_does": "Provides high-precision algorithmic execution for Emergency Close & Flat Button, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Scans all active market orders across symbols. 2. Executes instantaneous bulk liquidation via asynchronous CTrade commands. 3. Cancels pending limit/stop orders in single pass."
   },
@@ -100,10 +100,10 @@
     "name": "Mako Auto-Screenshot Trade Journal",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": true,
+    "is_pro": false,
     "version": "1.20",
     "short_desc": "Takes automatic high-res screenshots upon order execution and SL/TP hits for trading journals.",
-    "badge": "PRO",
+    "badge": "STARTER FREE",
     "what_it_does": "Provides high-precision algorithmic execution for Auto-Screenshot Trade Journal, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Evaluates incoming price ticks on candle close. 2. Compares momentum against multi-period volatility bands. 3. Verifies account spread and slippage filters. 4. Executes market or limit order with strict ATR-calculated Stop Loss and Take Profit targets."
   },
@@ -112,10 +112,10 @@
     "name": "Mako Global Trading Sessions HUD",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": true,
+    "is_pro": false,
     "version": "1.10",
     "short_desc": "Visual clocks & countdown timers for London, New York, Tokyo and Sydney market openings.",
-    "badge": "PRO",
+    "badge": "STARTER FREE",
     "what_it_does": "Provides high-precision algorithmic execution for Global Trading Sessions HUD, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -124,10 +124,10 @@
     "name": "Mako Daily Volume Profile (POC & Value Area)",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "2.00",
     "short_desc": "Institutional Point of Control (POC), Value Area High (VAH), and Value Area Low (VAL).",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Daily Volume Profile (POC & Value Area), eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -172,10 +172,10 @@
     "name": "Mako Fair Value Gap (FVG & Imbalance)",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.40",
     "short_desc": "Highlights unfilled 3-bar institutional imbalances with auto-mitigation tracking.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Fair Value Gap (FVG & Imbalance), eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -244,10 +244,10 @@
     "name": "Mako MTF Trend Alignment Matrix",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.60",
     "short_desc": "Multi-timeframe trend scanner matrix showing M5, M15, H1, H4, and D1 directional consensus.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for MTF Trend Alignment Matrix, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -304,10 +304,10 @@
     "name": "Mako Zero-Lag MACD Momentum Flow",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Calculates de-lagged DEMA histogram to deliver faster MACD crossovers with clean signals.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Zero-Lag MACD Momentum Flow, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -364,10 +364,10 @@
     "name": "Mako Smart Money Structure (BOS / CHoCH)",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "2.10",
     "short_desc": "Automatic real-time labeling of Break of Structure (BOS) and Change of Character (CHoCH).",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Smart Money Structure (BOS / CHoCH), eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -412,10 +412,10 @@
     "name": "Mako Asian Range & London Sweep Boxes",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.50",
     "short_desc": "Automates the classic London Judas Swing strategy: plots Asian high/low and alerts on false breaks.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Asian Range & London Sweep Boxes, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -472,10 +472,10 @@
     "name": "Mako PDH / PDL / PWH Key Level Magnet",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Draws Previous Day High/Low, Previous Week High/Low and Day Open price lines automatically.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for PDH / PDL / PWH Key Level Magnet, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -484,10 +484,10 @@
     "name": "Mako Trend Pullback Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "2.00",
     "short_desc": "Trend-following breakout bot trading dynamic pullbacks with fixed 1.5 ATR risk management.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Trend Pullback Scalper EA, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Evaluates incoming price ticks on candle close. 2. Compares momentum against multi-period volatility bands. 3. Verifies account spread and slippage filters. 4. Executes market or limit order with strict ATR-calculated Stop Loss and Take Profit targets."
   },
@@ -568,10 +568,10 @@
     "name": "Mako Dual EMA Momentum Filter EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.30",
     "short_desc": "Classic trend following robot using 21/55 EMA crossovers with ATR trailing stop and risk sizing.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Dual EMA Momentum Filter EA, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Evaluates incoming price ticks on candle close. 2. Compares momentum against multi-period volatility bands. 3. Verifies account spread and slippage filters. 4. Executes market or limit order with strict ATR-calculated Stop Loss and Take Profit targets."
   },
@@ -616,10 +616,10 @@
     "name": "Mako Free Margin & Leverage Safety HUD",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Visual alert preventing orders that push margin level below 200%. Essential for news spikes.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Free Margin & Leverage Safety HUD, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -631,7 +631,7 @@
     "is_pro": false,
     "version": "1.20",
     "short_desc": "Synchronized bar timer with high-spread acoustic alarm preventing entry during rollover.",
-    "badge": "FREE",
+    "badge": "STARTER FREE",
     "what_it_does": "Provides high-precision algorithmic execution for Candle Countdown & Spread Spike Audio Alert, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -700,10 +700,10 @@
     "name": "Mako Weekend Gap & Friday Session Closer",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Liquidates all exposure every Friday at 21:00 GMT to protect against weekend gap risk.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Weekend Gap & Friday Session Closer, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Evaluates incoming price ticks on candle close. 2. Compares momentum against multi-period volatility bands. 3. Verifies account spread and slippage filters. 4. Executes market or limit order with strict ATR-calculated Stop Loss and Take Profit targets."
   },
@@ -748,10 +748,10 @@
     "name": "Mako Volume-Weighted Momentum Divergence",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Weights price momentum by actual tick volume to weed out false breakouts on low liquidity.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Volume-Weighted Momentum Divergence, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -796,10 +796,10 @@
     "name": "Mako Relative Volume (RVOL) Institutional Scanner",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Compares current candle volume against identical historical time of day (e.g. 10:00 AM average).",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Relative Volume (RVOL) Institutional Scanner, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -856,10 +856,10 @@
     "name": "Mako GMMA Guppy Multiple Moving Average Ribbon",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.30",
     "short_desc": "Short-term trader EMAs (3,5,8,10,12,15) vs long-term institutional investor EMAs (30,35,40,45,50,60).",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for GMMA Guppy Multiple Moving Average Ribbon, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -892,10 +892,10 @@
     "name": "Mako ADX Dynamic Trend Strength & Filter",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Color-coded candle bars indicating whether trend momentum is accelerating (>25) or dead.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for ADX Dynamic Trend Strength & Filter, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -940,10 +940,10 @@
     "name": "Mako Aroon Trend Phase & Duration Meter",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Measures the time elapsed between new highs and lows to forecast trend fatigue.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Aroon Trend Phase & Duration Meter, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -988,10 +988,10 @@
     "name": "Mako PMH / PML / PMO Macro Range Anchor",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Draws Previous Month High, Low and Open lines. Vital higher-timeframe magnetic pivots.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for PMH / PML / PMO Macro Range Anchor, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -1036,10 +1036,10 @@
     "name": "Mako Midnight & London Open True Open Price",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Plots NY Midnight (00:00 EST) and London (07:00 GMT) benchmark lines for power of 3 (AMD).",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Midnight & London Open True Open Price, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Iterates through rates array via OnCalculate(). 2. Computes rolling mean and standard deviation deviation matrices across historical bars. 3. Filters low-volume noise. 4. Plots non-repainting buffer curves and draws on-chart visual levels with DPI auto-scaling."
   },
@@ -1108,10 +1108,10 @@
     "name": "Mako Turtle Trading 20-Day Breakout EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "2.00",
     "short_desc": "Faithful implementation of Richard Dennis's classic trend breakout with 2 ATR volatility sizing.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Turtle Trading 20-Day Breakout EA, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Evaluates incoming price ticks on candle close. 2. Compares momentum against multi-period volatility bands. 3. Verifies account spread and slippage filters. 4. Executes market or limit order with strict ATR-calculated Stop Loss and Take Profit targets."
   },
@@ -1156,10 +1156,10 @@
     "name": "Mako Parabolic Momentum Acceleration EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.40",
     "short_desc": "Fast scalping bot utilizing dual Parabolic SAR direction with ATR stop and trailing engine.",
-    "badge": "FREE",
+    "badge": "MAKO PRO",
     "what_it_does": "Provides high-precision algorithmic execution for Parabolic Momentum Acceleration EA, eliminating emotional hesitation and managing entry/exit timing automatically.",
     "how_it_works": "1. Evaluates incoming price ticks on candle close. 2. Compares momentum against multi-period volatility bands. 3. Verifies account spread and slippage filters. 4. Executes market or limit order with strict ATR-calculated Stop Loss and Take Profit targets."
   },
@@ -1216,12 +1216,12 @@
     "name": "Mako Max Slippage & Broker Latency Shield",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Rejects order execution if current tick latency exceeds 120ms or spread exceeds target threshold.",
     "what_it_does": "Shields intraday scalpers from broker execution slippage and sudden liquidity gaps.",
     "how_it_works": "Pings trade server terminal latency. Cancels execution request if time delay or spread difference exceeds preset deviation.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-daily-max-trade-counter-lock",
@@ -1293,7 +1293,7 @@
     "short_desc": "Displays current pip volatility on M5, M15, H1, and D1 to calibrate stop loss distance.",
     "what_it_does": "Assists traders in setting volatility-adjusted stop loss distances based on real-time market regime.",
     "how_it_works": "Calculates iATR across multiple chart periods and renders a clean corner HUD table showing expected pip moves.",
-    "badge": "FREE"
+    "badge": "STARTER FREE"
   },
   {
     "slug": "mako-martingale-decay-preventer",
@@ -1341,7 +1341,7 @@
     "short_desc": "Displays overnight rollover swap cost and warns before Wednesday triple-swap fee charges.",
     "what_it_does": "Eliminates surprise financing charges on swing trades held overnight.",
     "how_it_works": "Fetches SYMBOL_SWAP_LONG and SYMBOL_SWAP_SHORT properties, calculating cash impact per lot size held.",
-    "badge": "FREE"
+    "badge": "STARTER FREE"
   },
   {
     "slug": "mako-consecutive-loss-timeout-guard",
@@ -1372,12 +1372,12 @@
     "name": "Mako True Cost & Broker Commission Breakeven Line",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Draws exact on-chart line where trade covers broker commissions, swap fees, and entry spread.",
     "what_it_does": "Shows true net breakeven price including raw spread and broker lot commission fees.",
     "how_it_works": "Reads position commission and swap charges, dynamically plotting precise net profit zero horizontal line.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-auto-breakeven-pip-padder",
@@ -1396,24 +1396,24 @@
     "name": "Mako Weekend Hold Exposure Warning Banner",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Displays conspicuous countdown on chart starting Friday afternoon warning against weekend gap risk.",
     "what_it_does": "Reminds traders of weekend geopolitical gap risks before markets close.",
     "how_it_works": "Tracks broker server day of week and time. Renders visual banner 3 hours before weekend market close.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-account-growth-milestone-sound",
     "name": "Mako Account High-Water Mark Audio Celebrator",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Plays distinct sound chime and charts notification when account balance reaches new all-time high.",
     "what_it_does": "Reinforces positive psychological trading milestones.",
     "how_it_works": "Compares current account equity to stored historical high-water mark, playing celebration notification upon breakthrough.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-corridor-breakout-pending-manager",
@@ -1468,12 +1468,12 @@
     "name": "Mako Tick Density Congestion Zone Radar",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Detects high tick density in narrow price bands, forecasting massive directional expansion moves.",
     "what_it_does": "Identifies explosive consolidation squeezes before breakouts occur.",
     "how_it_works": "Divides tick volume by candle high-low pip range. Signals when ratio exceeds 3x normal density threshold.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-vwap-standard-deviation-cloud",
@@ -1516,12 +1516,12 @@
     "name": "Mako Intraday Liquidity Inflow/Outflow Indicator",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Measures whether new capital is entering the market or participants are liquidating.",
     "what_it_does": "Differentiates between healthy trend expansion and short-covering dead cat bounces.",
     "how_it_works": "Correlates price velocity with tick accumulation to estimate active capital participation.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-value-area-rejection-arrows",
@@ -1564,12 +1564,12 @@
     "name": "Mako Volume-Weighted Relative Strength Index (VW-RSI)",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Weights RSI momentum calculations by tick volume to filter out low-volume false overbought readings.",
     "what_it_does": "Improves RSI signal reliability by factoring in market participation volume.",
     "how_it_works": "Multiplies price change by tick volume before computing exponential moving averages of gains and losses.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-iceberg-order-detector-hud",
@@ -1588,12 +1588,12 @@
     "name": "Mako Session Volume Pace & Velocity Gauge",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Shows whether current session volume is ahead or behind historical 30-day average pace.",
     "what_it_does": "Informs day traders whether market conditions are conducive to trend holding or range scalping.",
     "how_it_works": "Compares cumulative session volume against 30-day mean at identical minute of day.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-delta-divergence-scalper-ea",
@@ -1636,12 +1636,12 @@
     "name": "Mako Blow-Off Top & Climax Selling Exhaustion Alert",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Signals when volume reaches highest level in 100 bars while closing in middle of candle range.",
     "what_it_does": "Catches capitulation tops and bottoms right as smart money unloads positions.",
     "how_it_works": "Checks if Volume is highest in 100 bars and candle body represents less than 35% of total high-low span.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-tick-volume-spread-correlation",
@@ -1696,12 +1696,12 @@
     "name": "Mako Trend Acceleration & Deceleration Histogram",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Measures the rate of change of moving average momentum to detect turns before price confirms.",
     "what_it_does": "Gives early warning of trend fatigue before price action rolls over.",
     "how_it_works": "Computes the second derivative of momentum (difference between Awesome Oscillator and its 5-period SMA).",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-parabolic-sar-adaptive-trail",
@@ -1732,12 +1732,12 @@
     "name": "Mako Stochastic RSI Precision Momentum Cycle",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Applies Stochastic formula to RSI values for ultra-fast scalping entries on M1 and M5 charts.",
     "what_it_does": "Provides high-sensitivity cyclical pullback signals for intraday scalpers.",
     "how_it_works": "Applies Stochastic oscillator calculation to a 14-period RSI series, smoothing with 3-period SMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-directional-movement-index-adx-pro",
@@ -1756,12 +1756,12 @@
     "name": "Mako Choppiness Index Range Expansion Alert",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Alerts when Choppiness Index drops below 38.2, confirming transition from sideways chop to directional trend.",
     "what_it_does": "Warns traders to stop range trading and prepare for explosive directional runs.",
     "how_it_works": "Computes ratio of cumulative ATR over high-low range over 14 bars based on fractal dimensions.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-macd-true-divergence-auto-ea",
@@ -1804,12 +1804,12 @@
     "name": "Mako Alexander Elder Impulse System Candle Colorer",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Colors candles Green (Bullish), Red (Bearish), or Blue (Neutral) based on 13 EMA slope and MACD histogram.",
     "what_it_does": "Prevents shorting into green candles or buying into red candles based on Elder's classic system.",
     "how_it_works": "Checks if 13 EMA is rising and MACD histogram is rising (Green), or both falling (Red), else neutral Blue.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-linear-regression-slope-angle",
@@ -1828,12 +1828,12 @@
     "name": "Mako Triple EMA (TEMA) Cross Alert Indicator",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Triple smoothed exponential moving average removing 90% of traditional moving average lag.",
     "what_it_does": "Generates ultra-fast trend following signals without lag.",
     "how_it_works": "Computes 3*EMA - 3*EMA(EMA) + EMA(EMA(EMA)) to mathematically neutralize lag.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-center-of-gravity-oscillator",
@@ -1852,12 +1852,12 @@
     "name": "Mako Detrended Price Oscillator (DPO) Cycles",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Removes underlying trend from price to clearly isolate short-term high/low cycle oscillations.",
     "what_it_does": "Isolates pure cyclical price waves from larger trend background noise.",
     "how_it_works": "Subtracts displaced moving average from current price to eliminate longer-term trend bias.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-volume-adjusted-momentum-vam",
@@ -1936,12 +1936,12 @@
     "name": "Mako NY Session AM/PM Silver Bullet Range Boxes",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.30",
     "short_desc": "Auto-draws visual highlighted boxes for 10:00-11:00 AM and 02:00-03:00 PM New York time windows.",
     "what_it_does": "Automates ICT Silver Bullet visual framing on any broker chart timezone.",
     "how_it_works": "Converts broker server time to New York EST, automatically shading the two execution windows.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-institutional-rejection-block-fvg",
@@ -1972,12 +1972,12 @@
     "name": "Mako Premium, Equilibrium & Discount Range HUD",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Shades current dealing range: Premium (Red), 50% Equilibrium (White), and Discount (Green).",
     "what_it_does": "Ensures traders only buy in discount and only sell in premium dealing ranges.",
     "how_it_works": "Calculates swing high to swing low range, shading upper 50% as Premium and lower 50% as Discount.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-optimal-trade-entry-ote-auto",
@@ -1996,12 +1996,12 @@
     "name": "Mako NY Midnight Open & Power of 3 (AMD) Tracker",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Plots NY 00:00 EST Midnight Open price line across the trading day to identify Judas manipulation swings.",
     "what_it_does": "Identifies whether price is currently in Accumulation, Manipulation, or Distribution.",
     "how_it_works": "Stores price at 00:00 NY EST, drawing persistent horizontal benchmark line across intraday timeframes.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-breaker-block-reversal-alert",
@@ -2044,12 +2044,12 @@
     "name": "Mako Opening Range Breakout (ORB 15/30) Box",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Plots the first 15 or 30-minute high-low range of London and New York opens with extension targets.",
     "what_it_does": "Gives clear intraday breakout levels based on opening bell range.",
     "how_it_works": "Stores high and low of the initial 15/30 minutes of session open and projects 1.5x and 2.0x standard extensions.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-asian-range-sweep-reverse-bot-ea",
@@ -2080,12 +2080,12 @@
     "name": "Mako Institutional Swing High/Low Structure Cleaner",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Filters out retail micro-wicks, only labeling verified 5-bar structural pivots (Major Swing Points).",
     "what_it_does": "Cleans chart clutter to display pristine macro market structure.",
     "how_it_works": "Requires 2 lower highs on left and right of peak bar to confirm major structural swing point.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-liquidity-inducement-trap-alert",
@@ -2188,12 +2188,12 @@
     "name": "Mako EURUSD Asian Session Night Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.80",
     "short_desc": "Scalps mean reversion on EURUSD between 21:00 and 05:00 GMT when market volatility is minimal.",
     "what_it_does": "Generates consistent small gains during quiet nighttime Forex hours.",
     "how_it_works": "Trades Bollinger Band 2.5 standard deviation touches during low-spread night session with fixed 12-pip stops.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-propfirm-conservative-grid-ea",
@@ -2260,12 +2260,12 @@
     "name": "Mako RSI Divergence Contrarian Reversal EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.60",
     "short_desc": "Automatically takes reversal entries when RSI forms multi-bar regular divergence on H1.",
     "what_it_does": "Provides hands-free automated swing trading based on proven statistical momentum exhaustion.",
     "how_it_works": "Identifies divergence between price pivots and RSI oscillator, entering on candle close with 1:2.5 risk reward.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-session-vwap-mean-reversion-bot-ea",
@@ -2284,12 +2284,12 @@
     "name": "Mako Classic Turtle 20/55 Trend Breakout EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "2.00",
     "short_desc": "Faithful execution of the Richard Dennis Turtle trading rules with 20-day high breakout entry and ATR sizing.",
     "what_it_does": "Rides mega multi-week macro trends on daily charts hands-free.",
     "how_it_works": "Buys 20-day highs, shorts 20-day lows, risks exactly 1% per trade using 20-day ATR volatility units.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-multi-currency-strength-scalper-ea",
@@ -2332,12 +2332,12 @@
     "name": "Mako 9/21/55 EMA Cloud Momentum Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.40",
     "short_desc": "Scalps M5 pullbacks into the 21-EMA dynamic zone when 9-EMA and 55-EMA are in perfect alignment.",
     "what_it_does": "Provides clean, high-frequency pullback scalping for active day traders.",
     "how_it_works": "Verifies EMA stack alignment. Enters on candle close touching 21-EMA with 1:1.5 RR targets.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-ftmo-consistency-rule-manager-ea",
@@ -2356,12 +2356,12 @@
     "name": "Mako Dual Stochastic Exhaustion Reversal EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Trades cyclical exhaustion when Fast and Slow Stochastic indicators cross above 80 or below 20.",
     "what_it_does": "Captures counter-trend swings on ranging currency pairs.",
     "how_it_works": "Requires Stochastic %K and %D to cross in oversold (<20) or overbought (>80) territory before triggering entry.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-dax40-frankfurt-opening-bell-ea",
@@ -2416,24 +2416,24 @@
     "name": "Mako Session Rollover Spread Spike Freezer",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Detects broker 5 PM NY rollover and locks positions from triggering synthetic stop losses.",
     "what_it_does": "Protects sensitive intraday stop losses from being triggered by artificial broker liquidity gaps.",
     "how_it_works": "Calculates current terminal GMT time. Temporarily disables EA close routines 10 minutes before and after 22:00 GMT.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-equity-milestone-sound-broadcaster",
     "name": "Mako Account Milestone Push & Sound Alert",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Sends mobile notifications and plays audio alerts when account equity reaches target milestone brackets.",
     "what_it_does": "Celebrates milestones and keeps traders informed of profit targets without staring at charts 24/7.",
     "how_it_works": "Monitors AccountInfoDouble(ACCOUNT_EQUITY). Fires SendNotification and PlaySound on every round $1,000 threshold crossed.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-martingale-emergency-interceptor",
@@ -2464,12 +2464,12 @@
     "name": "Mako Daily Profit Target Hard Lockout",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Closes all open trades and disables AlgoTrading once daily profit reaches +2% or target dollar value.",
     "what_it_does": "Protects winning days from overtrading and gives profits back to the broker during late sessions.",
     "how_it_works": "Sums realized daily deal profit. When target is reached, liquidates open trades and triggers terminal sound alarm.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-tick-slippage-recording-audit",
@@ -2524,24 +2524,24 @@
     "name": "Mako Friday Weekend Close Prop-Firm Timer",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Closes all open positions every Friday at 15:45 EST to comply with prop firm weekend holding rules.",
     "what_it_does": "Guarantees zero weekend gap risk and prevents prop firm disqualification on weekend-restricted accounts.",
     "how_it_works": "Monitors DayOfWeek() == 5 and TimeCurrent() >= TargetCloseTime. Sends MqlTradeRequest close orders for all open tickets.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-atr-adaptive-sl-tp-calculator",
     "name": "Mako ATR Adaptive Volatility Stop & Target HUD",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Calculates optimal 1.5x ATR Stop Loss and 3.0x ATR Take Profit levels dynamically on chart.",
     "what_it_does": "Guides manual traders to place volatility-adapted stops that avoid getting prematurely wicked out.",
     "how_it_works": "Reads 14-period ATR. Renders visual price lines above and below current bid/ask with exact pip distances.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-reverse-hedge-emergency-chute",
@@ -2560,12 +2560,12 @@
     "name": "Mako Dynamic Spread Threshold Entry Blocker",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Prevents any manual or automated trade placement if current spread is 20% higher than 1-hour average.",
     "what_it_does": "Protects traders from entering during liquidity vacuums and high-cost broker spread expansion.",
     "how_it_works": "Maintains a rolling 60-minute simple moving average of spread. Blocks trade execution when current spread > 1.2x SMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-account-max-margin-utilization-guard",
@@ -2584,24 +2584,24 @@
     "name": "Mako Milestone Pip Step Trailing Stop",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Moves stop loss in discrete steps (e.g. every +20 pips of profit, moves SL by +15 pips).",
     "what_it_does": "Provides stair-step profit locking without suffocating running trades on intraday pullbacks.",
     "how_it_works": "Calculates price gain in pips from open price. Updates SL ticket order only when next milestone threshold is achieved.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-breakeven-plus-commission-padder",
     "name": "Mako True Breakeven + Commission Padder",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Snaps stop loss to exact entry price plus broker commission & swap buffer for zero-loss guarantee.",
     "what_it_does": "Guarantees that a 'breakeven' trade never loses money to broker round-turn commissions or financing swap fees.",
     "how_it_works": "Queries OrderGetDouble(ORDER_COMMISSION). Converts commission dollars into pips and pads the Stop Loss level above entry.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-dynamic-trailing-pivot-points",
@@ -2620,24 +2620,24 @@
     "name": "Mako Maximum Concurrent Positions Sentinel",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Restricts total open positions to a hard user limit (e.g., maximum 3 trades simultaneously).",
     "what_it_does": "Enforces trading discipline and prevents strategy stacking from eating away free margin.",
     "how_it_works": "Calls PositionsTotal(). If active count >= MaxPositions, immediately suppresses trade triggers.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-swap-fee-exposure-radar",
     "name": "Mako Overnight Swap Cost Exposure Radar",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Displays accurate 3-day Wednesday swap fee costs on chart before holding swing positions overnight.",
     "what_it_does": "Warns swing traders of massive negative carry costs on high-interest currency pairs.",
     "how_it_works": "Reads SymbolInfoDouble(SYMBOL_SWAP_LONG/SHORT) and displays estimated daily/weekly financing charge in account currency.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-tick-volume-spread-ratio-indicator",
@@ -2692,12 +2692,12 @@
     "name": "Mako Tick Arrival Velocity & Tape Surge Radar",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": true,
+    "is_pro": false,
     "version": "1.00",
     "short_desc": "Measures incoming tick arrival rate per second to detect high-frequency algorithm order sweeps.",
     "what_it_does": "Detects institutional iceberg order executions before candlesticks even finish forming.",
     "how_it_works": "Tracks tick timestamp intervals in milliseconds. Triggers visual HUD pulse when tick rate exceeds 25 ticks/sec.",
-    "badge": "PRO"
+    "badge": "STARTER FREE"
   },
   {
     "slug": "mako-anchored-volume-profile-range",
@@ -2764,36 +2764,36 @@
     "name": "Mako Volume Exhaustion Reversal Pinbar Indicator",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Detects long-wick pinbars accompanied by volume exhaustion spikes at major support/resistance.",
     "what_it_does": "Identifies high-probability reversal candlesticks confirmed by volume absorption footprints.",
     "how_it_works": "Checks wick-to-body ratio (> 65% wick) and verifies volume is > 1.5x average. Renders sharp reversal arrow.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-eom-ease-of-movement-modern",
     "name": "Mako Modernized Ease of Movement (EMV)",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Relates price change to volume, showing how easily price moves through current liquidity.",
     "what_it_does": "Quantifies market liquidity resistance, helping traders spot effortless breakout trends.",
     "how_it_works": "Computes Midpoint Move divided by (Volume / High - Low). Smooths with 14-period SMA and displays zero-line oscillator.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-on-balance-volume-trend-envelope",
     "name": "Mako OBV Dynamic Volatility Trend Envelope",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Applies 20-period Bollinger Bands directly over On-Balance Volume to detect volume breakouts.",
     "what_it_does": "Finds hidden volume breakouts before price breaks technical chart resistance levels.",
     "how_it_works": "Calculates classic cumulative OBV. Plots 20-period moving average and ±2 standard deviation bands on the OBV line.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-volume-weighted-macd-histogram",
@@ -2812,12 +2812,12 @@
     "name": "Mako Bill Williams Market Facilitation Index (BW-MFI)",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Classifies bars into Green, Fade, Fake, and Squat states based on volume and price range changes.",
     "what_it_does": "Identifies whether market price moves are driven by fresh liquidity or empty volume traps.",
     "how_it_works": "Calculates (High - Low) / Volume. Compares change in MFI and volume against previous bar to paint 4 distinct colors.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-chande-momentum-volume-oscillator",
@@ -2860,12 +2860,12 @@
     "name": "Mako Negative Volume Index (NVI) Smart Money Tracker",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Tracks smart money positioning by isolating price changes on low-volume days where retail is absent.",
     "what_it_does": "Detects quiet institutional accumulation that takes place when retail volume is completely flat.",
     "how_it_works": "Updates index only when current bar volume is lower than previous bar volume. Smooths with 255-period EMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-volume-climax-exhaustion-reversal-ea",
@@ -2884,12 +2884,12 @@
     "name": "Mako Kaufman Adaptive Moving Average (KAMA)",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Moving average that speeds up during strong trends and flattens completely during choppy consolidation.",
     "what_it_does": "Eliminates whipsaws during range-bound markets while providing rapid trend following during expansions.",
     "how_it_works": "Calculates Efficiency Ratio (ER = Direction / Volatility). Dynamically modulates smoothing constant between 2 and 30 periods.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-jurik-smooth-momentum-oscillator",
@@ -2908,12 +2908,12 @@
     "name": "Mako Donchian Channel High/Low Turtle Breakout Bands",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Plots 20-period and 55-period highest highs and lowest lows for classic trend breakout systems.",
     "what_it_does": "Identifies legendary Turtle Trading breakout levels with clean on-chart visual boundary channels.",
     "how_it_works": "Computes iHighest and iLowest over N periods. Draws upper channel, lower channel, and median baseline.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-supertrend-multi-timeframe-matrix",
@@ -2932,12 +2932,12 @@
     "name": "Mako McGinley Dynamic Adaptive Moving Average",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Dynamic moving average that automatically adjusts speed based on market acceleration and volatility.",
     "what_it_does": "Solves moving average lag and separation problems by tracking market price closely in trending markets.",
     "how_it_works": "Formula: MD = MD_prev + (Price - MD_prev) / (N * (Price / MD_prev)^4). Eliminates curve-fitting parameters.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-schaff-trend-cycle-stc-fast",
@@ -2956,24 +2956,24 @@
     "name": "Mako T3 Tim Tillson Triple-Smoothed MA",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Triple-smoothed EMA utilizing DEMA factor for superior noise filtration without sacrificing responsiveness.",
     "what_it_does": "Smooths erratic price chop while turning rapidly at true structural trend inflection points.",
     "how_it_works": "Applies 6 consecutive exponential moving averages combined with volume factor 'b' (default 0.7).",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-vortex-indicator-trend-direction",
     "name": "Mako Vortex Indicator (VI+ / VI-) Directional System",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Captures the start of new trends by measuring distance between current bar highs/lows and prior lows/highs.",
     "what_it_does": "Flags strong directional trend development and early trend initiation across all major asset classes.",
     "how_it_works": "Calculates Positive Vortex Movement (VM+) and Negative Vortex Movement (VM-) divided by True Range over 14 bars.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-trend-exhaustion-td-sequential-clean",
@@ -2992,36 +2992,36 @@
     "name": "Mako Detrended Price Oscillator (DPO) Cycle Hunter",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Removes long-term trend bias from price data to isolate pure short-term recurring cycles.",
     "what_it_does": "Helps swing traders identify regular 14-day or 20-day cycle peaks and valleys for swing entries.",
     "how_it_works": "Subtracts displaced moving average from price: DPO = Close - SMA(N / 2 + 1 bars ago).",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-keltner-channel-pro-atr-envelopes",
     "name": "Mako Keltner Channels Pro (EMA + ATR Envelopes)",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "20-period EMA center line with 2x and 3x Average True Range volatility boundary channels.",
     "what_it_does": "Serves as an objective dynamic support and resistance envelope that expands and contracts with volatility.",
     "how_it_works": "Computes 20-period EMA of Close. Upper band = EMA + 2x ATR(10); Lower band = EMA - 2x ATR(10).",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-coppock-curve-long-term-momentum",
     "name": "Mako Coppock Curve Macro Trend Investor Oscillator",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Macro-momentum oscillator that signals generational trend bottoms in equity indices and commodities.",
     "what_it_does": "Identifies major multi-month trend reversals for long-term swing traders and prop-firm portfolio managers.",
     "how_it_works": "Calculates 10-period weighted moving average of the sum of 14-period Rate of Change and 11-period Rate of Change.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-linear-regression-slope-channel",
@@ -3040,24 +3040,24 @@
     "name": "Mako Awesome Oscillator (AO) Saucer & Twin Peaks",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Classic 34/5 median price momentum histogram with automated Saucer and Twin Peaks visual signal arrows.",
     "what_it_does": "Detects rapid short-term momentum shifts and classic Elliott Wave 4th-wave pullback setups.",
     "how_it_works": "Subtracts 34-period SMA of median price from 5-period SMA of median price. Automatically detects histogram saucers.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-hull-moving-average-color-ribbon",
     "name": "Mako Hull Moving Average (HMA) Zero-Lag Trend Ribbon",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Fast responsive Hull MA that changes color dynamically based on rising (blue) or falling (red) trend slope.",
     "what_it_does": "Provides immediate visual trend direction confirmation without cutting through candles on minor pullbacks.",
     "how_it_works": "Formula: HMA = WMA(2 * WMA(N/2) - WMA(N), sqrt(N)). Produces virtually zero lag with great smoothness.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-center-of-gravity-oscillator-ehlers",
@@ -3076,12 +3076,12 @@
     "name": "Mako Relative Vigor Index (RVI) Momentum Signal",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Measures conviction of a trend by comparing candle closing price to high-low range over 10 periods.",
     "what_it_does": "Identifies whether current market momentum is strong enough to sustain a continuing trend extension.",
     "how_it_works": "Calculates (Close - Open) / (High - Low) smoothed with symmetrically weighted moving averages.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-stochastic-rsi-momentum-scalper-ea",
@@ -3100,12 +3100,12 @@
     "name": "Mako ADX Trend Strength Filter & Regime Gauge",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Displays ADX trend strength gauge (Weak < 20, Trending > 25, Extreme > 40) on chart with +DI/-DI arrows.",
     "what_it_does": "Tells traders immediately whether to employ trend breakout strategies or range mean-reversion tactics.",
     "how_it_works": "Computes Wilder's DMI and 14-period ADX smoothing. Renders visual colored gauge in chart sidebar.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-zero-lag-macd-momentum-accelerator",
@@ -3160,12 +3160,12 @@
     "name": "Mako Market Structure Shift (MSS & CHoCH) Alert",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Identifies Change of Character (CHoCH) and Break of Structure (BOS) with candle body close confirmation.",
     "what_it_does": "Filters out false wick sweeps and alerts only when true candle body displacement breaks market structure.",
     "how_it_works": "Stores most recent swing fractal high and low. Verifies Close > SwingHigh for bullish BOS and renders alert.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-inversion-fair-value-gap-mapper",
@@ -3184,12 +3184,12 @@
     "name": "Mako Previous Day High/Low (PDH/PDL) Liquidity Target",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Plots Previous Day High, Low, and Midpoint (Equilibrium) with touch/sweep audio notifications.",
     "what_it_does": "Keeps intraday traders focused on primary institutional liquidity pools where stop orders accumulate.",
     "how_it_works": "Retrieves D1 bar 1 High, Low, and (High+Low)/2. Projects horizontal ray lines across current intraday chart.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-judas-swing-london-open-scalper-ea",
@@ -3208,12 +3208,12 @@
     "name": "Mako 00:00 NY True Midnight Open Anchor Line",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Plots the institutional 00:00 EST True Day Open price level across the entire trading day.",
     "what_it_does": "Establishes clean institutional bias: buy in discount below midnight open; sell in premium above midnight open.",
     "how_it_works": "Converts broker time to Eastern Standard Time. Captures exact open price of the 00:00 EST bar and projects horizontal line.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-equal-highs-lows-liquidity-pool",
@@ -3244,12 +3244,12 @@
     "name": "Mako Displacement FVG Quality Filter Indicator",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Filters out low-probability FVGs by requiring central displacement candle to have 2x average volume.",
     "what_it_does": "Eliminates low-conviction noise gaps, leaving only clean institutional displacement imbalances on chart.",
     "how_it_works": "Checks FVG creation and verifies that bar 2 tick volume exceeds 20-period SMA(volume) by at least 1.5x.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-weekly-open-gap-rebalance-ea",
@@ -3268,24 +3268,24 @@
     "name": "Mako Rejection Block Long-Wick Scanner",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Scans for institutional rejection blocks where candle wicks sweep liquidity but bodies fail to close.",
     "what_it_does": "Pinpoints localized exhaustion sweeps at session highs and lows.",
     "how_it_works": "Measures upper wick length relative to entire candle height. Flags bars where wick constitutes > 70% of total range.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-premium-discount-fibonacci-grid",
     "name": "Mako Premium / Discount Equilibrium 50% Grid",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Splits active swing range into Premium (> 50%) and Discount (< 50%) zones with clear background shading.",
     "what_it_does": "Prevents buying in expensive premium territory or selling in cheap discount territory.",
     "how_it_works": "Calculates range between active swing high and low. Shreads upper 50% in subtle red and lower 50% in subtle green.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-consequent-encroachment-50-ce-hud",
@@ -3304,12 +3304,12 @@
     "name": "Mako ICT Killzone Visual Session Box Highlighter",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Draws elegant transparent colored boxes for London Open, NY AM, and London Close Killzones.",
     "what_it_does": "Visually organizes chart time into high-probability execution windows without cluttering price candles.",
     "how_it_works": "Checks TimeCurrent() against Killzone hour inputs. Creates native chart OBJ_RECTANGLE with high-contrast styling.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-multi-timeframe-orderblock-stacker",
@@ -3400,24 +3400,24 @@
     "name": "Mako ADX Trend Pullback Continuation Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Enters high-probability trend pullback trades to 20-period EMA when ADX confirms strong trend (> 25).",
     "what_it_does": "Enforces disciplined trend-following, buying dips in strong uptrends and selling rallies in downtrends.",
     "how_it_works": "Filters by ADX > 25. When price touches 20 EMA and prints reversal candle, opens trade targeting prior swing high.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-consecutive-bar-momentum-scalper-ea",
     "name": "Mako 3-Bar Momentum Thrust Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Scalps fast intraday continuation after 3 consecutive bullish or bearish candles close near their extremes.",
     "what_it_does": "Captures immediate momentum follow-through on M1 and M5 charts with tight trailing stop protection.",
     "how_it_works": "Checks last 3 bars for consecutive higher closes and minimal upper wicks. Enters market order with 1:1.5 R:R.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-atr-breakout-channel-bot-ea",
@@ -3436,24 +3436,24 @@
     "name": "Mako Triple EMA (9-21-55) Trend Portfolio Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Classic institutional trend following robot executing on 9/21 EMA crossover filtered by 55 EMA baseline.",
     "what_it_does": "Provides automated, low-stress trend following across multiple pairs simultaneously.",
     "how_it_works": "Verifies 9 EMA > 21 EMA > 55 EMA for buy signal. Exits when fast 9 EMA crosses back below 21 EMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-macd-zero-cross-momentum-bot-ea",
     "name": "Mako MACD Zero-Line Cross Momentum Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Enters momentum trend trades when MACD histogram crosses zero with increasing volume confirmation.",
     "what_it_does": "Trades genuine momentum acceleration while avoiding choppy divergence whipsaws.",
     "how_it_works": "Monitors 12/26/9 MACD histogram. Enters when bar 1 closes above zero and tick volume is higher than bar 2.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-supertrend-multi-currency-basket-ea",
@@ -3484,24 +3484,24 @@
     "name": "Mako Parabolic Acceleration Trend Chaser EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Enters on PSAR flip and trails stop loss dot-by-dot for maximum trend acceleration extraction.",
     "what_it_does": "Locks in rapid trend profits during sharp impulsive expansions without manual chart supervision.",
     "how_it_works": "Monitors PSAR step 0.02 / max 0.2. Moves order Stop Loss to the exact PSAR dot coordinate on every new bar.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-keltner-mean-reversion-scalper-bot",
     "name": "Mako Keltner Channel Reversion Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Fades candles closing outside Keltner Channel 2.5x ATR bands during Asian session consolidation.",
     "what_it_does": "Generates high win-rate scalping trades during quiet night hours on low-volatility pairs.",
     "how_it_works": "Restricts execution to 22:00 - 05:00 GMT. Buys when price pierces lower Keltner band; targets central 20 EMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-rsi-trendline-breakout-scalper-ea",
@@ -3532,48 +3532,48 @@
     "name": "Mako Inside Bar & Hikkake Fakeout Breakout EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Identifies Inside Bar consolidations and executes the Hikkake trap pattern when fakeouts fail.",
     "what_it_does": "Turns retail breakout traps into high-probability reversal wins by trading the failed breakout re-entry.",
     "how_it_works": "Detects inside bar (High < High[1] and Low > Low[1]). If next bar breaks high but reverses, enters short.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-engulfing-candle-volume-scalper-ea",
     "name": "Mako High-Volume Bullish/Bearish Engulfing EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Trades classic engulfing candlestick patterns filtered by 2x tick volume confirmation and 50 EMA trend.",
     "what_it_does": "Ensures that manual price action patterns are only executed when supported by institutional volume.",
     "how_it_works": "Checks body engulfing condition and verifies bar volume > 1.5x 20-period average. Places order with SL at candle low.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-heikin-ashi-trend-smoother-ea",
     "name": "Mako Heikin Ashi Trend Continuation Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Follows trend continuations using Heikin Ashi color runs, staying in trades until opposite bar forms.",
     "what_it_does": "Removes intraday candlestick noise, helping traders ride long multi-hour trend legs with confidence.",
     "how_it_works": "Computes synthetic Heikin Ashi OHLC. Enters on first color change; exits on first opposing color bar.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-fractal-breakout-turtle-momentum-ea",
     "name": "Mako Bill Williams Fractal Breakout Trend Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Places pending stop orders above and below 5-bar Bill Williams fractals, catching breakout expansions.",
     "what_it_does": "Automates multi-timeframe fractal breakout trading with automated trailing stop protection.",
     "how_it_works": "Identifies active upper/lower fractals. Places Buy Stop at upper fractal and Sell Stop at lower fractal.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-cci-turbo-divergence-scalper-ea",
@@ -3616,48 +3616,48 @@
     "name": "Mako Single-Session Risk Cap Limiter",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Restricts loss to maximum 1.5% per individual session (London, NY, Asian).",
     "what_it_does": "Stops a bad morning session from destroying the entire trading day balance.",
     "how_it_works": "Calculates session PnL relative to session open time. Freezes trading if session loss exceeds cap.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-spread-spike-alarm-sound",
     "name": "Mako Audio Alert Spread Spike Monitor",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Audible speech alert when current broker spread widens beyond normal conditions.",
     "what_it_does": "Warns manual traders against entering during sudden liquidity dry-ups.",
     "how_it_works": "Plays sound alert whenever SymbolInfoInteger(SYMBOL_SPREAD) exceeds user defined threshold.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-floating-drawdown-gauge-hud",
     "name": "Mako Floating Drawdown Visual Gauge HUD",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Sleek on-chart circular dial showing current floating drawdown vs prop firm limit.",
     "what_it_does": "Provides real-time visual situational awareness of account equity buffer.",
     "how_it_works": "Renders dynamic canvas gauge displaying percent drawdown from initial starting equity.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-commission-adjusted-target-tp",
     "name": "Mako Commission & Swap Net Target Adjuster",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Pushes Take Profit outward dynamically to ensure target is net of broker fees.",
     "what_it_does": "Ensures a 1:2 R:R trade actually delivers 2.0x profit after high commission deductions.",
     "how_it_works": "Calculates expected broker fees and extends TP distance to guarantee net profit targets.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-consecutive-loss-lot-reducer",
@@ -3676,12 +3676,12 @@
     "name": "Mako On-Chart 1-Click Emergency Panic Close",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Instant on-chart red button that closes all open market orders in under 50ms.",
     "what_it_does": "Gives traders an instant escape hatch during breaking geopolitical news events.",
     "how_it_works": "Renders native GUI button. On click, fires asynchronous order close requests across all symbols.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-atr-trailing-chandelier-bands",
@@ -3700,36 +3700,36 @@
     "name": "Mako Low Margin Level Warning Announcer",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Flashes prominent screen warning when margin level drops below 300%.",
     "what_it_does": "Prevents unexpected broker stop-outs and forced margin liquidations.",
     "how_it_works": "Evaluates AccountInfoDouble(ACCOUNT_MARGIN_LEVEL). Flashes red background if below limit.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-time-of-day-trade-prohibiter",
     "name": "Mako Low Liquidity Hour Trade Blocker",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Blocks trade placement during dead market hours between NY close and Tokyo open.",
     "what_it_does": "Prevents entering during low-liquidity chop with high broker spreads.",
     "how_it_works": "Compares TimeCurrent() against blacklist hours. Rejects trade tickets during quiet hours.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-pip-value-currency-converter",
     "name": "Mako Multi-Currency Live Pip Value Converter",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Displays accurate USD pip values for cross pairs (EURGBP, AUDNZD, CADJPY) on chart.",
     "what_it_does": "Removes guesswork when calculating risk on non-USD quoted currency pairs.",
     "how_it_works": "Converts quote currency tick value into account base currency in real-time.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-max-drawdown-circuit-breaker-ea",
@@ -3760,12 +3760,12 @@
     "name": "Mako Milestone Target Sound Announcer",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Celebratory audio sound triggers when daily profit passes +$500 or +$1,000.",
     "what_it_does": "Rewards disciplined trading with clear acoustic milestones.",
     "how_it_works": "Tracks daily closed deals profit. Fires WAV audio sound upon crossing dollar thresholds.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-multi-symbol-exposure-pie-hud",
@@ -3784,12 +3784,12 @@
     "name": "Mako Friday Market Close Countdown HUD",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Displays live countdown timer to Friday FX market close with prop firm reminders.",
     "what_it_does": "Ensures traders never forget open positions going into high-risk weekend gaps.",
     "how_it_works": "Calculates remaining minutes until Friday 17:00 EST close and displays bright banner.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-stealth-trailing-stop-manager",
@@ -3808,12 +3808,12 @@
     "name": "Mako Effective Account Leverage Auditor HUD",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Calculates real effective leverage (Total Notional Volume / Account Equity) on chart.",
     "what_it_does": "Alerts traders when they unknowingly exceed 1:10 or 1:20 true portfolio leverage.",
     "how_it_works": "Sums notional contract values of all active positions divided by current equity.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-partial-take-profit-r-multiples",
@@ -3832,12 +3832,12 @@
     "name": "Mako Broker Execution Slippage Dispute Logger",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Generates detailed CSV audit reports of every fill price vs requested price.",
     "what_it_does": "Equips traders with documented proof when disputing severe slippage with brokers.",
     "how_it_works": "Appends order ticket, order time, requested price, and fill price to a local CSV file.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-delta-divergence-oscillator-cvd",
@@ -3892,12 +3892,12 @@
     "name": "Mako Climax Volume Exhaustion Reversal Arrows",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Paints reversal arrows when volume reaches 4-standard-deviation climax spikes.",
     "what_it_does": "Flags capitulation tops and bottoms where retail stops are being absorbed by smart money.",
     "how_it_works": "Evaluates 20-period volume z-score. Firing signal when volume z-score > 3.0 at swing extremes.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-session-poc-migration-tracker",
@@ -3928,12 +3928,12 @@
     "name": "Mako Volume-Weighted RSI (VWRSI) Momentum",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Standard 14-period RSI weighted by candle volume for high-conviction overbought/oversold.",
     "what_it_does": "Eliminates false RSI signals during thin overnight trading sessions.",
     "how_it_works": "Multiplies price gains and losses by bar volume before applying smoothed RS ratio.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-intraday-liquidity-void-detector",
@@ -3964,24 +3964,24 @@
     "name": "Mako Klinger Volume Oscillator (KVO) Trend",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Measures long-term volume flow trends while remaining sensitive to short-term fluctuations.",
     "what_it_does": "Signals institutional accumulation and distribution phases across multi-day trends.",
     "how_it_works": "Calculates volume force based on high-low-close range and applies 34/55 exponential smoothing.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-chaikin-money-flow-cmf-alert",
     "name": "Mako Chaikin Money Flow (CMF) Institutional Meter",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Measures money flow volume over 21 periods with audio alerts on zero-line crosses.",
     "what_it_does": "Determines whether smart money is accumulating or distributing an asset.",
     "how_it_works": "Calculates Money Flow Multiplier [(Close - Low) - (High - Close)] / (High - Low) * Volume.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-on-balance-volume-breakout-bot",
@@ -4024,24 +4024,24 @@
     "name": "Mako Tick Volume Rate of Change (V-ROC) Gauge",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Measures percentage speed of volume expansion to detect opening volatility surges.",
     "what_it_does": "Alerts traders to rapid momentum acceleration at market open times.",
     "how_it_works": "Computes (Current Volume - Volume N periods ago) / Volume N periods ago * 100.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-negative-volume-accumulation-meter",
     "name": "Mako Stealth Negative Volume Accumulation HUD",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Tracks smart money stealth positioning on quiet low-volume pullbacks.",
     "what_it_does": "Separates institutional quiet positioning from noisy retail FOMO moves.",
     "how_it_works": "Filters bars where volume decreased from prior bar and calculates cumulative price trajectory.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-volume-profile-virgin-poc-rays",
@@ -4072,24 +4072,24 @@
     "name": "Mako Time-Weighted Average Price (TWAP) Line",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Plots institutional TWAP execution benchmark line across active intraday sessions.",
     "what_it_does": "Allows traders to compare current execution price against time-weighted averages.",
     "how_it_works": "Computes arithmetic mean of typical price over active session duration.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-hull-ma-trend-direction-arrows",
     "name": "Mako Hull Moving Average Trend Direction Arrows",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Generates non-repainting buy/sell arrows on Hull MA color direction flips.",
     "what_it_does": "Provides clear, lag-free trend direction confirmation for manual execution.",
     "how_it_works": "Calculates 21-period HMA. Fires arrow on bar close when slope shifts between rising and falling.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-adaptive-cyber-cycle-indicator",
@@ -4108,12 +4108,12 @@
     "name": "Mako Turtle Donchian Channel Trend EA",
     "category": "trend_oscillators",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Automates classic 20-period Turtle breakout system with 2x ATR trailing stop.",
     "what_it_does": "Delivers legendary trend following automation across major currency pairs and Gold.",
     "how_it_works": "Enters long on break of 20-bar high; enters short on break of 20-bar low. Trails stop via ATR.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-supertrend-cloud-multi-timeframe",
@@ -4132,24 +4132,24 @@
     "name": "Mako Stochastic Momentum Index (SMI) Smooth",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Refined stochastic oscillator that measures closing price relative to median price.",
     "what_it_does": "Produces smoother, less erratic momentum signals than standard fast Stochastic.",
     "how_it_works": "Computes difference between close and midpoint of high-low range, smoothed with double EMAs.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-trix-triple-smoothed-momentum",
     "name": "Mako TRIX Triple-Smoothed Exponential Oscillator",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Triple-smoothed 14-period EMA oscillator designed to filter out cycle noise.",
     "what_it_does": "Identifies strong sustainable momentum trends with zero-line and signal line crosses.",
     "how_it_works": "Calculates 1-period rate of change of a triple-smoothed EMA of closing price.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-linear-regression-slope-meter",
@@ -4168,12 +4168,12 @@
     "name": "Mako Fast 5-13-34 EMA Momentum Scalper EA",
     "category": "trend_oscillators",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Scalps fast intraday continuation trends on 5/13/34 exponential moving average fan.",
     "what_it_does": "Captures high-probability trend momentum surges on M5 and M15 charts.",
     "how_it_works": "Enters when 5 EMA crosses 13 EMA in the direction of the 34 EMA baseline.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-vortex-trend-breakout-scalper-ea",
@@ -4216,12 +4216,12 @@
     "name": "Mako DPO Short-Term Cycle Mean-Reversion EA",
     "category": "trend_oscillators",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Trades short-term cycle extremes using Detrended Price Oscillator bands.",
     "what_it_does": "Exploits recurring 14-day market cycles for disciplined swing entries.",
     "how_it_works": "Calculates price distance from displaced moving average. Enters on cycle peak/trough reversals.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-mcginley-dynamic-trend-follower",
@@ -4240,24 +4240,24 @@
     "name": "Mako Coppock Curve Macro Regime Filter",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Displays macro bull/bear regime filter based on Coppock Curve monthly momentum.",
     "what_it_does": "Keeps traders aligned with long-term macroeconomic trend bias.",
     "how_it_works": "Evaluates weighted moving average of sum of ROCs. Paints background green/red.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-aroon-oscillator-trend-bot-ea",
     "name": "Mako Aroon Oscillator Trend Strength Bot",
     "category": "trend_oscillators",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Trades strong trend developments when Aroon Oscillator crosses above +50 or below -50.",
     "what_it_does": "Identifies when fresh 25-period highs or lows are dominating market structure.",
     "how_it_works": "Calculates (Aroon Up - Aroon Down). Enters on strong directional threshold breaches.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-kaufman-adaptive-breakout-ea",
@@ -4300,12 +4300,12 @@
     "name": "Mako Relative Vigor Index (RVI) Momentum EA",
     "category": "trend_oscillators",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Enters continuation trades when RVI main line crosses signal line in trend direction.",
     "what_it_does": "Trades momentum continuation confirmed by candlestick body-to-range conviction.",
     "how_it_works": "Computes RVI formula over 10 periods. Enters on signal cross filtered by 50-period EMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-zero-lag-macd-divergence-ea",
@@ -4360,12 +4360,12 @@
     "name": "Mako Change of Character (CHoCH) Auto-Executor EA",
     "category": "price_action_smc",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Enters market trend reversal trades when a confirmed CHoCH candle body closes.",
     "what_it_does": "Automates early trend reversal entries confirmed by structural swing breaks.",
     "how_it_works": "Tracks recent swing high/low. Enters trade when candle body closes beyond previous swing extreme.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-inversion-fvg-retest-scalper-ea",
@@ -4384,12 +4384,12 @@
     "name": "Mako Previous Day High/Low (PDH/PDL) Sweep Bot",
     "category": "price_action_smc",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Fades false breakouts beyond previous day extremes back into daily value area.",
     "what_it_does": "Captures daily liquidity sweeps and mean-reversion back to daily equilibrium.",
     "how_it_works": "Monitors PDH/PDL pierce. If price sweeps level by < 15 pips and closes back inside, executes fade.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-judas-swing-london-scalper-bot",
@@ -4408,12 +4408,12 @@
     "name": "Mako 00:00 EST Midnight Open Bias Scalper EA",
     "category": "price_action_smc",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Buys in discount below midnight open and sells in premium above midnight open.",
     "what_it_does": "Aligns execution with institutional algorithmic pricing relative to the true day open.",
     "how_it_works": "Measures distance from 00:00 EST open price. Triggers limit orders at 30-pip discount/premium.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-equal-highs-liquidity-sweep-ea",
@@ -4456,36 +4456,36 @@
     "name": "Mako Sunday Open Gap Fill Rebalance EA",
     "category": "price_action_smc",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Trades weekend opening price gaps on major pairs targeting Friday market close.",
     "what_it_does": "Exploits high-probability Sunday open gap fills with automated risk budgeting.",
     "how_it_works": "Calculates gap between Friday close and Sunday open. Enters trade if gap > 20 pips.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-rejection-block-pinbar-scalper-ea",
     "name": "Mako Rejection Block Long-Wick Scalper EA",
     "category": "price_action_smc",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Scalps rejection pinbars where upper or lower wick represents > 70% of candle range.",
     "what_it_does": "Enters structural reversals confirmed by clear price action wick rejections.",
     "how_it_works": "Evaluates candle wick-to-body ratio. Enters on bar close with stop loss placed at wick extreme.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-premium-discount-reversion-ea",
     "name": "Mako Premium / Discount Equilibrium Mean-Reversion EA",
     "category": "price_action_smc",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Trades mean-reversion back to 50% equilibrium when price reaches 80% range extremes.",
     "what_it_does": "Enforces institutional discipline: never buys high in premium or sells low in discount.",
     "how_it_works": "Measures active swing range. Enters counter trade at 80% boundary targeting 50% equilibrium.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-session-killzone-breakout-bot",
@@ -4588,24 +4588,24 @@
     "name": "Mako NY Lunch 12:00 PM Consolidation Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Mean-reversion scalper trading the quiet 12:00 - 13:30 EST New York lunch hour.",
     "what_it_does": "Scalps range boundaries while institutional traders take lunch before the afternoon macro.",
     "how_it_works": "Enforces range-bound envelope trading strictly during the 12:00 - 13:30 EST time window.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-bollinger-mean-reversion-grid-bot",
     "name": "Mako Bollinger Bands Mean-Reversion Scalper Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Scalps 2.5-sigma Bollinger Band touches during consolidating market regimes.",
     "what_it_does": "Exploits statistical price overextensions back toward the 20-period moving average.",
     "how_it_works": "Enters counter-trend trades on outer band touches. Exits at central SMA with ATR stop loss.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-keltner-channel-breakout-bot",
@@ -4624,24 +4624,24 @@
     "name": "Mako Multi-Pair Triple EMA Portfolio Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.30",
     "short_desc": "Trend following bot executing 8/21/55 EMA crossovers across 5 major Forex pairs.",
     "what_it_does": "Diversifies automated trend-following across multiple currency pairs simultaneously.",
     "how_it_works": "Monitors EMA alignment. Enters trades with normalized 0.75% equity risk per pair.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-macd-histogram-momentum-scalper-ea",
     "name": "Mako MACD Histogram Acceleration Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Scalps momentum bursts when MACD histogram expands 3 consecutive bars in trend direction.",
     "what_it_does": "Enters early on momentum acceleration before price completes entire swing move.",
     "how_it_works": "Monitors consecutive histogram bar expansion. Enters on bar 3 with 1:1.5 R:R targets.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-supertrend-multi-pair-bot-ea",
@@ -4672,24 +4672,24 @@
     "name": "Mako Parabolic SAR Trend Acceleration Rider EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Enters on Parabolic SAR flips and moves stop loss tick-by-tick along PSAR dots.",
     "what_it_does": "Locks in rapid trend profits during sharp trending runs without manual monitoring.",
     "how_it_works": "Updates order stop loss to exact PSAR dot coordinate on every new bar formation.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-rsi-overbought-reversal-scalper-ea",
     "name": "Mako RSI 80/20 Extreme Overbought Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Scalps quick mean-reversion pullbacks when 14-period RSI reaches extreme 80 or 20 levels.",
     "what_it_does": "Exploits short-term intraday exhaustion on M5 charts with strict 15-pip stop loss.",
     "how_it_works": "Fires market order when RSI crosses back inside 70/30 from extreme 80/20 levels.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-us30-index-opening-gap-bot-ea",
@@ -4720,48 +4720,48 @@
     "name": "Mako Inside Bar Mother Candle Breakout Bot",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Enters momentum breakout orders when price breaks outside a high-volume Inside Bar range.",
     "what_it_does": "Captures explosive volatility expansion following tight price compression bars.",
     "how_it_works": "Detects Inside Bar formation. Places pending stop orders above mother high and below mother low.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-engulfing-candle-trend-scalper-ea",
     "name": "Mako Engulfing Candlestick Momentum Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Trades bullish/bearish engulfing patterns aligned with 50-period EMA baseline trend.",
     "what_it_does": "Automates classic price action candlestick execution with strict risk-to-reward ratios.",
     "how_it_works": "Verifies complete body engulfing and EMA trend alignment. Enters on candle close.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-heikin-ashi-trend-scalper-bot",
     "name": "Mako Heikin Ashi Color Run Trend Scalper EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Follows Heikin Ashi color runs, entering on bar 2 and holding until opposite color candle.",
     "what_it_does": "Extracts maximum trend distance by eliminating emotional exits during minor pullbacks.",
     "how_it_works": "Calculates synthetic Heikin Ashi candles. Enters on second consecutive color bar.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-fractal-breakout-momentum-bot-ea",
     "name": "Mako 5-Bar Fractal Breakout Channel Bot EA",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Places pending orders beyond 5-bar Bill Williams fractals for automated breakout trading.",
     "what_it_does": "Rides structural breakout waves across multiple timeframes with trailing protection.",
     "how_it_works": "Identifies active swing fractals. Updates pending buy/sell stop orders on new bar creation.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-cci-extreme-reversion-scalper-bot",
@@ -4816,12 +4816,12 @@
     "name": "Mako Real-Time Round-Turn Cost HUD",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Calculates total round-turn dollar commission + spread cost before opening orders on chart.",
     "what_it_does": "Prevents traders from executing high-frequency scalps on high-cost broker symbols.",
     "how_it_works": "Multiplies lot size by contract size and spread in points plus known broker commission.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-equity-trailing-lockout-safe-ea",
@@ -4840,36 +4840,36 @@
     "name": "Mako Audio Alarm Tilt Interceptor",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Plays emergency voice warnings and flashes red chart border after 3 straight stop-outs.",
     "what_it_does": "Jolts traders out of the cognitive amygdala hijack after frustrating losses.",
     "how_it_works": "Scans closed history deals for consecutive negative profit deals. Fires siren audio on 3rd loss.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-dynamic-atr-step-protector-ea",
     "name": "Mako Dynamic ATR Volatility Step Protector EA",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Snaps stop loss forward by 1.0x ATR every time market expands by 1.5x ATR in profit.",
     "what_it_does": "Guarantees trailing stop moves only during genuine volatility expansion waves.",
     "how_it_works": "Measures ATR(14). Calculates discrete profit steps and shifts stop order accordingly.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-max-lot-limit-enforcer-guard",
     "name": "Mako Absolute Maximum Lot Size Ceiling Enforcer",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Rejects order requests that exceed a strict pre-configured lot ceiling (e.g. max 2.00 lots).",
     "what_it_does": "Stops fat-finger typing errors (like typing 10.0 instead of 1.0) from blowing accounts.",
     "how_it_works": "Inspects order ticket volume before execution. Cancels transaction if volume > MaxLotLimit.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-daily-loss-cooldown-timer-ea",
@@ -4888,12 +4888,12 @@
     "name": "Mako True Net Zero Breakeven Auto-Padder",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Moves SL to entry + 2 pips + accrued overnight swap costs once trade reaches +20 pips.",
     "what_it_does": "Guarantees that swing positions held overnight remain 100% risk-free upon hitting breakeven.",
     "how_it_works": "Calculates accumulated swap charges and converts to points, shifting SL safely above entry.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-multi-pair-drawdown-harmonizer",
@@ -4912,36 +4912,36 @@
     "name": "Mako Friday 16:30 EST Weekend Gap Auto-Closer",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Safely closes all open trades every Friday at 16:30 EST to protect prop firm accounts.",
     "what_it_does": "Eliminates weekend gap blowout risks and adheres to prop firm weekend rules.",
     "how_it_works": "Monitors TimeCurrent(). At 16:30 EST on Friday, executes market close across all open tickets.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-swap-fee-calculator-radar-pro",
     "name": "Mako Swap Rate Differential Exposure Radar",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Calculates 7-day and 30-day projected financing swap costs for all open swing trades.",
     "what_it_does": "Exposes hidden financing costs before traders commit to long-term swing holdings.",
     "how_it_works": "Multiplies open volume by SYMBOL_SWAP_LONG/SHORT and displays table on chart corner.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-account-equity-milestone-bell",
     "name": "Mako Account Milestone Push Notification Bell",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Sends push notification to MT5 mobile app on every $2,500 account equity milestone crossed.",
     "what_it_does": "Keeps traders informed of milestone progress without obsessively checking charts.",
     "how_it_works": "Caches milestone thresholds. Calls SendNotification() when equity crosses next bracket.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-trailing-parabolic-sar-step-guard",
@@ -4972,12 +4972,12 @@
     "name": "Mako Account Margin Usage Safety Fuse",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Blocks any order if used margin exceeds 20% of total account capital.",
     "what_it_does": "Prevents catastrophic margin calls caused by excessive position stacking.",
     "how_it_works": "Checks ACCOUNT_MARGIN / ACCOUNT_BALANCE. Blocks trade requests if threshold exceeded.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-partial-scaleout-stealth-ea",
@@ -4996,48 +4996,48 @@
     "name": "Mako On-Chart 1-Click Liquidation Switch",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "High-contrast GUI button that liquidates entire symbol portfolio with zero confirmation prompts.",
     "what_it_does": "Serves as an instant emergency exit button during flash crashes and black swan events.",
     "how_it_works": "Hooks CHARTEVENT_CLICK on canvas button. Fires batch close requests across open tickets.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-account-drawdown-velocity-meter",
     "name": "Mako Drawdown Velocity Burn-Rate Meter",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Measures rate of capital loss per minute to detect runaway algorithmic bot failures.",
     "what_it_does": "Alerts account owners immediately if multiple bots enter runaway loss loops.",
     "how_it_works": "Calculates delta equity divided by elapsed minutes. Renders prominent warning if burn rate > 1%/min.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-pip-distance-trailing-step-pro",
     "name": "Mako 10-Pip Step Conservative Trailing EA",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Advances stop loss in clean 10-pip steps for every +15 pips of favorable price expansion.",
     "what_it_does": "Provides simple, stress-free profit locking for manual swing and day traders.",
     "how_it_works": "Evaluates current profit in pips. Modifies order stop loss at discrete 10-pip milestones.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-daily-trade-counter-sentinel",
     "name": "Mako Max 3 Trades Per Day Discipline Sentinel",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Permits a maximum of 3 trades per 24-hour cycle to build elite sniper patience.",
     "what_it_does": "Stops impulsive overtrading by locking out order entry after 3 executions.",
     "how_it_works": "Queries HistoryDealsTotal() for current date. Rejects new orders if deal count >= 3.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-volume-delta-footprint-oscillator",
@@ -5092,12 +5092,12 @@
     "name": "Mako Climax Volume Exhaustion Reversal HUD",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Displays prominent reversal arrows when volume reaches 3 standard deviation climax.",
     "what_it_does": "Catches trend exhaustion tops and bottoms where retail stops are absorbed by smart money.",
     "how_it_works": "Computes volume z-score over 30 bars. Renders arrow when volume z-score > 2.8 at swing extreme.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-session-poc-migration-ray-tracer",
@@ -5164,12 +5164,12 @@
     "name": "Mako Negative Volume Index (NVI) Smart Money Radar",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Tracks smart money accumulation on quiet low-volume pullbacks when retail is asleep.",
     "what_it_does": "Reveals stealth institutional positioning that takes place outside retail trading hours.",
     "how_it_works": "Updates index only when bar volume is lower than previous bar. Smooths with 255-day EMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-volume-climax-scalper-bot-ea",
@@ -5200,36 +5200,36 @@
     "name": "Mako Modern Ease of Movement (EMV) Oscillator",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Measures how easily price moves through liquidity to detect effortless breakout moves.",
     "what_it_does": "Quantifies market liquidity resistance, helping traders spot high-speed breakout trends.",
     "how_it_works": "Computes midpoint move divided by box ratio (Volume / Range). Smooths with 14 SMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-on-balance-volume-envelope-pro",
     "name": "Mako OBV Dynamic Volatility Envelopes Pro",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Applies 20-period volatility bands over On-Balance Volume to detect volume breakouts.",
     "what_it_does": "Detects institutional volume breakouts before price breaks technical resistance levels.",
     "how_it_works": "Calculates cumulative OBV. Plots 20 SMA and ±2 standard deviation bands on the OBV line.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-bill-williams-mfi-four-color",
     "name": "Mako Bill Williams Market Facilitation Index (MFI)",
     "category": "volume_orderflow",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Paints price bars Green, Fade, Fake, and Squat based on volume and range changes.",
     "what_it_does": "Distinguishes genuine institutional participation from low-volume market trap moves.",
     "how_it_works": "Calculates Range / Volume. Compares against previous bar to determine 1 of 4 market states.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-tick-volume-spread-ratio-pro",
@@ -5284,12 +5284,12 @@
     "name": "Mako Kaufman Adaptive Moving Average (KAMA) Bands",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.30",
     "short_desc": "Moving average that accelerates during strong trends and flattens during consolidation.",
     "what_it_does": "Eliminates whipsaws during range-bound chop while providing rapid trend following.",
     "how_it_works": "Calculates Efficiency Ratio (ER = Direction / Volatility). Modulates smoothing constant.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-jurik-zero-lag-momentum-pro",
@@ -5308,12 +5308,12 @@
     "name": "Mako Donchian Channel High/Low Turtle Breakout Bands",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Plots 20-period and 55-period highest highs and lowest lows for classic Turtle breakouts.",
     "what_it_does": "Identifies legendary Turtle Trading breakout levels with clean on-chart visual channels.",
     "how_it_works": "Computes iHighest and iLowest over N periods. Draws upper channel, lower channel, and median.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-supertrend-multi-tf-matrix-pro",
@@ -5332,12 +5332,12 @@
     "name": "Mako McGinley Dynamic Adaptive Moving Average Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Dynamic moving average that automatically adjusts speed based on market acceleration.",
     "what_it_does": "Solves moving average lag and separation problems by tracking market price closely.",
     "how_it_works": "Formula: MD = MD_prev + (Price - MD_prev) / (N * (Price / MD_prev)^4).",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-schaff-trend-cycle-fast-pro",
@@ -5356,24 +5356,24 @@
     "name": "Mako T3 Tim Tillson Triple-Smoothed MA Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Triple-smoothed EMA utilizing DEMA factor for superior noise filtration without lag.",
     "what_it_does": "Smooths erratic price chop while turning rapidly at true structural trend inflection points.",
     "how_it_works": "Applies 6 consecutive exponential moving averages combined with volume factor b=0.7.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-vortex-directional-system-pro",
     "name": "Mako Vortex Indicator (VI+ / VI-) Directional System Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Captures the start of new trends by measuring distance between current and prior bars.",
     "what_it_does": "Flags strong directional trend development and early trend initiation across all assets.",
     "how_it_works": "Calculates Positive and Negative Vortex Movement divided by True Range over 14 bars.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-demark-sequential-9-13-clean",
@@ -5392,36 +5392,36 @@
     "name": "Mako Detrended Price Oscillator (DPO) Cycle Hunter Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Removes long-term trend bias from price data to isolate pure short-term cycles.",
     "what_it_does": "Helps swing traders identify regular 14-day or 20-day cycle peaks and valleys.",
     "how_it_works": "Subtracts displaced moving average from price: DPO = Close - SMA(N/2 + 1 bars ago).",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-keltner-pro-atr-envelopes-v2",
     "name": "Mako Keltner Channels Pro (EMA + ATR Envelopes) V2",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "20-period EMA center line with 2x and 3x Average True Range volatility boundary channels.",
     "what_it_does": "Serves as an objective dynamic support and resistance envelope that scales with volatility.",
     "how_it_works": "Computes 20-period EMA of Close. Upper = EMA + 2x ATR; Lower = EMA - 2x ATR.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-coppock-macro-investor-curve",
     "name": "Mako Coppock Curve Macro Trend Investor Oscillator Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Macro-momentum oscillator that signals generational trend bottoms in equity indices.",
     "what_it_does": "Identifies major multi-month trend reversals for long-term swing traders.",
     "how_it_works": "Calculates 10-period weighted moving average of sum of 14-period and 11-period ROC.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-linear-regression-variance-bands",
@@ -5440,24 +5440,24 @@
     "name": "Mako Awesome Oscillator (AO) Saucer & Twin Peaks Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Classic 34/5 median price momentum histogram with automated Saucer and Twin Peaks arrows.",
     "what_it_does": "Detects rapid short-term momentum shifts and classic Elliott Wave 4th-wave pullback setups.",
     "how_it_works": "Subtracts 34 SMA from 5 SMA of median price. Automatically detects histogram saucers.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-hull-ma-zero-lag-ribbon-pro",
     "name": "Mako Hull Moving Average (HMA) Zero-Lag Trend Ribbon Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Fast responsive Hull MA that changes color dynamically based on rising/falling trend slope.",
     "what_it_does": "Provides immediate visual trend direction confirmation without cutting through candles.",
     "how_it_works": "Formula: HMA = WMA(2 * WMA(N/2) - WMA(N), sqrt(N)). Virtual zero lag with great smoothness.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-center-of-gravity-ehlers-pro",
@@ -5476,12 +5476,12 @@
     "name": "Mako Relative Vigor Index (RVI) Momentum Signal Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Measures conviction of trend by comparing candle closing price to high-low range.",
     "what_it_does": "Identifies whether current market momentum is strong enough to sustain trend extension.",
     "how_it_works": "Calculates (Close - Open) / (High - Low) smoothed with symmetrically weighted moving averages.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-stoch-rsi-scalper-bot-ea-pro",
@@ -5500,12 +5500,12 @@
     "name": "Mako ADX Trend Strength Filter & Regime Gauge Pro",
     "category": "trend_oscillators",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Displays ADX trend strength gauge (Weak < 20, Trending > 25, Extreme > 40) on chart.",
     "what_it_does": "Tells traders immediately whether to employ trend breakout or range mean-reversion tactics.",
     "how_it_works": "Computes Wilder DMI and 14-period ADX smoothing. Renders visual colored gauge in chart HUD.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-zero-lag-macd-accelerator-pro",
@@ -5560,12 +5560,12 @@
     "name": "Mako Market Structure Shift (MSS & CHoCH) Alert Pro",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Identifies Change of Character and Break of Structure with candle body confirmation.",
     "what_it_does": "Filters out false wick sweeps and alerts only when true candle body displacement breaks structure.",
     "how_it_works": "Stores most recent swing fractals. Verifies Close > SwingHigh for bullish BOS and fires alert.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-inversion-fvg-mapper-pro",
@@ -5584,12 +5584,12 @@
     "name": "Mako Previous Day High/Low (PDH/PDL) Liquidity Target Pro",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Plots Previous Day High, Low, and Midpoint with touch/sweep audio notifications.",
     "what_it_does": "Keeps traders focused on primary institutional liquidity pools where stop orders cluster.",
     "how_it_works": "Retrieves D1 bar 1 High, Low, and (High+Low)/2. Projects horizontal ray lines across intraday chart.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-judas-swing-london-scalper-pro",
@@ -5608,12 +5608,12 @@
     "name": "Mako 00:00 NY True Midnight Open Anchor Line Pro",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Plots institutional 00:00 EST True Day Open price level across entire trading day.",
     "what_it_does": "Establishes institutional bias: buy in discount below midnight open; sell in premium above.",
     "how_it_works": "Converts broker time to Eastern Standard Time. Captures exact open price of 00:00 EST bar.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-equal-highs-lows-detector-pro",
@@ -5644,12 +5644,12 @@
     "name": "Mako Displacement FVG Quality Filter Indicator Pro",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Filters out low-probability FVGs by requiring central displacement candle to have 2x volume.",
     "what_it_does": "Eliminates low-conviction noise gaps, leaving only clean institutional displacement on chart.",
     "how_it_works": "Checks FVG creation and verifies that bar 2 volume exceeds 20-period SMA(volume) by 1.5x.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-sunday-weekend-gap-ea-pro",
@@ -5668,24 +5668,24 @@
     "name": "Mako Rejection Block Long-Wick Scanner Pro",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Scans for institutional rejection blocks where candle wicks sweep liquidity but bodies fail.",
     "what_it_does": "Pinpoints localized exhaustion sweeps at session highs and lows.",
     "how_it_works": "Measures upper wick length relative to entire candle height. Flags bars where wick > 70% range.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-premium-discount-50-grid-pro",
     "name": "Mako Premium / Discount Equilibrium 50% Grid Pro",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Splits active swing range into Premium (> 50%) and Discount (< 50%) with background shading.",
     "what_it_does": "Prevents buying in expensive premium territory or selling in cheap discount territory.",
     "how_it_works": "Calculates range between active swing high and low. Shreads upper 50% red, lower 50% green.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-consequent-encroachment-hud-pro",
@@ -5704,12 +5704,12 @@
     "name": "Mako ICT Killzone Visual Session Box Highlighter Pro",
     "category": "price_action_smc",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.30",
     "short_desc": "Draws transparent colored boxes for London Open, NY AM, and London Close Killzones.",
     "what_it_does": "Visually organizes chart time into high-probability execution windows without clutter.",
     "how_it_works": "Checks TimeCurrent() against Killzone hour inputs. Creates native chart OBJ_RECTANGLE boxes.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-htf-orderblock-stacker-pro",
@@ -5800,24 +5800,24 @@
     "name": "Mako ADX Trend Pullback Continuation Bot Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Enters trend pullback trades to 20-period EMA when ADX confirms strong trend (> 25).",
     "what_it_does": "Enforces disciplined trend-following, buying dips in strong uptrends and selling rallies.",
     "how_it_works": "Filters by ADX > 25. When price touches 20 EMA and prints reversal candle, opens trade.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-three-bar-momentum-thrust-pro",
     "name": "Mako 3-Bar Momentum Thrust Scalper EA Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Scalps fast intraday continuation after 3 consecutive bullish/bearish candles close near extremes.",
     "what_it_does": "Captures immediate momentum follow-through on M1 and M5 charts with tight trailing stop.",
     "how_it_works": "Checks last 3 bars for consecutive higher closes and minimal upper wicks. Enters with 1:1.5 R:R.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-atr-volatility-breakout-bot-pro",
@@ -5836,24 +5836,24 @@
     "name": "Mako Triple EMA (9-21-55) Trend Portfolio Bot Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.30",
     "short_desc": "Classic trend following robot executing on 9/21 EMA crossover filtered by 55 EMA baseline.",
     "what_it_does": "Provides automated, low-stress trend following across multiple pairs simultaneously.",
     "how_it_works": "Verifies 9 EMA > 21 EMA > 55 EMA for buy signal. Exits when fast 9 crosses back below 21.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-macd-zero-momentum-bot-pro",
     "name": "Mako MACD Zero-Line Cross Momentum Bot Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Enters momentum trend trades when MACD histogram crosses zero with volume confirmation.",
     "what_it_does": "Trades genuine momentum acceleration while avoiding choppy divergence whipsaws.",
     "how_it_works": "Monitors 12/26/9 MACD histogram. Enters when bar 1 closes above zero with higher volume.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-multi-currency-supertrend-basket-pro",
@@ -5884,24 +5884,24 @@
     "name": "Mako Parabolic SAR Trailing Scalper Bot Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Enters on PSAR flip and trails stop loss dot-by-dot for maximum trend acceleration extraction.",
     "what_it_does": "Locks in rapid trend profits during sharp impulsive expansions without manual supervision.",
     "how_it_works": "Monitors PSAR step 0.02 / max 0.2. Moves order Stop Loss to exact PSAR dot coordinate on every bar.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-keltner-reversion-scalper-pro",
     "name": "Mako Keltner Channel Reversion Scalper EA Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Fades candles closing outside Keltner Channel 2.5x ATR bands during Asian consolidation.",
     "what_it_does": "Generates high win-rate scalping trades during quiet night hours on low-volatility pairs.",
     "how_it_works": "Restricts to 22:00 - 05:00 GMT. Buys when price pierces lower Keltner; targets central 20 EMA.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-rsi-trendline-breakout-ea-pro",
@@ -5932,48 +5932,48 @@
     "name": "Mako Inside Bar & Hikkake Fakeout Breakout EA Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Identifies Inside Bar consolidations and executes Hikkake trap pattern when fakeouts fail.",
     "what_it_does": "Turns retail breakout traps into high-probability reversal wins by trading failed breakout re-entry.",
     "how_it_works": "Detects inside bar. If next bar breaks high but reverses, enters short with tight stop.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-engulfing-volume-scalper-pro",
     "name": "Mako High-Volume Bullish/Bearish Engulfing EA Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Trades classic engulfing patterns filtered by 2x tick volume confirmation and 50 EMA trend.",
     "what_it_does": "Ensures that manual price action patterns are only executed when supported by volume.",
     "how_it_works": "Checks body engulfing condition and verifies volume > 1.5x 20 SMA. Places order at candle low.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-heikin-ashi-continuation-bot-pro",
     "name": "Mako Heikin Ashi Trend Continuation Bot Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.20",
     "short_desc": "Follows trend continuations using Heikin Ashi color runs, staying until opposite bar forms.",
     "what_it_does": "Removes intraday candlestick noise, helping traders ride long multi-hour trend legs.",
     "how_it_works": "Computes synthetic Heikin Ashi OHLC. Enters on first color change; exits on opposing color bar.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-fractal-breakout-turtle-bot-pro",
     "name": "Mako Bill Williams Fractal Breakout Trend Bot Pro",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.10",
     "short_desc": "Places pending stop orders beyond 5-bar Bill Williams fractals, catching breakout expansions.",
     "what_it_does": "Automates multi-timeframe fractal breakout trading with automated trailing stop protection.",
     "how_it_works": "Identifies active upper/lower fractals. Places Buy Stop at upper fractal and Sell Stop at lower.",
-    "badge": "FREE"
+    "badge": "MAKO PRO"
   },
   {
     "slug": "mako-cci-turbo-divergence-bot-pro",
@@ -6026,7 +6026,7 @@
   {
     "slug": "mako-multi-symbol-leverage-guard-utility",
     "name": "Mako Multi-Symbol Leverage Guard Utility",
-    "badge": "RISK UTILITY",
+    "badge": "STARTER FREE",
     "category": "risk_utilities",
     "type": "indicator",
     "is_pro": false,
@@ -6041,7 +6041,7 @@
     "badge": "RISK UTILITY",
     "category": "risk_utilities",
     "type": "indicator",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Monitors and records spread widenings during 00:00 server rollover to prevent stop-loss hunt slippage.",
     "technical_function": "Plots dynamic historical spread envelope and sounds alert 15 minutes before typical liquidity vacuum windows.",
@@ -6053,7 +6053,7 @@
     "badge": "RISK UTILITY",
     "category": "risk_utilities",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Institutional chart overlay button that executes instant bulk market orders closure with zero confirmation prompts.",
     "technical_function": "Iterates through open positions array in descending ticket order and transmits asynchronous close requests.",
@@ -6110,7 +6110,7 @@
   {
     "slug": "mako-vwap-first-deviation-mean-reversion-cloud",
     "name": "Mako VWAP First Deviation Mean Reversion Cloud",
-    "badge": "VOLUME / ORDER FLOW",
+    "badge": "STARTER FREE",
     "category": "volume_orderflow",
     "type": "indicator",
     "is_pro": false,
@@ -6122,7 +6122,7 @@
   {
     "slug": "mako-volume-climax-climber-detector",
     "name": "Mako Volume Climax Climber Detector",
-    "badge": "VOLUME / ORDER FLOW",
+    "badge": "STARTER FREE",
     "category": "volume_orderflow",
     "type": "indicator",
     "is_pro": false,
@@ -6146,7 +6146,7 @@
   {
     "slug": "mako-tick-speed-momentum-burst-alert",
     "name": "Mako Tick Speed Momentum Burst Alert",
-    "badge": "VOLUME / ORDER FLOW",
+    "badge": "STARTER FREE",
     "category": "volume_orderflow",
     "type": "indicator",
     "is_pro": false,
@@ -6170,7 +6170,7 @@
   {
     "slug": "mako-hull-moving-average-zero-lag-trend-filter",
     "name": "Mako Hull Moving Average Zero Lag Trend Filter",
-    "badge": "TREND / OSCILLATOR",
+    "badge": "STARTER FREE",
     "category": "trend_oscillators",
     "type": "indicator",
     "is_pro": false,
@@ -6182,7 +6182,7 @@
   {
     "slug": "mako-rsi-adaptive-volatility-dynamic-bands",
     "name": "Mako RSI Adaptive Volatility Dynamic Bands",
-    "badge": "TREND / OSCILLATOR",
+    "badge": "STARTER FREE",
     "category": "trend_oscillators",
     "type": "indicator",
     "is_pro": false,
@@ -6194,7 +6194,7 @@
   {
     "slug": "mako-macd-momentum-acceleration-flow",
     "name": "Mako MACD Momentum Acceleration Flow",
-    "badge": "TREND / OSCILLATOR",
+    "badge": "STARTER FREE",
     "category": "trend_oscillators",
     "type": "indicator",
     "is_pro": false,
@@ -6230,7 +6230,7 @@
   {
     "slug": "mako-directional-movement-adx-trend-strength-meter",
     "name": "Mako Directional Movement ADX Trend Strength Meter",
-    "badge": "TREND / OSCILLATOR",
+    "badge": "STARTER FREE",
     "category": "trend_oscillators",
     "type": "indicator",
     "is_pro": false,
@@ -6278,7 +6278,7 @@
   {
     "slug": "mako-liquidity-pool-equal-highs-lows-sentinel",
     "name": "Mako Liquidity Pool Equal Highs Lows Sentinel",
-    "badge": "PRICE ACTION / SMC",
+    "badge": "STARTER FREE",
     "category": "price_action_smc",
     "type": "indicator",
     "is_pro": false,
@@ -6290,7 +6290,7 @@
   {
     "slug": "mako-session-killzone-range-expansion-box",
     "name": "Mako Session Killzone Range Expansion Box",
-    "badge": "PRICE ACTION / SMC",
+    "badge": "STARTER FREE",
     "category": "price_action_smc",
     "type": "indicator",
     "is_pro": false,
@@ -6314,7 +6314,7 @@
   {
     "slug": "mako-daily-bias-previous-day-high-low-reversion",
     "name": "Mako Daily Bias Previous Day High Low Reversion",
-    "badge": "PRICE ACTION / SMC",
+    "badge": "STARTER FREE",
     "category": "price_action_smc",
     "type": "indicator",
     "is_pro": false,
@@ -6377,7 +6377,7 @@
     "badge": "EXPERT ADVISOR",
     "category": "expert_advisors",
     "type": "ea",
-    "is_pro": false,
+    "is_pro": true,
     "version": "1.00",
     "short_desc": "Automatically halts all EA trading 15 minutes before and after high-impact economic news releases (CPI, FOMC, NFP).",
     "technical_function": "Protects automated trading portfolios from violent slippage, spread blowouts, and broker requotes.",
