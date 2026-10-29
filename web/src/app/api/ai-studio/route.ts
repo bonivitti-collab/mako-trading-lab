@@ -30,7 +30,10 @@ Strict rules:
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: systemInstruction }] },
           contents: [{ parts: [{ text: `Generate a complete MQL5 ${isEa ? "Expert Advisor" : "Indicator"}: ${prompt}` }] }],
-          generationConfig: { temperature: 0.2, maxOutputTokens: 3000 }
+          generationConfig: {
+            maxOutputTokens: 6000,
+            thinkingConfig: { thinkingBudget: 0 }
+          }
         })
       });
 

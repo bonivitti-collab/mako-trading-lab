@@ -27,7 +27,10 @@ Your mission:
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: systemInstruction }] },
           contents: [{ parts: [{ text: message }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
+          generationConfig: {
+            maxOutputTokens: 3000,
+            thinkingConfig: { thinkingBudget: 0 }
+          }
         })
       });
 
