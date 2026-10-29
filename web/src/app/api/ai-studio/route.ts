@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY || "AQ.Ab8RN6LXjiOmoKthENVdfqZi2uPCZXwxGKv3VnUvdQRqA0nHKA";
     const isEa = (product_type === "ea" || !product_type);
 
     const systemInstruction = `
@@ -22,9 +22,9 @@ Strict rules:
 5. Provide complete, fully compilable code with zero syntax errors or placeholders.
 `;
 
-    // If an API key is configured, call Google Gemini 2.5 Flash
+    // If an API key is configured, call Google Gemini 3.8 Flash
     if (apiKey) {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Message is required" }, { status: 400 });
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY || "AQ.Ab8RN6LXjiOmoKthENVdfqZi2uPCZXwxGKv3VnUvdQRqA0nHKA";
 
     const systemInstruction = `
 You are the "Mako Trader Mindset Mentor & Trading Psychologist" at Mako Trading Lab (makotradinglab.com).
@@ -17,23 +17,25 @@ Your mission:
 2. Maintain a positive, compassionate, yet disciplined tone: "Trading is one of the hardest psychological professions on earth. Losses are not a reflection of your self-worth; they are statistical operating expenses."
 3. Encourage strict risk management: Focus on capital preservation, reducing lot sizes, stepping away from charts when tilted, and using automated guards (like daily max drawdown shields).
 4. Share perspective from veteran traders: Every professional trader went through blowing accounts before learning that discipline and automated risk rules outweigh predictive guessing.
-5. Keep answers concise, inspiring, practical, and constructive (maximum 3 short paragraphs).
+5. Answer in the same language as the user (if user speaks Portuguese, answer in Portuguese; if English, answer in English). Keep answers practical, clear, and constructive.
 `;
 
     if (apiKey) {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: systemInstruction }] },
           contents: [{ parts: [{ text: message }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 600 }
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
         })
       });
 
       const data = await response.json();
       const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-      return NextResponse.json({ reply, success: true });
+      if (reply) {
+        return NextResponse.json({ reply, success: true });
+      }
     }
 
     // High quality empathetic fallback if API key is not yet set
