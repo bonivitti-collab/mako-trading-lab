@@ -32,8 +32,30 @@ export default function HeaderNav() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userSession, setUserSession] = useState<{ email?: string; role?: string; plan_tier?: string } | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
+
+  // Sync logged in user from localStorage
+  useEffect(() => {
+    const checkUser = () => {
+      if (typeof window !== "undefined") {
+        const stored = localStorage.getItem("mako_user");
+        if (stored) {
+          try {
+            setUserSession(JSON.parse(stored));
+          } catch(e) {
+            setUserSession(null);
+          }
+        } else {
+          setUserSession(null);
+        }
+      }
+    };
+    checkUser();
+    window.addEventListener("storage", checkUser);
+    return () => window.removeEventListener("storage", checkUser);
+  }, [pathname]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -273,19 +295,37 @@ export default function HeaderNav() {
             )}
           </div>
 
-          <Link 
-            href="/login" 
-            className="text-xs font-semibold px-3 py-2 rounded-xl text-slate-700 hover:text-mako-blue hover:bg-slate-100 transition-all whitespace-nowrap"
-          >
-            {t.navSignIn}
-          </Link>
+          {userSession ? (
+            <Link 
+              href="/dashboard" 
+              className="text-xs font-semibold px-3 py-2 rounded-xl text-mako-blue bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all whitespace-nowrap flex items-center gap-1.5"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>{userSession.role === "owner" ? "Admin Panel" : "My Account"}</span>
+            </Link>
+          ) : (
+            <Link 
+              href="/login" 
+              className="text-xs font-semibold px-3 py-2 rounded-xl text-slate-700 hover:text-mako-blue hover:bg-slate-100 transition-all whitespace-nowrap"
+            >
+              {t.navSignIn}
+            </Link>
+          )}
 
           <Link 
             href="/dashboard" 
             className="hidden sm:inline-flex items-center gap-2 text-xs font-mono px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white text-slate-700 hover:border-slate-300 transition-all shadow-xs"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Contas MT5: <strong className="text-slate-900">Ativas</strong></span>
+            <span>
+              {userSession?.role === "owner" 
+                ? "MT5 Slots: Owner (5)" 
+                : userSession?.plan_tier === "pro" 
+                ? "MT5 Slots: Pro (3)" 
+                : userSession 
+                ? "MT5 Slots: Starter (1)" 
+                : "Contas MT5: Ativas"}
+            </span>
           </Link>
 
           <a 

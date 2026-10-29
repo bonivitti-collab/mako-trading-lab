@@ -1,19 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { HeartHandshake, ShieldCheck, Send, Sparkles, MessageCircle, RefreshCw, Compass, ArrowRight, UserCheck } from "lucide-react";
+import { HeartHandshake, ShieldCheck, Send, Sparkles, MessageCircle, RefreshCw, Compass, ArrowRight, UserCheck, Lock } from "lucide-react";
 
 export default function PsychologyPage() {
   const [ventMessage, setVentMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [userSession, setUserSession] = useState<{ role?: string; plan_tier?: string } | null>(null);
   const [chatLog, setChatLog] = useState<Array<{ sender: "user" | "mentor"; text: string }>>([
     {
       sender: "mentor",
       text: "Hello, I am your Mako Trading Psychologist & Mindset Mentor. Trading is one of the most psychologically demanding pursuits on earth. Whether you just blew a prop-firm evaluation, revenge-traded after a bad stop run, or feel completely paralyzed to take the next trade: talk to me freely. What is on your mind right now?"
     }
   ]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("mako_user");
+      if (stored) {
+        try {
+          setUserSession(JSON.parse(stored));
+        } catch(e) {}
+      }
+    }
+  }, []);
+
+  const isProOrOwner = userSession?.role === "owner" || userSession?.plan_tier === "pro" || userSession?.plan_tier === "studio";
 
   const handleSend = async (customText?: string) => {
     const textToSend = customText || ventMessage;
@@ -136,25 +150,47 @@ export default function PsychologyPage() {
             )}
           </div>
 
-          {/* Clean Open Chat Input */}
-          <div className="p-4 bg-slate-50 border-t border-slate-200 flex gap-3">
-            <input 
-              type="text" 
-              value={ventMessage}
-              onChange={(e) => setVentMessage(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-              placeholder="Tell me what happened today... What are you feeling?"
-              className="flex-1 px-4 py-3 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-mako-blue shadow-sm"
-            />
-            <button
-              onClick={() => handleSend()}
-              disabled={loading || !ventMessage.trim()}
-              className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-sm transition-all"
-            >
-              <Send className="w-4 h-4" />
-              <span>Send</span>
-            </button>
-          </div>
+          {/* Clean Open Chat Input or Pro Lock Barrier */}
+          {isProOrOwner ? (
+            <div className="p-4 bg-slate-50 border-t border-slate-200 flex gap-3">
+              <input 
+                type="text" 
+                value={ventMessage}
+                onChange={(e) => setVentMessage(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                placeholder="Tell me what happened today... What are you feeling?"
+                className="flex-1 px-4 py-3 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-mako-blue shadow-sm font-sans"
+              />
+              <button
+                onClick={() => handleSend()}
+                disabled={loading || !ventMessage.trim()}
+                className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-sm transition-all"
+              >
+                <Send className="w-4 h-4" />
+                <span>Send</span>
+              </button>
+            </div>
+          ) : (
+            <div className="p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center flex-shrink-0">
+                  <Lock className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900">Mako AI Psychologist is Exclusive to Mako Pro Pass</div>
+                  <div className="text-[11px] text-slate-500">Starter tier includes the 20 Essential MT5 Utilities. Upgrade to Pro ($29/mo) to unlock the 24/7 AI Mindset Mentor.</div>
+                </div>
+              </div>
+              <a
+                href="https://makotrading.lemonsqueezy.com/checkout/buy/5928ad57-c624-4697-b474-0a40ce1568af"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-xs shadow-md shadow-blue-500/20 whitespace-nowrap"
+              >
+                Unlock Pro Pass ($29/mo)
+              </a>
+            </div>
+          )}
         </div>
       </section>
     </div>
