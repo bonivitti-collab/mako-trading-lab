@@ -51,13 +51,15 @@ export default function LandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Link
-              href="/login?plan=pro"
+            <a
+              href="https://makotrading.lemonsqueezy.com/checkout/buy/5928ad57-c624-4697-b474-0a40ce1568af"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-sm shadow-xl shadow-blue-500/25 hover:shadow-blue-500/35 transition-all flex items-center justify-center gap-2.5 transform hover:-translate-y-0.5"
             >
               <span>Get Mako Pro Pass ($29/mo)</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
 
             <Link
               href="/login?plan=starter"
@@ -292,7 +294,9 @@ export default function LandingPage() {
             </div>
 
             <a 
-              href="https://buy.stripe.com/test_placeholder_29"
+              href="https://makotrading.lemonsqueezy.com/checkout/buy/5928ad57-c624-4697-b474-0a40ce1568af"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full py-4 text-center text-xs font-bold rounded-xl bg-mako-blue hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5"
             >
               Get All-Access Pass ($29/mo)

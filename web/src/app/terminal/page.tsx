@@ -577,7 +577,9 @@ export default function TerminalPage() {
             </div>
 
             <a 
-              href="https://buy.stripe.com/test_placeholder_29"
+              href="https://makotrading.lemonsqueezy.com/checkout/buy/5928ad57-c624-4697-b474-0a40ce1568af"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full py-4 text-center text-xs font-bold rounded-xl bg-mako-blue hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5"
             >
               Get All-Access Pass ($29/mo)
