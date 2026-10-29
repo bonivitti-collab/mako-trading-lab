@@ -6,6 +6,7 @@ import { Shield, Copy, Check, AlertCircle, RefreshCw, Plus, Trash2, Key, CheckCi
 export default function Dashboard() {
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [activeTab, setActiveTab] = useState<"slots" | "guide">("slots");
+  const [simulatedRole, setSimulatedRole] = useState<"owner" | "pro" | "starter">("owner");
   const [currentUser, setCurrentUser] = useState<any>({
     email: "dbonivitti@gmail.com",
     role: "owner",
@@ -20,11 +21,15 @@ export default function Dashboard() {
         try {
           const parsed = JSON.parse(stored);
           const isOwner = parsed.role === "owner" || (parsed.email && parsed.email.toLowerCase().includes("bonivitti"));
+          const role = isOwner ? "owner" : (parsed.plan_tier === "pro" ? "pro" : "starter");
           setCurrentUser({
             ...parsed,
             role: isOwner ? "owner" : parsed.role || "user",
-            plan_tier: isOwner ? "studio" : parsed.plan_tier || "free"
+            plan_tier: isOwner ? "studio" : parsed.plan_tier || "starter",
+            max_mt5_slots: isOwner ? 5 : (role === "pro" ? 3 : 1)
           });
+          if (isOwner) setSimulatedRole("owner");
+          else setSimulatedRole(role as any);
         } catch(e) {}
       } else {
         // Default to owner for administrator session
@@ -125,7 +130,40 @@ export default function Dashboard() {
               <h2 className="text-xl font-extrabold text-slate-950 mt-1">Mako Trading Lab System Overview</h2>
               <p className="text-xs text-slate-500">Logged in as: <strong className="text-slate-900">dbonivitti@gmail.com</strong> (Platform Owner)</p>
             </div>
-            <div className="flex items-center gap-2">
+            
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Perspective Simulator for Admin */}
+              <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200 text-xs font-mono">
+                <span className="text-[10px] text-slate-500 px-2 font-bold uppercase">View Mode:</span>
+                <button
+                  type="button"
+                  onClick={() => setSimulatedRole("owner")}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                    simulatedRole === "owner" ? "bg-white text-slate-900 shadow-xs" : "text-slate-500 hover:text-slate-900"
+                  }`}
+                >
+                  Admin/Owner (5 Slots)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSimulatedRole("pro")}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                    simulatedRole === "pro" ? "bg-mako-blue text-white shadow-xs" : "text-slate-500 hover:text-slate-900"
+                  }`}
+                >
+                  Pro Pass ($29/mo)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSimulatedRole("starter")}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                    simulatedRole === "starter" ? "bg-emerald-600 text-white shadow-xs" : "text-slate-500 hover:text-slate-900"
+                  }`}
+                >
+                  Starter ($0)
+                </button>
+              </div>
+
               <span className="px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 ALL SERVERS OPERATIONAL
@@ -133,29 +171,34 @@ export default function Dashboard() {
             </div>
           </div>
 
+          {/* Interactive Tier Metrics Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="text-xs text-slate-500 font-medium">Total Catalog</div>
-              <div className="text-2xl font-black font-mono text-slate-900">533 Tools</div>
-              <div className="text-[11px] text-slate-500">533 .EX5 + 533 .MQ5</div>
+              <div className="text-xs text-slate-500 font-medium">Starter Tier ($0)</div>
+              <div className="text-2xl font-black font-mono text-emerald-600">20 Utilities</div>
+              <div className="text-[11px] text-slate-500">.MQ5 Source • 1 MT5 Slot</div>
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="text-xs text-slate-500 font-medium">Plan Tiers</div>
-              <div className="text-2xl font-black font-mono text-emerald-600">20 Free / 513 Pro</div>
-              <div className="text-[11px] text-slate-500">Pro Plan at $29/mo</div>
+              <div className="text-xs text-slate-500 font-medium">Mako Pro Pass ($29)</div>
+              <div className="text-2xl font-black font-mono text-mako-blue">513 Pro Tools</div>
+              <div className="text-[11px] text-slate-500">106 EAs • .EX5+.MQ5 • 3-5 Slots</div>
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="text-xs text-slate-500 font-medium">MT5 Capacity</div>
-              <div className="text-2xl font-black font-mono text-cyan-600">5 Active Slots</div>
-              <div className="text-[11px] text-slate-500">Unlimited Owner Permission</div>
+              <div className="text-xs text-slate-500 font-medium">Current View Simulation</div>
+              <div className="text-2xl font-black font-mono text-cyan-600 uppercase">
+                {simulatedRole === "owner" ? "Owner Mode" : simulatedRole === "pro" ? "Pro Pass View" : "Starter View"}
+              </div>
+              <div className="text-[11px] text-slate-500">
+                {simulatedRole === "owner" ? "5 Slots • Unrestricted" : simulatedRole === "pro" ? "3-5 Slots • All EX5 Unlocked" : "1 Slot • Free Tools Only"}
+              </div>
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="text-xs text-slate-500 font-medium">Licensing Core</div>
-              <div className="text-2xl font-black font-mono text-mako-blue">WebRequest 200 OK</div>
-              <div className="text-[11px] text-slate-500">Zero-Password Anti-Piracy</div>
+              <div className="text-xs text-slate-500 font-medium">Licensing Telemetry</div>
+              <div className="text-2xl font-black font-mono text-slate-900">WebRequest 200 OK</div>
+              <div className="text-[11px] text-slate-500">Zero-Password Live API</div>
             </div>
           </div>
         </div>
@@ -262,9 +305,17 @@ export default function Dashboard() {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono text-cyan-800 bg-cyan-50 border border-cyan-200 px-3.5 py-1 rounded-full flex items-center gap-1.5 font-bold">
-              <span className="w-2 h-2 rounded-full bg-cyan-500"></span>
-              {currentUser.role === "owner" ? "OWNER / STUDIO PASS" : "PRO Tier Active"}
+            <span className={`text-xs font-mono px-3.5 py-1 rounded-full flex items-center gap-1.5 font-bold ${
+              simulatedRole === "owner" 
+                ? "text-cyan-800 bg-cyan-50 border border-cyan-200" 
+                : simulatedRole === "pro" 
+                ? "text-mako-blue bg-blue-50 border border-blue-200"
+                : "text-emerald-800 bg-emerald-50 border border-emerald-200"
+            }`}>
+              <span className={`w-2 h-2 rounded-full ${
+                simulatedRole === "owner" ? "bg-cyan-500" : simulatedRole === "pro" ? "bg-mako-blue" : "bg-emerald-500"
+              }`}></span>
+              {simulatedRole === "owner" ? "OWNER / STUDIO PASS" : simulatedRole === "pro" ? "PRO Tier Active ($29/mo)" : "Starter Tier ($0 Free)"}
             </span>
           </div>
         </div>

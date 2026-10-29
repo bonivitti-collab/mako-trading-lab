@@ -525,10 +525,10 @@ export default function Home() {
             </div>
 
             <Link 
-              href="/dashboard"
+              href="/login?plan=starter"
               className="block w-full py-3.5 text-center text-xs font-bold rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-800 transition-all shadow-sm"
             >
-              Start Free (1 MT5 Slot)
+              Sign In to Activate Starter (1 MT5 Slot)
             </Link>
           </div>
 

@@ -9,10 +9,10 @@ import { LanguageProvider } from "@/lib/languageContext";
 export const metadata: Metadata = {
   metadataBase: new URL("https://makotradinglab.com"),
   title: {
-    default: "Mako Trading Lab — 500+ Institutional MT5 Indicators, EAs & AI Studio",
+    default: "Mako Trading Lab — 533 Institutional MT5 Indicators, EAs & AI Studio",
     template: "%s | Mako Trading Lab"
   },
-  description: "Bypass MQL5 Market $30+ price markups. Unlimited institutional MetaTrader 5 tools, prop-firm daily loss shields, order flow footprints, and generative AI bot builder for $10/mo.",
+  description: "Bypass MQL5 Market $30+ price markups. Unlimited institutional MetaTrader 5 tools, prop-firm daily loss shields, order flow footprints, and generative AI bot builder with Mako Pro Pass ($29/mo). Start free with 20 essential MT5 utilities.",
   keywords: [
     "MQL5 alternative",
     "MetaTrader 5 indicators download",
@@ -25,17 +25,39 @@ export const metadata: Metadata = {
     "MT5 risk management lot calculator",
     "AI MQL5 code generator",
     "trading psychology MT5 mentor",
-    "cheap MT5 indicators",
-    "best MT5 trading algorithms"
+    "best MT5 trading algorithms",
+    "MT5 volume profile indicator",
+    "MT5 market maker models",
+    "free MT5 utilities",
+    "Apex funding EA",
+    "Mako Trading Lab"
   ],
   authors: [{ name: "Mako Trading Lab" }],
   creator: "Mako Trading Lab",
+  publisher: "Mako Trading Lab",
+  category: "Finance & Algorithmic Trading Software",
+  alternates: {
+    canonical: "https://makotradinglab.com",
+    languages: {
+      "en-US": "https://makotradinglab.com",
+      "ru-RU": "https://makotradinglab.com",
+      "zh-CN": "https://makotradinglab.com",
+      "es-ES": "https://makotradinglab.com",
+      "pt-BR": "https://makotradinglab.com",
+      "de-DE": "https://makotradinglab.com",
+      "ja-JP": "https://makotradinglab.com",
+      "ko-KR": "https://makotradinglab.com",
+      "fr-FR": "https://makotradinglab.com",
+      "it-IT": "https://makotradinglab.com",
+      "tr-TR": "https://makotradinglab.com",
+    }
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://makotradinglab.com",
-    title: "Mako Trading Lab — 500+ Institutional MetaTrader 5 Algorithms",
-    description: "The all-access institutional subscription for MetaTrader 5. Download 500+ verified .EX5 tools or generate custom EAs with AI.",
+    title: "Mako Trading Lab — 533 Institutional MetaTrader 5 Algorithms",
+    description: "The all-access institutional pass for MetaTrader 5. Download 533 verified .EX5 tools, 106 automated EAs, or generate custom strategies with AI Studio.",
     siteName: "Mako Trading Lab",
     images: [
       {
@@ -49,7 +71,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mako Trading Lab — MetaTrader 5 All-Access Pass",
-    description: "Access 500+ institutional MT5 indicators, prop-firm risk guards, and generative MQL5 bots for $29/month.",
+    description: "Access 533 institutional MT5 indicators, prop-firm risk guards, and generative MQL5 bots for $29/month.",
     images: ["/mako_logo.png"],
   },
   robots: {
