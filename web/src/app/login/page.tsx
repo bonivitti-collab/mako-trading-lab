@@ -49,7 +49,7 @@ export default function LoginPage() {
 
       // Direct Admin Credentials Shortcut for Owner
       if (cleanEmail === "dbonivitti@gmail.com") {
-        setSuccessMessage("Owner Authenticated! Accessing Full MT5 Slot Dashboard...");
+        setSuccessMessage("Owner Authenticated! Accessing Mako Terminal...");
         if (typeof window !== "undefined") {
           localStorage.setItem("mako_user", JSON.stringify({
             email: "dbonivitti@gmail.com",
@@ -58,7 +58,7 @@ export default function LoginPage() {
             max_mt5_slots: 5
           }));
         }
-        setTimeout(() => router.push("/dashboard"), 400);
+        setTimeout(() => router.push("/terminal"), 400);
         return;
       }
 
@@ -91,8 +91,8 @@ export default function LoginPage() {
                 max_mt5_slots: 1
               }));
             }
-            setSuccessMessage("Logged in successfully! Redirecting to MT5 Slot Dashboard...");
-            setTimeout(() => router.push("/dashboard"), 600);
+            setSuccessMessage("Logged in successfully! Redirecting to Terminal...");
+            setTimeout(() => router.push("/terminal"), 600);
             return;
           }
           setErrorMessage(error.message);
@@ -105,8 +105,8 @@ export default function LoginPage() {
               max_mt5_slots: 1
             }));
           }
-          setSuccessMessage("Welcome back! Redirecting to Dashboard...");
-          setTimeout(() => router.push("/dashboard"), 600);
+          setSuccessMessage("Welcome back! Redirecting to Terminal...");
+          setTimeout(() => router.push("/terminal"), 600);
         }
       }
     } catch (err: any) {
@@ -123,7 +123,7 @@ export default function LoginPage() {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined,
+          redirectTo: typeof window !== "undefined" ? `${window.location.origin}/terminal` : undefined,
         },
       });
 
@@ -137,8 +137,8 @@ export default function LoginPage() {
             max_mt5_slots: 1
           }));
         }
-        setSuccessMessage("Google Account Connected! Redirecting to Dashboard...");
-        setTimeout(() => router.push("/dashboard"), 700);
+        setSuccessMessage("Google Account Connected! Redirecting to Terminal...");
+        setTimeout(() => router.push("/terminal"), 700);
       }
     } catch (err: any) {
       // Fallback simulate Google authentication
@@ -150,8 +150,8 @@ export default function LoginPage() {
           max_mt5_slots: 1
         }));
       }
-      setSuccessMessage("Google Account Connected! Redirecting to Dashboard...");
-      setTimeout(() => router.push("/dashboard"), 700);
+      setSuccessMessage("Google Account Connected! Redirecting to Terminal...");
+      setTimeout(() => router.push("/terminal"), 700);
     } finally {
       setLoading(false);
     }

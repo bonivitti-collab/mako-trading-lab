@@ -85,17 +85,17 @@ export default function HeaderNav() {
 
           {/* Desktop Clean Segmented Navigation */}
           <nav className="hidden lg:flex items-center gap-1 text-xs font-semibold text-slate-600">
-            {/* Catalog Hub */}
+            {/* Terminal Hub */}
             <Link 
-              href="/" 
+              href="/terminal" 
               className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
-                pathname === "/" 
-                  ? "bg-slate-100 text-mako-blue font-bold shadow-xs" 
+                pathname === "/terminal" 
+                  ? "bg-blue-50 text-mako-blue font-bold shadow-xs border border-blue-200" 
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
               }`}
             >
-              <Layers className="w-3.5 h-3.5 text-slate-400" />
-              <span>{t.navCatalog}</span>
+              <Terminal className="w-3.5 h-3.5 text-mako-blue" />
+              <span>Terminal (533 Tools)</span>
             </Link>
 
             {/* Free Tools Dropdown Menu */}
