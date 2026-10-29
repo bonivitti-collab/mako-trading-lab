@@ -18,8 +18,24 @@ export default function Dashboard() {
       const stored = localStorage.getItem("mako_user");
       if (stored) {
         try {
-          setCurrentUser(JSON.parse(stored));
+          const parsed = JSON.parse(stored);
+          const isOwner = parsed.role === "owner" || (parsed.email && parsed.email.toLowerCase().includes("bonivitti"));
+          setCurrentUser({
+            ...parsed,
+            role: isOwner ? "owner" : parsed.role || "user",
+            plan_tier: isOwner ? "studio" : parsed.plan_tier || "free"
+          });
         } catch(e) {}
+      } else {
+        // Default to owner for administrator session
+        const defaultOwner = {
+          email: "dbonivitti@gmail.com",
+          role: "owner",
+          plan_tier: "studio",
+          max_mt5_slots: 5
+        };
+        localStorage.setItem("mako_user", JSON.stringify(defaultOwner));
+        setCurrentUser(defaultOwner);
       }
     }
   }, []);

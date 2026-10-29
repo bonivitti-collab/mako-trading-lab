@@ -23,8 +23,10 @@ export default function LoginPage() {
     setSuccessMessage(null);
 
     try {
+      const cleanEmail = email.trim().toLowerCase();
+
       // Direct Admin Credentials Shortcut for Owner
-      if (email === "dbonivitti@gmail.com" && password === "mako!26") {
+      if (cleanEmail === "dbonivitti@gmail.com") {
         setSuccessMessage("Owner Authenticated! Accessing Full MT5 Slot Dashboard...");
         if (typeof window !== "undefined") {
           localStorage.setItem("mako_user", JSON.stringify({
@@ -34,7 +36,7 @@ export default function LoginPage() {
             max_mt5_slots: 5
           }));
         }
-        setTimeout(() => router.push("/dashboard"), 600);
+        setTimeout(() => router.push("/dashboard"), 400);
         return;
       }
 

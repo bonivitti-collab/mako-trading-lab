@@ -217,14 +217,14 @@ export default function HeaderNav() {
             {/* AI Studio */}
             <Link 
               href="/ai-studio" 
-              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 group ${
+              className={`px-3 py-2 rounded-xl transition-all flex items-center gap-1.5 whitespace-nowrap group ${
                 pathname === "/ai-studio" 
                   ? "bg-blue-50 text-mako-blue font-bold border border-blue-200" 
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-mako-blue group-hover:rotate-12 transition-transform" />
-              <span>{t.navAiStudio}</span>
+              <Sparkles className="w-3.5 h-3.5 text-mako-blue group-hover:rotate-12 transition-transform flex-shrink-0" />
+              <span>Studio</span>
             </Link>
           </nav>
         </div>
@@ -275,7 +275,7 @@ export default function HeaderNav() {
 
           <Link 
             href="/login" 
-            className="text-xs font-semibold px-3 py-2 rounded-xl text-slate-700 hover:text-mako-blue hover:bg-slate-100 transition-all"
+            className="text-xs font-semibold px-3 py-2 rounded-xl text-slate-700 hover:text-mako-blue hover:bg-slate-100 transition-all whitespace-nowrap"
           >
             {t.navSignIn}
           </Link>
