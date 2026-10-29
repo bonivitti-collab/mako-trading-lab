@@ -75,11 +75,11 @@ export default function Dashboard() {
             Zero-Password Licensing Architecture
           </div>
           <h1 className="text-3xl font-extrabold text-slate-950">
-            {currentUser.role === "owner" ? "Painel de Controle do Administrador" : "License Manager & MT5 Accounts"}
+            {currentUser.role === "owner" ? "Administrator Control Panel" : "License Manager & MT5 Accounts"}
           </h1>
           <p className="text-sm text-slate-600 mt-1">
             {currentUser.role === "owner" 
-              ? "Visão geral executiva da plataforma, telemetria de licenças e autorização de contas MT5."
+              ? "Executive platform overview, license telemetry, and authorized MT5 account management."
               : "Authorize your MetaTrader 5 account numbers directly on the high-speed verification network."}
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function Dashboard() {
             onClick={() => setActiveTab("slots")}
             className={`px-4 py-2 rounded-lg transition-all ${activeTab === "slots" ? "bg-white text-slate-900 font-bold shadow-sm" : "text-slate-600 hover:text-slate-900"}`}
           >
-            {currentUser.role === "owner" ? "Minhas Contas MT5" : "My Accounts"} ({slots.filter(s => s.login).length}/{currentUser.max_mt5_slots || 5})
+            {currentUser.role === "owner" ? "My MT5 Accounts" : "My Accounts"} ({slots.filter(s => s.login).length}/{currentUser.max_mt5_slots || 5})
           </button>
           <button
             onClick={() => setActiveTab("guide")}
@@ -100,52 +100,52 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Admin Executive Overview (Exibido para você) */}
+      {/* Admin Executive Overview */}
       {currentUser.role === "owner" && (
         <div className="rounded-3xl border border-slate-300 bg-white p-6 sm:p-8 space-y-6 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 gap-4">
             <div>
-              <div className="text-xs font-mono text-mako-blue uppercase font-bold tracking-wider">Acesso de Administrador</div>
-              <h2 className="text-xl font-extrabold text-slate-950 mt-1">Status Geral do Mako Trading Lab</h2>
-              <p className="text-xs text-slate-500">Logado como: <strong className="text-slate-900">dbonivitti@gmail.com</strong> (Proprietário)</p>
+              <div className="text-xs font-mono text-mako-blue uppercase font-bold tracking-wider">Administrator Access</div>
+              <h2 className="text-xl font-extrabold text-slate-950 mt-1">Mako Trading Lab System Overview</h2>
+              <p className="text-xs text-slate-500">Logged in as: <strong className="text-slate-900">dbonivitti@gmail.com</strong> (Platform Owner)</p>
             </div>
             <div className="flex items-center gap-2">
               <span className="px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                SERVIDORES OPERACIONAIS
+                ALL SERVERS OPERATIONAL
               </span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="text-xs text-slate-500 font-medium">Catálogo Total</div>
-              <div className="text-2xl font-black font-mono text-slate-900">533 Ferramentas</div>
+              <div className="text-xs text-slate-500 font-medium">Total Catalog</div>
+              <div className="text-2xl font-black font-mono text-slate-900">533 Tools</div>
               <div className="text-[11px] text-slate-500">533 .EX5 + 533 .MQ5</div>
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="text-xs text-slate-500 font-medium">Divisão dos Planos</div>
+              <div className="text-xs text-slate-500 font-medium">Plan Tiers</div>
               <div className="text-2xl font-black font-mono text-emerald-600">20 Free / 513 Pro</div>
-              <div className="text-[11px] text-slate-500">Plano Pro a $29/mês</div>
+              <div className="text-[11px] text-slate-500">Pro Plan at $29/mo</div>
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="text-xs text-slate-500 font-medium">Capacidade MT5</div>
-              <div className="text-2xl font-black font-mono text-cyan-600">5 Contas Ativas</div>
-              <div className="text-[11px] text-slate-500">Permissão Ilimitada Owner</div>
+              <div className="text-xs text-slate-500 font-medium">MT5 Capacity</div>
+              <div className="text-2xl font-black font-mono text-cyan-600">5 Active Slots</div>
+              <div className="text-[11px] text-slate-500">Unlimited Owner Permission</div>
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="text-xs text-slate-500 font-medium">Licenciamento</div>
+              <div className="text-xs text-slate-500 font-medium">Licensing Core</div>
               <div className="text-2xl font-black font-mono text-mako-blue">WebRequest 200 OK</div>
-              <div className="text-[11px] text-slate-500">Anti-Pirataria Nativo</div>
+              <div className="text-[11px] text-slate-500">Zero-Password Anti-Piracy</div>
             </div>
           </div>
         </div>
       )}
 
-      {/* What is an MT5 Account Slot? (Guia Visual Ultra Didático) */}
+      {/* What is an MT5 Account Slot? (Ultra Beginner-Friendly Guide) */}
       <div className="rounded-3xl border border-slate-300 bg-white p-6 sm:p-8 space-y-6 shadow-sm">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-blue-50 text-mako-blue border border-blue-200">
@@ -153,10 +153,10 @@ export default function Dashboard() {
           </div>
           <div>
             <h3 className="text-base font-extrabold text-slate-950">
-              O que é uma Conta MT5 e como funciona a liberação?
+              What is an MT5 Account Slot and how does activation work?
             </h3>
             <p className="text-xs text-slate-500">
-              Guia rápido para iniciantes • Zero senhas • Configuração feita em menos de 1 minuto
+              Quick start guide • Zero passwords required • Setup takes under 60 seconds
             </p>
           </div>
         </div>
@@ -165,30 +165,30 @@ export default function Dashboard() {
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div className="font-mono font-bold text-mako-blue flex items-center gap-1.5">
               <span className="w-5 h-5 rounded-full bg-blue-100 text-mako-blue flex items-center justify-center text-[11px]">1</span>
-              <span>O que é o número da conta?</span>
+              <span>What is your account number?</span>
             </div>
             <p className="text-slate-600 leading-relaxed">
-              É apenas o <strong>login numérico</strong> que sua corretora (ou mesa proprietária como FTMO) te envia (ex: <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono font-bold text-slate-900">88991122</code>). Ele aparece no topo esquerdo do seu MetaTrader 5.
+              It is simply the <strong>numerical login</strong> provided by your broker or prop firm like FTMO (e.g. <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono font-bold text-slate-900">88991122</code>). It is displayed in the upper-left corner of your MetaTrader 5 terminal.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div className="font-mono font-bold text-mako-blue flex items-center gap-1.5">
               <span className="w-5 h-5 rounded-full bg-blue-100 text-mako-blue flex items-center justify-center text-[11px]">2</span>
-              <span>Preciso colocar minha senha?</span>
+              <span>Do I need to enter my password?</span>
             </div>
             <p className="text-slate-600 leading-relaxed">
-              <strong>NUNCA.</strong> O Mako Trading Lab é 100% seguro e <em>Zero-Password</em>. Nós nunca pedimos nem temos acesso à sua senha de negociação ou do seu saldo. Apenas autorizamos o número da conta.
+              <strong>NEVER.</strong> Mako Trading Lab is 100% secure and <em>Zero-Password</em>. We never ask for and never have access to your trading password or your account balance. We only verify the account ID number.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
             <div className="font-mono font-bold text-mako-blue flex items-center gap-1.5">
               <span className="w-5 h-5 rounded-full bg-blue-100 text-mako-blue flex items-center justify-center text-[11px]">3</span>
-              <span>Como o robô sabe que paguei?</span>
+              <span>How does the EA know I have an active pass?</span>
             </div>
             <p className="text-slate-600 leading-relaxed">
-              Quando você arrasta o robô pro gráfico, ele lê o número da sua conta e checa em milissegundos se ela está na sua lista abaixo. Estando cadastrada, ele liga imediatamente!
+              When you attach an EA or indicator to any chart, it reads your terminal account number and verifies in milliseconds that it is listed below. If active, the tool initializes instantly!
             </p>
           </div>
         </div>
