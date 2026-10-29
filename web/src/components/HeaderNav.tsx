@@ -36,7 +36,7 @@ export default function HeaderNav() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
 
-  // Sync logged in user from localStorage
+  // Sync logged in user from localStorage and cookie
   useEffect(() => {
     const checkUser = () => {
       if (typeof window !== "undefined") {
@@ -44,17 +44,29 @@ export default function HeaderNav() {
         if (stored) {
           try {
             setUserSession(JSON.parse(stored));
-          } catch(e) {
-            setUserSession(null);
-          }
-        } else {
-          setUserSession(null);
+            return;
+          } catch(e) {}
         }
+        // Fallback check cookie
+        const match = document.cookie.match(/mako_user=([^;]+)/);
+        if (match) {
+          try {
+            const parsed = JSON.parse(decodeURIComponent(match[1]));
+            localStorage.setItem("mako_user", JSON.stringify(parsed));
+            setUserSession(parsed);
+            return;
+          } catch(e) {}
+        }
+        setUserSession(null);
       }
     };
     checkUser();
     window.addEventListener("storage", checkUser);
-    return () => window.removeEventListener("storage", checkUser);
+    const interval = setInterval(checkUser, 1000);
+    return () => {
+      window.removeEventListener("storage", checkUser);
+      clearInterval(interval);
+    };
   }, [pathname]);
 
   // Close dropdown on outside click

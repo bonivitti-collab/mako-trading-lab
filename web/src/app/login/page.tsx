@@ -49,16 +49,18 @@ export default function LoginPage() {
 
       // Direct Admin Credentials Shortcut for Owner
       if (cleanEmail === "dbonivitti@gmail.com") {
-        setSuccessMessage("Owner Authenticated! Accessing Mako Terminal...");
+        setSuccessMessage("Owner Authenticated! Accessing Admin Dashboard...");
+        const adminData = {
+          email: "dbonivitti@gmail.com",
+          role: "owner",
+          plan_tier: "studio",
+          max_mt5_slots: 5
+        };
         if (typeof window !== "undefined") {
-          localStorage.setItem("mako_user", JSON.stringify({
-            email: "dbonivitti@gmail.com",
-            role: "owner",
-            plan_tier: "studio",
-            max_mt5_slots: 5
-          }));
+          localStorage.setItem("mako_user", JSON.stringify(adminData));
+          document.cookie = `mako_user=${encodeURIComponent(JSON.stringify(adminData))}; path=/; max-age=2592000`;
         }
-        setTimeout(() => router.push("/terminal"), 400);
+        setTimeout(() => router.push("/dashboard"), 300);
         return;
       }
 
@@ -83,30 +85,34 @@ export default function LoginPage() {
         if (error) {
           // If in offline demo mode, log them in as starter user
           if (error.message.includes("fetch") || error.message.includes("placeholder") || error.message.includes("Invalid")) {
-            if (typeof window !== "undefined") {
-              localStorage.setItem("mako_user", JSON.stringify({
-                email: cleanEmail,
-                role: "user",
-                plan_tier: "starter",
-                max_mt5_slots: 1
-              }));
-            }
-            setSuccessMessage("Logged in successfully! Redirecting to Terminal...");
-            setTimeout(() => router.push("/terminal"), 600);
-            return;
-          }
-          setErrorMessage(error.message);
-        } else {
-          if (typeof window !== "undefined") {
-            localStorage.setItem("mako_user", JSON.stringify({
+            const userData = {
               email: cleanEmail,
               role: "user",
               plan_tier: "starter",
               max_mt5_slots: 1
-            }));
+            };
+            if (typeof window !== "undefined") {
+              localStorage.setItem("mako_user", JSON.stringify(userData));
+              document.cookie = `mako_user=${encodeURIComponent(JSON.stringify(userData))}; path=/; max-age=2592000`;
+            }
+            setSuccessMessage("Logged in successfully! Redirecting to Dashboard...");
+            setTimeout(() => router.push("/dashboard"), 400);
+            return;
           }
-          setSuccessMessage("Welcome back! Redirecting to Terminal...");
-          setTimeout(() => router.push("/terminal"), 600);
+          setErrorMessage(error.message);
+        } else {
+          const userData = {
+            email: cleanEmail,
+            role: "user",
+            plan_tier: "starter",
+            max_mt5_slots: 1
+          };
+          if (typeof window !== "undefined") {
+            localStorage.setItem("mako_user", JSON.stringify(userData));
+            document.cookie = `mako_user=${encodeURIComponent(JSON.stringify(userData))}; path=/; max-age=2592000`;
+          }
+          setSuccessMessage("Welcome back! Redirecting to Dashboard...");
+          setTimeout(() => router.push("/dashboard"), 400);
         }
       }
     } catch (err: any) {
@@ -123,7 +129,7 @@ export default function LoginPage() {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: typeof window !== "undefined" ? `${window.location.origin}/terminal` : undefined,
+          redirectTo: typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined,
         },
       });
 
@@ -137,8 +143,8 @@ export default function LoginPage() {
             max_mt5_slots: 1
           }));
         }
-        setSuccessMessage("Google Account Connected! Redirecting to Terminal...");
-        setTimeout(() => router.push("/terminal"), 700);
+        setSuccessMessage("Google Account Connected! Redirecting to Dashboard...");
+        setTimeout(() => router.push("/dashboard"), 700);
       }
     } catch (err: any) {
       // Fallback simulate Google authentication
@@ -150,8 +156,8 @@ export default function LoginPage() {
           max_mt5_slots: 1
         }));
       }
-      setSuccessMessage("Google Account Connected! Redirecting to Terminal...");
-      setTimeout(() => router.push("/terminal"), 700);
+      setSuccessMessage("Google Account Connected! Redirecting to Dashboard...");
+      setTimeout(() => router.push("/dashboard"), 700);
     } finally {
       setLoading(false);
     }
