@@ -69,19 +69,6 @@ export default function LoginPage() {
     try {
       const cleanEmail = email.trim().toLowerCase();
 
-      // Owner shortcut
-      if (cleanEmail === "dbonivitti@gmail.com") {
-        setSuccessMessage("Owner Authenticated! Accessing Admin Dashboard...");
-        persistSession({
-          email: "dbonivitti@gmail.com",
-          role: "owner",
-          plan_tier: "studio",
-          max_mt5_slots: 5,
-        });
-        setTimeout(() => router.push("/dashboard"), 300);
-        return;
-      }
-
       if (isSignUp) {
         const { error } = await supabase.auth.signUp({
           email,
@@ -129,35 +116,30 @@ export default function LoginPage() {
         });
 
         if (error) {
-          if (
-            error.message.includes("fetch") ||
-            error.message.includes("placeholder") ||
-            error.message.includes("Invalid")
-          ) {
-            // Offline demo: unpaid member (no starter entitlements)
-            finishMemberLogin(cleanEmail, "free", "user", 0);
-            return;
-          }
           setErrorMessage(error.message);
         } else {
-          // Live auth: default to free until profile.plan_tier is loaded as pro via webhook/dashboard
-          // Existing Pro members should have plan_tier=pro in Supabase profiles — read when available
+          // Authoritative entitlement from server (never trust client-only claims)
           let planTier = "free";
           let maxSlots = 0;
+          let role = "user";
           try {
-            const { data: profile } = await supabase
-              .from("profiles")
-              .select("plan_tier, max_mt5_slots, subscription_status")
-              .eq("email", cleanEmail)
-              .maybeSingle();
-            if (profile?.plan_tier === "pro" || profile?.plan_tier === "studio") {
-              planTier = profile.plan_tier;
-              maxSlots = profile.max_mt5_slots ?? PRO_MAX_MT5_SLOTS;
+            const { data: sessionData } = await supabase.auth.getSession();
+            const token = sessionData.session?.access_token;
+            if (token) {
+              const meRes = await fetch("/api/v1/me", {
+                headers: { Authorization: `Bearer ${token}` },
+              });
+              if (meRes.ok) {
+                const me = await meRes.json();
+                planTier = me.has_pro ? me.plan_tier : "free";
+                maxSlots = me.has_pro ? (me.max_mt5_slots ?? PRO_MAX_MT5_SLOTS) : 0;
+                role = me.role || "user";
+              }
             }
           } catch {
-            // profiles table may be unavailable; keep free until upgraded
+            // keep free until server confirms Pro
           }
-          finishMemberLogin(cleanEmail, planTier, "user", maxSlots);
+          finishMemberLogin(cleanEmail, planTier, role, maxSlots);
         }
       }
     } catch (err: any) {
