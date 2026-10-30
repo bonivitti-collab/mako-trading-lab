@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: "Mako Trading Lab — 533 Institutional MT5 Indicators, EAs & AI Studio",
     template: "%s | Mako Trading Lab"
   },
-  description: "Bypass MQL5 Market $30+ price markups. Unlimited institutional MetaTrader 5 tools, prop-firm daily loss shields, order flow footprints, and generative AI bot builder with Mako Pro Pass ($29/mo). Start free with 20 essential MT5 utilities.",
+  description: "Bypass MQL5 Market $30+ price markups. Unlimited institutional MetaTrader 5 tools, prop-firm daily loss shields, order flow footprints, and generative AI bot builder with Mako Pro Pass ($19/mo).",
   keywords: [
     "MQL5 alternative",
     "MetaTrader 5 indicators download",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "best MT5 trading algorithms",
     "MT5 volume profile indicator",
     "MT5 market maker models",
-    "free MT5 utilities",
+    "MT5 Pro Pass subscription",
     "Apex funding EA",
     "Mako Trading Lab"
   ],
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mako Trading Lab — MetaTrader 5 All-Access Pass",
-    description: "Access 533 institutional MT5 indicators, prop-firm risk guards, and generative MQL5 bots for $29/month.",
+    description: "Access 533 institutional MT5 indicators, prop-firm risk guards, and generative MQL5 bots for $19/month.",
     images: ["/mako_logo.png"],
   },
   robots: {
@@ -102,7 +102,7 @@ export default function RootLayout({
       "@type": "AggregateOffer",
       "priceCurrency": "USD",
       "lowPrice": "0.00",
-      "highPrice": "29.00",
+      "highPrice": "19.00",
       "offerCount": "533"
     },
     "description": "Institutional repository of 500+ verified MetaTrader 5 Expert Advisors and technical indicators with zero-password licensing."
