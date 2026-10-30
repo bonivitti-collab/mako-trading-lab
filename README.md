@@ -83,6 +83,15 @@ npm install
 npm run dev -- -p 43123 -H 0.0.0.0
 ```
 - Homepage: `http://127.0.0.1:43123`
-- AI Studio: `http://127.0.0.1:43123/ai-studio`
+- AI Studio: `http://127.0.0.1:43123/ai-studio 
 - Dashboard: `http://127.0.0.1:43123/dashboard`
 - MT5 verify: `POST http://127.0.0.1:43123/api/v1/verify`
+
+
+## 6. Sell-ready ops checklist
+1. **Downloads** are blocked at `/downloads/*` — only `/api/v1/download` with a Pro Supabase session works.
+2. **Lemon webhook** URL: `https://makotradinglab.com/api/webhooks/lemonsqueezy`
+   - In Lemon Squeezy → Settings → Webhooks, create webhook with events: `subscription_*`, `order_created`
+   - Signing secret must match Vercel env `LEMONSQUEEZY_WEBHOOK_SECRET`
+3. **Gemini**: `GEMINI_API_KEY` + optional `GEMINI_MODEL` (default `gemini-2.5-flash`)
+4. Buyer email on Lemon checkout should match the email they use to Sign Up / Sign In.
