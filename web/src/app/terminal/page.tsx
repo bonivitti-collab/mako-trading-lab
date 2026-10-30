@@ -363,15 +363,15 @@ export default function TerminalPage() {
 
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   {(isProOrOwner) ? (
-                    <a 
-                      data-dl="mq5" 
-                      download
-                      title="Download MQL5 Source Code (.mq5)"
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all"
+                    <button
+                      type="button"
+                      onClick={() => handleDownload(p.slug, "mq5")}
+                      disabled={downloading === `${p.slug}.mq5`}
+                      title="Download MQL5 Source (.mq5)"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all disabled:opacity-60"
                     >
-                      <Code2 className="w-3.5 h-3.5 text-mako-blue" />
                       <span>.MQ5</span>
-                    </a>
+                    </button>
                   ) : (
                     <a 
                       href="/#pricing"
