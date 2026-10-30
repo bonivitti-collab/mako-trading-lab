@@ -57,15 +57,21 @@ export default function AiStudio() {
     setCode(null);
 
     try {
+      const { authHeaders } = await import("@/lib/client-auth");
       const res = await fetch("/api/ai-studio", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: await authHeaders(),
         body: JSON.stringify({ prompt: textToSend, product_type: productType })
       });
       const data = await res.json();
-      setCode(data.code || "// Error generating code");
+      if (!res.ok || !data.success || !data.code) {
+        setCode(`// ${data.error || "AI Studio error — check Pro Pass login and GEMINI_API_KEY"}`);
+      } else {
+        setCode(data.code);
+      }
     } catch (err) {
       console.error(err);
+      setCode("// Network error contacting AI Studio");
     } finally {
       setLoading(false);
     }
