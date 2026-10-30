@@ -1,6 +1,5 @@
-/** Single commercial plan: Mako Pro Pass */
-export const PRO_CHECKOUT_URL =
-  "https://makotrading.lemonsqueezy.com/checkout/buy/5928ad57-c624-4697-b474-0a40ce1568af";
+/** Single commercial plan: Mako Pro Pass — billed via PayPal */
+export const PRO_CHECKOUT_URL = "/checkout";
 
 export const PRO_PRICE_LABEL = "$19/mo";
 export const PRO_PRICE_AMOUNT = 19;
