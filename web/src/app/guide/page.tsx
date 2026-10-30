@@ -76,7 +76,7 @@ export default function GuidePage() {
         </div>
 
         <p className="text-sm text-slate-600 leading-relaxed">
-          Navigate to your <Link href="/dashboard" className="text-mako-blue font-bold hover:underline">Mako License Dashboard</Link> and enter your MT5 Account Login (e.g. <code className="font-mono bg-slate-100 px-1.5 py-0.5 rounded">88991122</code>). Free tier includes 1 active slot; Pro & Studio include 3 to 5 simultaneous slots (Live, Demo, PropFirm).
+          Navigate to your <Link href="/dashboard" className="text-mako-blue font-bold hover:underline">Mako License Dashboard</Link> and enter your MT5 Account Login (e.g. <code className="font-mono bg-slate-100 px-1.5 py-0.5 rounded">88991122</code>). Mako Pro Pass includes 3 simultaneous slots (Live, Demo, PropFirm); Owner/Studio includes up to 5.
         </p>
 
         <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 flex items-start gap-3 text-xs sm:text-sm text-slate-700">
