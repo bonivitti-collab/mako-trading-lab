@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { supabase } from "@/lib/supabase/client";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 // Fallback in-memory cache for development/demo when Supabase is not yet connected
@@ -16,7 +17,7 @@ function isPaidTier(planTier: string | null | undefined): boolean {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { account_login, product_slug, is_pro, version } = body;
+    const { account_login, product_slug, version } = body;
 
     if (!account_login || !product_slug) {
       return NextResponse.json(
@@ -31,13 +32,46 @@ export async function POST(req: NextRequest) {
 
     let authorized = false;
     let failureReason = "";
-    let userPlanTier: string = "free";
 
     const isSupabaseConfigured =
       process.env.NEXT_PUBLIC_SUPABASE_URL && !process.env.NEXT_PUBLIC_SUPABASE_URL.includes("placeholder");
 
     if (isSupabaseConfigured) {
       try {
+        // Prefer SECURITY DEFINER RPC — works with anon key (no service_role required on Vercel)
+        const db = process.env.SUPABASE_SERVICE_ROLE_KEY ? supabaseAdmin : supabase;
+        const { data: rpcResult, error: rpcError } = await db.rpc("mako_verify_mt5_license", {
+          p_account_login: loginNumber,
+          p_product_slug: product_slug,
+          p_client_version: version || "1.00",
+          p_ip_address: clientIp,
+        });
+
+        if (!rpcError && rpcResult && typeof rpcResult === "object") {
+          const result = rpcResult as {
+            authorized?: boolean;
+            status?: string;
+            message?: string;
+            expires_in?: number;
+          };
+          if (result.authorized) {
+            return NextResponse.json({
+              status: "authorized",
+              authorized: true,
+              account_login: loginNumber,
+              product_slug,
+              expires_in: result.expires_in ?? 86400,
+              message: result.message || "License validated successfully. Mako LicenseGuard protection active.",
+            });
+          }
+          return NextResponse.json({
+            status: "unauthorized",
+            authorized: false,
+            message: result.message || "Unauthorized",
+          });
+        }
+
+        // Legacy path if RPC is unavailable on older DBs
         const { data: mt5Record, error } = await supabaseAdmin
           .from("mt5_accounts")
           .select(`
@@ -56,14 +90,13 @@ export async function POST(req: NextRequest) {
           failureReason = `MT5 Account #${loginStr} is not linked to any active Mako Trading Lab profile. Please link this slot in your dashboard.`;
         } else {
           const profile = (mt5Record as any).profiles;
-          userPlanTier = profile?.plan_tier || "free";
+          const userPlanTier = profile?.plan_tier || "free";
           const subStatus = profile?.subscription_status || "active";
 
           if (subStatus !== "active") {
             authorized = false;
             failureReason = `Your subscription is currently ${subStatus}. Please update your payment method at https://makotradinglab.com/#pricing`;
           } else if (!isPaidTier(userPlanTier)) {
-            // Entire catalog requires Pro Pass — free/starter has no tool entitlements
             authorized = false;
             failureReason = `An active Mako Pro Pass is required to run '${product_slug}'. Subscribe at https://makotradinglab.com/#pricing`;
           } else {
@@ -71,18 +104,9 @@ export async function POST(req: NextRequest) {
           }
         }
 
-        await supabaseAdmin
-          .from("validation_logs")
-          .insert({
-            account_login: loginNumber,
-            product_slug,
-            is_pro: true,
-            client_version: version || "1.00",
-            authorized,
-            reason: failureReason || "OK",
-            ip_address: clientIp,
-          })
-          .then();
+        if (rpcError) {
+          console.warn("[Mako LicenseGuard] RPC unavailable, used table fallback:", rpcError.message);
+        }
       } catch (dbErr: any) {
         console.warn("[Mako LicenseGuard] Supabase query fallback:", dbErr.message);
       }
