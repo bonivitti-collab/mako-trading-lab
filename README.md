@@ -30,7 +30,7 @@ mako-trading-lab/
 │   └── src/
 │       ├── app/
 │       │   ├── page.tsx           # Hugging Face-style Hub & Pricing
-│       │   ├── dashboard/page.tsx # License & MT5 Account Slots Manager
+│       │   ├── dashboard/page.tsx # License & MT5 Account slots Manager
 │       │   ├── ai-studio/page.tsx # Prompt-to-MQL5 Studio with code viewer
 │       │   └── api/
 │       │       ├── v1/verify/     # MT5 WebRequest verification endpoint
@@ -83,7 +83,7 @@ npm install
 npm run dev -- -p 43123 -H 0.0.0.0
 ```
 - Homepage: `http://127.0.0.1:43123`
-- AI Studio: `http://127.0.0.1:43123/ai-studio 
+- AI Studio: `http://127.0.0.1:43123/ai-studio`
 - Dashboard: `http://127.0.0.1:43123/dashboard`
 - MT5 verify: `POST http://127.0.0.1:43123/api/v1/verify`
 

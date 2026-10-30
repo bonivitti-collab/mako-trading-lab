@@ -126,7 +126,7 @@ export async function activateProPass(params: {
         id: user.id,
         email,
         plan_tier: planTier,
-        subscriptionStatus,
+        subscription_status: status,
         max_mt5_slots: maxSlots,
         ai_generations_limit: aiLimit,
         lemon_squeezy_customer_id: params.lemonCustomerId || null,
