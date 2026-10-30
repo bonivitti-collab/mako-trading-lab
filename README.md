@@ -90,8 +90,9 @@ npm run dev -- -p 43123 -H 0.0.0.0
 
 ## 6. Sell-ready ops checklist
 1. **Downloads** are blocked at `/downloads/*` — only `/api/v1/download` with a Pro Supabase session works.
-2. **Lemon webhook** URL: `https://makotradinglab.com/api/webhooks/lemonsqueezy`
+2. **Auth** is pemail + password only (confirm email before sign-in). Google OAuth is not enabled.
+3. **Lemon webhook** URL: `https://makotradinglab.com/api/webhooks/lemonsqueezy`
    - In Lemon Squeezy → Settings → Webhooks, create webhook with events: `subscription_*`, `order_created`
-   - Signing secret must match Vercel env `LEMONSQUEEZY_WEBHOOK_SECRET`
-3. **Gemini**: `GEMINI_API_KEY` + optional `GEMINI_MODEL` (default `gemini-2.5-flash`)
-4. Buyer email on Lemon checkout should match the email they use to Sign Up / Sign In.
+   - Signing secret must match Vercel env `LEMONSQUEZZY_WEBHOOK_SECRET`
+4. **Gemini**: set a valid `GEMINI_API_KEY` on Vercel Production + optional `GEMINI_MODEL` (default `gemini-3.8-flash`)
+5. Buyer email on Lemon checkout should match the email they use to Sign Up / Sign In.
