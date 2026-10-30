@@ -39,25 +39,50 @@ mako-trading-lab/
 
 ---
 
-## 3. How to Deploy to Vercel (100% Free Tier)
-1. Push the `/web` folder to a GitHub repository.
-2. Link the repository to [Vercel](https://vercel.com).
-3. Set the following Environment Variables in Vercel:
-   - `GEMINI_API_KEY`: Your Google Gemini API Key (obtainable free at [aistudio.google.com](https://aistudio.google.com/)).
-   - `Lemon Squeezy Pro Pass checkout (live on makotradinglab.com).
+## 3. How to Deploy to Vercel
+1. Link this repository to [Vercel](https://vercel.com) with Root Directory = `web`.
+2. Set Environment Variables (production + preview):
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY` (server-only; required for MT5 `/api/v1/verify`)
+   - `GEMINI_API_KEY` (from [aistudio.google.com](https://aistudio.google.com/))
+3. Pro Pass checkout is wired in-app via Lemon Squeezy (`src/lib/plans.ts`).
 
 ---
 
-## 4. How to Connect the Supabase Database
-1. Create a free project on [Supabase](https://supabase.com).
-2. Open the **SQL Editor** in Supabase and paste the contents of `database/schema.sql`.
-3. Copy your Supabase URL & Anon Key into `.env.local` inside `/web`.
+## 4. Supabase (already provisioned for Mako)
+Live project: `https://njdbgtnffnuvrosokguy.supabase.co` (region `sa-east-1`).
+
+Applied on the remote database:
+1. Core schema (`profiles`, `mt5_accounts`, `products`, `validation_logs`, `ai_generations`) — Pro Pass only defaults.
+2. RLS policies + `handle_new_user` trigger (new accounts start as `free` / 0 MT5 slots).
+3. Product catalog seed: **533** rows, all `is_pro = true` (`database/seeds/products.sql`).
+
+Local / fresh project apply order:
+```bash
+# SQL Editor or supabase db push
+database/schema.sql
+database/migrations/20261030_mako_rls_and_auth_trigger.sql
+database/migrations/20261030_pro_pass_only.sql
+database/seeds/products.sql
+```
+
+Auth checklist in the Supabase dashboard:
+- **Site URL:** `https://makotradinglab.com`
+- **Redirect URLs:** `https://makotradinglab.com/**`, `https://www.makotradinglab.com/**`, `http://localhost:43123/**` (or your local port)
+- Enable **Leaked password protection** (Auth → Attack Protection)
+- Paste **service_role** into Vercel as `SUPABASE_SERVICE_ROLE_KEY` (never expose it as `NEXT_PUBLIC_*`)
 
 ---
 
-## 5. Live Local Testing
-The web server is currently running locally:
-- **Homepage & Catalog:** `http://localhost:3000`
-- **Mako AI Studio:** `http://localhost:3000/ai-studio`
-- **Account Slots Dashboard:** `http://localhost:3000/dashboard`
-- **MT5 License Verification Endpoint:** `http://localhost:3000/api/v1/verify`
+## 5. Local development
+```bash
+cd web
+cp .env.example .env.local   # fill anon + service_role keys
+npm install
+npm run dev -- -p 43123 -H 0.0.0.0
+```
+- Homepage: `http://127.0.0.1:43123`
+- AI Studio: `http://127.0.0.1:43123/ai-studio`
+- Dashboard: `http://127.0.0.1:43123/dashboard`
+- MT5 verify: `POST http://127.0.0.1:43123/api/v1/verify`
