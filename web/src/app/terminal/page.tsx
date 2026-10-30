@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import productsData from "@/lib/products.json";
 import { useLanguage } from "@/lib/languageContext";
+import { authHeaders, downloadProtectedFile } from "@/lib/client-auth";
 import { 
   Search, Download, Terminal, Shield, Zap, CheckCircle2, 
   ChevronRight, Cpu, SlidersHorizontal, ArrowUpRight, Copy, Check,
@@ -19,18 +20,44 @@ export default function TerminalPage() {
   const [filterType, setFilterType] = useState<"all" | "ea" | "indicator" | "script">("all");
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
-  const [userSession, setUserSession] = useState<{ role?: string; plan_tier?: string; simulated_role?: string } | null>(null);
+  const [userSession, setUserSession] = useState<{ role?: string; plan_tier?: string; simulated_role?: string; has_pro?: boolean } | null>(null);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
+  const [downloading, setDownloading] = useState<string | null>(null);
 
   useEffect(() => {
-    const syncSession = () => {
-      if (typeof window !== "undefined") {
-        const stored = localStorage.getItem("mako_user");
-        if (stored) {
-          try {
-            setUserSession(JSON.parse(stored));
-          } catch(e) {}
-        }
+    const syncSession = async () => {
+      if (typeof window === "undefined") return;
+      const stored = localStorage.getItem("mako_user");
+      if (stored) {
+        try {
+          setUserSession(JSON.parse(stored));
+        } catch {}
       }
+      try {
+        const res = await fetch("/api/v1/me", { headers: await authHeaders() });
+        if (res.ok) {
+          const me = await res.json();
+          const next = {
+            email: me.email,
+            role: me.role,
+            plan_tier: me.plan_tier,
+            max_mt5_slots: me.max_mt5_slots,
+            has_pro: me.has_pro,
+          };
+          setUserSession(next);
+          localStorage.setItem("mako_user", JSON.stringify(next));
+        } else {
+          // No valid Supabase session → never trust localStorage Pro claims
+          if (stored) {
+            try {
+              const parsed = JSON.parse(stored);
+              if (parsed?.role !== "owner") {
+                setUserSession({ ...parsed, plan_tier: "free", has_pro: false });
+              }
+            } catch {}
+          }
+        }
+      } catch {}
     };
     syncSession();
     window.addEventListener("storage", syncSession);
@@ -38,7 +65,19 @@ export default function TerminalPage() {
   }, []);
 
   const effectiveRole = userSession?.simulated_role || (userSession?.role === "owner" ? "owner" : userSession?.plan_tier);
-  const isProOrOwner = effectiveRole === "owner" || effectiveRole === "pro" || effectiveRole === "studio";
+  const isProOrOwner = Boolean(userSession?.has_pro) || effectiveRole === "owner" || effectiveRole === "pro" || effectiveRole === "studio";
+
+  const handleDownload = async (slug: string, ext: "ex5" | "mq5") => {
+    setDownloadError(null);
+    setDownloading(`${slug}.${ext}`);
+    try {
+      await downloadProtectedFile(slug, ext);
+    } catch (err: any) {
+      setDownloadError(err.message || "Download failed");
+    } finally {
+      setDownloading(null);
+    }
+  };
 
   const categories = [
     { id: "all", label: t.catAll, count: 533 },
@@ -98,7 +137,7 @@ export default function TerminalPage() {
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a 
-              href="#pricing" 
+              href="/#pricing" 
               className="px-7 py-3.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-sm shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 flex items-center gap-2.5 transition-all transform hover:-translate-y-0.5"
             >
               <span>{t.heroBtnPlans}</span>
@@ -325,7 +364,7 @@ export default function TerminalPage() {
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   {(isProOrOwner) ? (
                     <a 
-                      href={`/downloads/${p.slug}.mq5`} 
+                      data-dl="mq5" 
                       download
                       title="Download MQL5 Source Code (.mq5)"
                       className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all"
@@ -335,7 +374,7 @@ export default function TerminalPage() {
                     </a>
                   ) : (
                     <a 
-                      href="#pricing"
+                      href="/#pricing"
                       title="MQL5 Source Code for Pro Tools requires Mako Pro Pass ($19/mo)"
                       className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 text-slate-400 border border-slate-200 transition-all"
                     >
@@ -345,18 +384,19 @@ export default function TerminalPage() {
                   )}
 
                   {isProOrOwner ? (
-                    <a 
-                      href={`/downloads/${p.slug}.ex5`} 
-                      download
+                    <button
+                      type="button"
+                      onClick={() => handleDownload(p.slug, "ex5")}
+                      disabled={downloading === `${p.slug}.ex5`}
                       title="Download Compiled MT5 Binary (.ex5)"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-mako-blue hover:bg-blue-600 text-white shadow-sm shadow-blue-500/20 transition-all"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-mako-blue hover:bg-blue-600 text-white shadow-sm shadow-blue-500/20 transition-all disabled:opacity-60"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>.EX5</span>
-                    </a>
+                    </button>
                   ) : (
                     <a 
-                      href="#pricing"
+                      href="/#pricing"
                       title="Compiled .EX5 Binary requires Mako Pro Pass ($19/mo)"
                       className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-400 border border-slate-200 transition-all cursor-pointer"
                     >
@@ -456,17 +496,17 @@ export default function TerminalPage() {
 
               <div className="flex items-center gap-2">
                 {(isProOrOwner) ? (
-                  <a 
-                    href={`/downloads/${selectedProduct.slug}.mq5`} 
-                    download
+                  <button
+                    type="button"
+                    onClick={() => handleDownload(selectedProduct.slug, "mq5")
                     className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 font-mono font-bold text-xs flex items-center gap-1.5 transition-all"
                   >
                     <Code2 className="w-4 h-4 text-mako-blue" />
                     <span>Download .MQ5 Source</span>
-                  </a>
+                  </button>
                 ) : (
                   <a 
-                    href="#pricing"
+                    href="/#pricing"
                     onClick={() => setSelectedProduct(null)}
                     className="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-400 border border-slate-200 font-mono font-bold text-xs flex items-center gap-1.5 transition-all"
                   >
@@ -476,17 +516,17 @@ export default function TerminalPage() {
                 )}
                 
                 {isProOrOwner ? (
-                  <a 
-                    href={`/downloads/${selectedProduct.slug}.ex5`} 
-                    download
+                  <button
+                    type="button"
+                    onClick={() => handleDownload(selectedProduct.slug, "ex5")
                     className="px-6 py-2.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all"
                   >
                     <Download className="w-4 h-4" />
                     <span>Download .EX5 Binary</span>
-                  </a>
+                  </button>
                 ) : (
                   <a 
-                    href="#pricing"
+                    href="/#pricing"
                     onClick={() => setSelectedProduct(null)}
                     className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 border border-slate-200 font-bold text-xs flex items-center gap-1.5 transition-all"
                   >
