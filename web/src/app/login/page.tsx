@@ -5,7 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
-import { Shield, Sparkles, ArrowRight, Lock, Mail, AlertCircle, CheckCircle2 } from "lucide-react";
+import { PRO_CHECKOUT_URL, PRO_MAX_MT5_SLOTS, hasProAccess } from "@/lib/plans";
+import { ArrowRight, Lock, Mail, AlertCircle, CheckCircle2, ExternalLink } from "lucide-react";
+
+function persistSession(userData: Record<string, unknown>) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem("mako_user", JSON.stringify(userData));
+  document.cookie = `mako_user=${encodeURIComponent(JSON.stringify(userData))}; path=/; max-age=2592000`;
+}
 
 export default function LoginPage() {
   const router = useRouter();
@@ -17,7 +24,6 @@ export default function LoginPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  // Load saved credentials on mount if available
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedEmail = localStorage.getItem("mako_remember_email");
@@ -27,13 +33,29 @@ export default function LoginPage() {
     }
   }, []);
 
+  const finishMemberLogin = (cleanEmail: string, planTier: string, role = "user", maxSlots = PRO_MAX_MT5_SLOTS) => {
+    const userData = {
+      email: cleanEmail,
+      role,
+      plan_tier: planTier,
+      max_mt5_slots: maxSlots,
+    };
+    persistSession(userData);
+    if (hasProAccess(role, planTier)) {
+      setSuccessMessage("Welcome back! Redirecting to Dashboard...");
+      setTimeout(() => router.push("/dashboard"), 400);
+    } else {
+      setSuccessMessage("Account found. Activate Mako Pro Pass to unlock the Terminal.");
+      setTimeout(() => router.push("/dashboard"), 500);
+    }
+  };
+
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setErrorMessage(null);
     setSuccessMessage(null);
 
-    // Save or clear credentials
     if (typeof window !== "undefined") {
       if (rememberMe) {
         localStorage.setItem("mako_remember_email", email);
@@ -47,72 +69,95 @@ export default function LoginPage() {
     try {
       const cleanEmail = email.trim().toLowerCase();
 
-      // Direct Admin Credentials Shortcut for Owner
+      // Owner shortcut
       if (cleanEmail === "dbonivitti@gmail.com") {
         setSuccessMessage("Owner Authenticated! Accessing Admin Dashboard...");
-        const adminData = {
+        persistSession({
           email: "dbonivitti@gmail.com",
           role: "owner",
           plan_tier: "studio",
-          max_mt5_slots: 5
-        };
-        if (typeof window !== "undefined") {
-          localStorage.setItem("mako_user", JSON.stringify(adminData));
-          document.cookie = `mako_user=${encodeURIComponent(JSON.stringify(adminData))}; path=/; max-age=2592000`;
-        }
+          max_mt5_slots: 5,
+        });
         setTimeout(() => router.push("/dashboard"), 300);
         return;
       }
 
       if (isSignUp) {
-        const { data, error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
           email,
           password,
         });
 
         if (error) {
-          setErrorMessage(error.message);
-        } else {
-          setSuccessMessage("Account created successfully! Check your email for confirmation or log in.");
-          setIsSignUp(false);
-        }
-      } else {
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
-        if (error) {
-          // If in offline demo mode, log them in as starter user
-          if (error.message.includes("fetch") || error.message.includes("placeholder") || error.message.includes("Invalid")) {
-            const userData = {
+          // Offline / placeholder Supabase: create local pending profile, then send to checkout
+          if (
+            error.message.includes("fetch") ||
+            error.message.includes("placeholder") ||
+            error.message.includes("Failed")
+          ) {
+            persistSession({
               email: cleanEmail,
               role: "user",
-              plan_tier: "starter",
-              max_mt5_slots: 1
-            };
-            if (typeof window !== "undefined") {
-              localStorage.setItem("mako_user", JSON.stringify(userData));
-              document.cookie = `mako_user=${encodeURIComponent(JSON.stringify(userData))}; path=/; max-age=2592000`;
-            }
-            setSuccessMessage("Logged in successfully! Redirecting to Dashboard...");
-            setTimeout(() => router.push("/dashboard"), 400);
+              plan_tier: "free",
+              max_mt5_slots: 0,
+            });
+            setSuccessMessage("Profile created. Complete Pro Pass checkout to unlock access.");
+            setTimeout(() => {
+              window.open(PRO_CHECKOUT_URL, "_blank", "noopener,noreferrer");
+              router.push("/dashboard");
+            }, 600);
             return;
           }
           setErrorMessage(error.message);
         } else {
-          const userData = {
+          persistSession({
             email: cleanEmail,
             role: "user",
-            plan_tier: "starter",
-            max_mt5_slots: 1
-          };
-          if (typeof window !== "undefined") {
-            localStorage.setItem("mako_user", JSON.stringify(userData));
-            document.cookie = `mako_user=${encodeURIComponent(JSON.stringify(userData))}; path=/; max-age=2592000`;
+            plan_tier: "free",
+            max_mt5_slots: 0,
+          });
+          setSuccessMessage("Account created. Complete Pro Pass checkout to unlock MT5 licensing.");
+          setTimeout(() => {
+            window.open(PRO_CHECKOUT_URL, "_blank", "noopener,noreferrer");
+            router.push("/dashboard");
+          }, 700);
+        }
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (error) {
+          if (
+            error.message.includes("fetch") ||
+            error.message.includes("placeholder") ||
+            error.message.includes("Invalid")
+          ) {
+            // Offline demo: unpaid member (no starter entitlements)
+            finishMemberLogin(cleanEmail, "free", "user", 0);
+            return;
           }
-          setSuccessMessage("Welcome back! Redirecting to Dashboard...");
-          setTimeout(() => router.push("/dashboard"), 400);
+          setErrorMessage(error.message);
+        } else {
+          // Live auth: default to free until profile.plan_tier is loaded as pro via webhook/dashboard
+          // Existing Pro members should have plan_tier=pro in Supabase profiles — read when available
+          let planTier = "free";
+          let maxSlots = 0;
+          try {
+            const { data: profile } = await supabase
+              .from("profiles")
+              .select("plan_tier, max_mt5_slots, subscription_status")
+              .eq("email", cleanEmail)
+              .maybeSingle();
+            if (profile?.plan_tier === "pro" || profile?.plan_tier === "studio") {
+              planTier = profile.plan_tier;
+              maxSlots = profile.max_mt5_slots ?? PRO_MAX_MT5_SLOTS;
+            }
+          } catch {
+            // profiles table may be unavailable; keep free until upgraded
+          }
+          finishMemberLogin(cleanEmail, planTier, "user", maxSlots);
         }
       }
     } catch (err: any) {
@@ -126,7 +171,7 @@ export default function LoginPage() {
     setLoading(true);
     setErrorMessage(null);
     try {
-      const { data, error } = await supabase.auth.signInWithOAuth({
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
           redirectTo: typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined,
@@ -134,29 +179,23 @@ export default function LoginPage() {
       });
 
       if (error) {
-        // Fallback for local demo simulation
-        if (typeof window !== "undefined") {
-          localStorage.setItem("mako_user", JSON.stringify({
-            email: "trader.google@makotradinglab.com",
-            role: "user",
-            plan_tier: "starter",
-            max_mt5_slots: 1
-          }));
-        }
-        setSuccessMessage("Google Account Connected! Redirecting to Dashboard...");
-        setTimeout(() => router.push("/dashboard"), 700);
-      }
-    } catch (err: any) {
-      // Fallback simulate Google authentication
-      if (typeof window !== "undefined") {
-        localStorage.setItem("mako_user", JSON.stringify({
+        persistSession({
           email: "trader.google@makotradinglab.com",
           role: "user",
-          plan_tier: "starter",
-          max_mt5_slots: 1
-        }));
+          plan_tier: "free",
+          max_mt5_slots: 0,
+        });
+        setSuccessMessage("Google connected. Activate Pro Pass to unlock the catalog.");
+        setTimeout(() => router.push("/dashboard"), 700);
       }
-      setSuccessMessage("Google Account Connected! Redirecting to Dashboard...");
+    } catch {
+      persistSession({
+        email: "trader.google@makotradinglab.com",
+        role: "user",
+        plan_tier: "free",
+        max_mt5_slots: 0,
+      });
+      setSuccessMessage("Google connected. Activate Pro Pass to unlock the catalog.");
       setTimeout(() => router.push("/dashboard"), 700);
     } finally {
       setLoading(false);
@@ -166,7 +205,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md rounded-3xl border border-slate-300 bg-white p-8 sm:p-10 space-y-7 shadow-xl">
-        {/* Header */}
         <div className="text-center space-y-3">
           <Link href="/" className="inline-flex items-center gap-2 group">
             <div className="relative w-10 h-10 rounded-full overflow-hidden border border-slate-200">
@@ -174,18 +212,17 @@ export default function LoginPage() {
             </div>
             <span className="font-extrabold text-xl tracking-wider text-slate-950">MAKO</span>
           </Link>
-          
+
           <h1 className="text-2xl font-black text-slate-950 tracking-tight">
-            {isSignUp ? "Create Your Mako Profile" : "Sign In to Mako Terminal"}
+            {isSignUp ? "Create Your Mako Account" : "Sign In to Mako Terminal"}
           </h1>
           <p className="text-xs text-slate-500 leading-relaxed">
-            {isSignUp 
-              ? "Register your free starter profile to unlock MT5 account licensing."
-              : "Manage your authorized MT5 slots, license keys, and algorithm access."}
+            {isSignUp
+              ? "Create your member account, then activate Mako Pro Pass ($19/mo) to unlock all 533 MT5 tools."
+              : "Access your Pro Pass licenses, MT5 slots, and algorithm downloads."}
           </p>
         </div>
 
-        {/* Google One-Click Sign In Button */}
         <div className="space-y-4">
           <button
             type="button"
@@ -221,7 +258,6 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Feedback banners */}
         {errorMessage && (
           <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-2">
             <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
@@ -236,15 +272,12 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* Form */}
         <form onSubmit={handleAuth} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-mono font-bold text-slate-700 uppercase">
-              Email Address
-            </label>
+            <label className="text-xs font-mono font-bold text-slate-700 uppercase">Email Address</label>
             <div className="relative">
               <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input 
+              <input
                 type="email"
                 required
                 value={email}
@@ -256,12 +289,10 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-mono font-bold text-slate-700 uppercase">
-              Password
-            </label>
+            <label className="text-xs font-mono font-bold text-slate-700 uppercase">Password</label>
             <div className="relative">
               <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input 
+              <input
                 type="password"
                 required
                 minLength={6}
@@ -273,10 +304,9 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Remember Me / Save Password checkbox */}
           <div className="flex items-center justify-between text-xs">
             <label className="flex items-center gap-2 cursor-pointer select-none text-slate-700">
-              <input 
+              <input
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
@@ -291,34 +321,39 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full py-3 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-xs shadow-md shadow-blue-500/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
           >
-            <span>{loading ? "Processing..." : isSignUp ? "Create Free Starter Account" : "Access MT5 Terminal"}</span>
+            <span>{loading ? "Processing..." : isSignUp ? "Create Account & Continue" : "Access MT5 Terminal"}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 
-        {/* Toggle Mode */}
+        <a
+          href={PRO_CHECKOUT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex w-full items-center justify-center gap-2 py-3 rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-mako-blue font-bold text-xs transition-all"
+        >
+          <span>Get Mako Pro Pass ($19/mo)</span>
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+
         <div className="text-center pt-2 border-t border-slate-100 text-xs text-slate-600">
           {isSignUp ? (
             <p>
-              Already registered?{" "}
-              <button 
-                type="button" 
-                onClick={() => setIsSignUp(false)}
-                className="text-mako-blue font-bold hover:underline"
-              >
+              Already a Pro member?{" "}
+              <button type="button" onClick={() => setIsSignUp(false)} className="text-mako-blue font-bold hover:underline">
                 Sign In
               </button>
             </p>
           ) : (
             <p>
-              Need a Starter account?{" "}
-              <button 
-                type="button" 
-                onClick={() => setIsSignUp(true)}
-                className="text-mako-blue font-bold hover:underline"
-              >
-                Sign Up for Free (1 MT5 Slot)
+              New here?{" "}
+              <button type="button" onClick={() => setIsSignUp(true)} className="text-mako-blue font-bold hover:underline">
+                Create account
               </button>
+              {" · "}
+              <a href={PRO_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="text-mako-blue font-bold hover:underline">
+                Subscribe to Pro Pass
+              </a>
             </p>
           )}
         </div>

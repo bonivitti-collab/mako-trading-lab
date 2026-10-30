@@ -36,7 +36,9 @@ export default function HeaderNav() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
 
-  const effectiveRole = userSession?.simulated_role || (userSession?.role === "owner" ? "owner" : userSession?.plan_tier === "pro" ? "pro" : userSession ? "starter" : null);
+  const effectiveRole = userSession?.simulated_role
+    || (userSession?.role === "owner" ? "owner" : null)
+    || (userSession?.plan_tier === "pro" || userSession?.plan_tier === "studio" ? "pro" : userSession ? "pending" : null);
   const isOwnerSession = userSession?.role === "owner";
 
   // Sync logged in user from localStorage and cookie
@@ -318,7 +320,7 @@ export default function HeaderNav() {
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>
                 {isOwnerSession 
-                  ? (effectiveRole === "pro" ? "Admin (Pro View)" : effectiveRole === "starter" ? "Admin (Starter View)" : "Admin Panel")
+                  ? (effectiveRole === "pro" ? "Admin (Pro View)" : "Admin Panel")
                   : "My Account"}
               </span>
             </Link>
@@ -341,8 +343,8 @@ export default function HeaderNav() {
                 ? "MT5 Slots: Owner (5)" 
                 : effectiveRole === "pro" 
                 ? "MT5 Slots: Pro (3)" 
-                : effectiveRole === "starter" 
-                ? "MT5 Slots: Starter (1)" 
+                : effectiveRole === "pending"
+                ? "Pro Pass Required"
                 : "Contas MT5: Ativas"}
             </span>
           </Link>
@@ -353,8 +355,8 @@ export default function HeaderNav() {
             rel="noopener noreferrer"
             className="text-xs font-bold px-4 sm:px-5 py-2.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 transition-all flex items-center gap-2"
           >
-            <span>View Plans</span>
-            <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-white/20 text-[10px] font-mono">$29/mo</span>
+            <span>Pro Pass</span>
+            <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-white/20 text-[10px] font-mono">$19/mo</span>
           </a>
 
           {/* Mobile hamburger button */}

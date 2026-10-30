@@ -184,7 +184,7 @@ export default function PsychologyPage() {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-900">Mako AI Psychologist is Exclusive to Mako Pro Pass</div>
-                  <div className="text-[11px] text-slate-500">Starter tier includes the 20 Essential MT5 Utilities. Upgrade to Pro ($29/mo) to unlock the 24/7 AI Mindset Mentor.</div>
+                  <div className="text-[11px] text-slate-500">Included with Mako Pro Pass ($19/mo). Subscribe to unlock the 24/7 AI Mindset Mentor.</div>
                 </div>
               </div>
               <a
@@ -193,7 +193,7 @@ export default function PsychologyPage() {
                 rel="noopener noreferrer"
                 className="px-5 py-2.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-xs shadow-md shadow-blue-500/20 whitespace-nowrap"
               >
-                Unlock Pro Pass ($29/mo)
+                Unlock Pro Pass ($19/mo)
               </a>
             </div>
           )}

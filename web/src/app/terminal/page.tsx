@@ -15,7 +15,7 @@ export default function TerminalPage() {
   const { t } = useLanguage();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
-  const [filterTier, setFilterTier] = useState<"all" | "free" | "pro">("all");
+  const [filterTier, setFilterTier] = useState<"all" | "pro">("all");
   const [filterType, setFilterType] = useState<"all" | "ea" | "indicator" | "script">("all");
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
@@ -58,9 +58,7 @@ export default function TerminalPage() {
         item.slug.toLowerCase().includes(q) ||
         item.category.toLowerCase().includes(q);
       const matchesCat = activeCategory === "all" || item.category === activeCategory;
-      const matchesTier = filterTier === "all" || 
-                          (filterTier === "free" && !item.is_pro) || 
-                          (filterTier === "pro" && item.is_pro);
+      const matchesTier = filterTier === "all" || filterTier === "pro";
       const matchesType = filterType === "all" || item.type === filterType;
       return matchesSearch && matchesCat && matchesTier && matchesType;
     });
@@ -132,7 +130,7 @@ export default function TerminalPage() {
               <div className="text-xs text-slate-500 font-medium">{t.metricCompiled}</div>
             </div>
             <div className="space-y-1">
-              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-600">20 FREE</div>
+              <div className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-600">106 EAs</div>
               <div className="text-xs text-slate-500 font-medium">{t.metricFree}</div>
             </div>
             <div className="space-y-1">
@@ -194,25 +192,19 @@ export default function TerminalPage() {
               </button>
             </div>
 
-            {/* Tier Switcher (Free vs Pro) */}
+            {/* Catalog scope */}
             <div className="flex items-center p-1 rounded-xl bg-slate-100 border border-slate-300 text-xs font-mono">
               <button 
                 onClick={() => setFilterTier("all")}
                 className={`px-3 py-1.5 rounded-lg transition-all ${filterTier === "all" ? "bg-white text-slate-900 font-bold shadow-sm" : "text-slate-600 hover:text-slate-900"}`}
               >
-                All (100)
-              </button>
-              <button 
-                onClick={() => setFilterTier("free")}
-                className={`px-3 py-1.5 rounded-lg transition-all ${filterTier === "free" ? "bg-emerald-600 text-white font-bold shadow-sm" : "text-slate-600 hover:text-slate-900"}`}
-              >
-                Free (20)
+                All (533)
               </button>
               <button 
                 onClick={() => setFilterTier("pro")}
                 className={`px-3 py-1.5 rounded-lg transition-all ${filterTier === "pro" ? "bg-mako-blue text-white font-bold shadow-sm" : "text-slate-600 hover:text-slate-900"}`}
               >
-                PRO (80)
+                PRO PASS
               </button>
             </div>
           </div>
@@ -274,11 +266,9 @@ export default function TerminalPage() {
                   </div>
 
                   <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
-                    p.is_pro 
-                      ? "bg-blue-50 text-mako-blue border border-blue-200" 
-                      : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                    "bg-blue-50 text-mako-blue border border-blue-200"
                   }`}>
-                    {p.is_pro ? "PRO PASS" : "FREE STARTER"}
+                    PRO PASS
                   </span>
                 </div>
 
@@ -333,7 +323,7 @@ export default function TerminalPage() {
                 </button>
 
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  {(!p.is_pro || isProOrOwner) ? (
+                  {(isProOrOwner) ? (
                     <a 
                       href={`/downloads/${p.slug}.mq5`} 
                       download
@@ -346,7 +336,7 @@ export default function TerminalPage() {
                   ) : (
                     <a 
                       href="#pricing"
-                      title="MQL5 Source Code for Pro Tools requires Mako Pro Pass ($29/mo)"
+                      title="MQL5 Source Code for Pro Tools requires Mako Pro Pass ($19/mo)"
                       className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 text-slate-400 border border-slate-200 transition-all"
                     >
                       <Lock className="w-3 h-3 text-slate-400" />
@@ -367,7 +357,7 @@ export default function TerminalPage() {
                   ) : (
                     <a 
                       href="#pricing"
-                      title="Compiled .EX5 Binary requires Mako Pro Pass ($29/mo)"
+                      title="Compiled .EX5 Binary requires Mako Pro Pass ($19/mo)"
                       className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-400 border border-slate-200 transition-all cursor-pointer"
                     >
                       <Lock className="w-3.5 h-3.5 text-slate-400" />
@@ -401,9 +391,9 @@ export default function TerminalPage() {
                 </span>
                 <span className="text-xs font-mono text-slate-500 font-semibold">Version {selectedProduct.version}</span>
                 <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full uppercase ${
-                  selectedProduct.is_pro ? "bg-blue-50 text-mako-blue border border-blue-200" : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                  "bg-blue-50 text-mako-blue border border-blue-200"
                 }`}>
-                  {selectedProduct.is_pro ? "PRO TOOL" : "FREE STARTER"}
+                  {"PRO PASS"}
                 </span>
               </div>
               <h2 className="text-2xl font-bold text-slate-950">{selectedProduct.name}</h2>
@@ -465,7 +455,7 @@ export default function TerminalPage() {
               </button>
 
               <div className="flex items-center gap-2">
-                {(!selectedProduct.is_pro || isProOrOwner) ? (
+                {(isProOrOwner) ? (
                   <a 
                     href={`/downloads/${selectedProduct.slug}.mq5`} 
                     download
@@ -510,71 +500,18 @@ export default function TerminalPage() {
         </div>
       )}
 
-      {/* Pricing / Pass Section (2 Strategic Tiers: Free Starter vs Mako Pro Pass $29) */}
-      <section id="pricing" className="pt-16 border-t border-slate-200 text-center space-y-10">
-        <div className="max-w-2xl mx-auto space-y-3">
+      {/* Pricing — Pro Pass only */}
+      <section id="pricing" className="space-y-10 text-center pt-8 border-t border-slate-200">
+        <div className="space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-mako-blue text-xs font-mono font-bold">
             <Sparkles className="w-3.5 h-3.5" />
-            Transparent Pricing • No $30 Single Lock-in
+            One Plan • Full Catalog Access
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950">{t.pricingTitle}</h2>
           <p className="text-sm text-slate-600">{t.pricingSubtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
-          {/* Tier 1: Free Starter (Taste / Gateway) */}
-          <div className="rounded-3xl border border-slate-300 bg-white p-7 sm:p-9 space-y-6 flex flex-col justify-between white-card shadow-sm hover:shadow-md transition-shadow">
-            <div className="space-y-6">
-              <div>
-                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider font-bold">Starter Edition</div>
-                <div className="text-4xl font-extrabold text-slate-950 mt-1">$0 <span className="text-xs text-slate-500 font-normal">/ forever</span></div>
-                <p className="text-xs text-slate-500 mt-2">Essential utility pack to verify our clean code quality on your demo or live MT5 charts.</p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100">
-                <div className="text-xs font-mono uppercase text-slate-400 font-bold mb-3 tracking-wider">What&apos;s Included:</div>
-                <ul className="space-y-3.5 text-xs text-slate-700 font-medium">
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                    <span><strong>20 Essential Starter Utilities</strong> (.MQ5 Source Code)</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                    <span>Risk Calculator, Spread Radar & Sessions HUD</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                    <span><strong>1 MT5 Account Slot</strong> (Live or Demo)</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                    <span>Full Access to Prop Firm Rules Matrix & Diagnostics</span>
-                  </li>
-                  <li className="flex items-center gap-2.5 text-slate-400">
-                    <span className="w-4 h-4 text-center text-xs font-bold font-mono">✕</span>
-                    <span className="line-through">Pre-Compiled .EX5 Binaries (Compile via F7)</span>
-                  </li>
-                  <li className="flex items-center gap-2.5 text-slate-400">
-                    <span className="w-4 h-4 text-center text-xs font-bold font-mono">✕</span>
-                    <span className="line-through">Automated Expert Advisors (EAs)</span>
-                  </li>
-                  <li className="flex items-center gap-2.5 text-slate-400">
-                    <span className="w-4 h-4 text-center text-xs font-bold font-mono">✕</span>
-                    <span className="line-through">Institutional SMC & Order Flow Engine</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <Link 
-              href="/login?plan=starter"
-              className="block w-full py-3.5 text-center text-xs font-bold rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-800 transition-all shadow-sm"
-            >
-              Sign In to Activate Starter (1 MT5 Slot)
-            </Link>
-          </div>
-
-          {/* Tier 2: Mako Pro Pass ($29/mo - All Inclusive) */}
+        <div className="max-w-xl mx-auto text-left">
           <div className="relative rounded-3xl border-2 border-mako-blue bg-white p-7 sm:p-9 space-y-6 shadow-xl shadow-blue-500/10 flex flex-col justify-between white-card">
             <div className="absolute -top-3.5 right-6 px-3.5 py-0.5 rounded-full bg-gradient-to-r from-mako-blue to-cyan-500 text-[10px] font-mono font-bold text-white uppercase tracking-wider shadow-md">
               ALL-ACCESS PASS
@@ -583,8 +520,8 @@ export default function TerminalPage() {
             <div className="space-y-6">
               <div>
                 <div className="text-xs font-mono text-mako-blue uppercase tracking-wider font-bold">Mako Pro Pass</div>
-                <div className="text-4xl font-extrabold text-slate-950 mt-1">$29 <span className="text-xs text-slate-500 font-normal">/ month</span></div>
-                <p className="text-xs text-slate-600 mt-2">Bypass individual \$30 minimums. The complete quantitative institutional arsenal for funded traders.</p>
+                <div className="text-4xl font-extrabold text-slate-950 mt-1">$19 <span className="text-xs text-slate-500 font-normal">/ month</span></div>
+                <p className="text-xs text-slate-600 mt-2">Unlock all 533 MT5 algorithms, dual .EX5 + .MQ5 downloads, AI Studio, Mindset coach, and 3 MT5 license slots.</p>
               </div>
 
               <div className="pt-4 border-t border-slate-100">
@@ -592,11 +529,11 @@ export default function TerminalPage() {
                 <ul className="space-y-3.5 text-xs text-slate-800 font-medium">
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                    <span><strong>Full 500+ MT5 Algorithm Catalog</strong> (533 Tools)</span>
+                    <span><strong>Full 533 MT5 Algorithm Catalog</strong></span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                    <span><strong>Dual Downloads:</strong> Compiled .EX5 + .MQ5 Source for All</span>
+                    <span><strong>Dual Downloads:</strong> Compiled .EX5 + .MQ5 Source</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
@@ -604,15 +541,11 @@ export default function TerminalPage() {
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                    <span>Prop-Firm Hard Equity Shields & Emergency Liquidators</span>
+                    <span><strong>Mako AI Studio</strong> + Mindset Psychologist</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                    <span><strong>Mako AI Studio:</strong> Generate & customize MQL5 strategies</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-mako-blue flex-shrink-0" />
-                    <span><strong>3 to 5 Active MT5 Slots</strong> (Challenge + Funded Accounts)</span>
+                    <span><strong>3 Active MT5 Slots</strong></span>
                   </li>
                 </ul>
               </div>
@@ -624,7 +557,7 @@ export default function TerminalPage() {
               rel="noopener noreferrer"
               className="block w-full py-4 text-center text-xs font-bold rounded-xl bg-mako-blue hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5"
             >
-              Get All-Access Pass ($29/mo)
+              Get Mako Pro Pass ($19/mo)
             </a>
           </div>
         </div>

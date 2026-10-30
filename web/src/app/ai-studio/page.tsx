@@ -169,7 +169,7 @@ export default function AiStudio() {
                   <div className="space-y-0.5">
                     <div className="text-xs font-bold text-slate-900">Mako AI Studio is Exclusive to Pro Pass</div>
                     <p className="text-[11px] text-slate-600 leading-relaxed">
-                      Starter accounts include our 20 pre-built utilities. Upgrade to Mako Pro Pass ($29/mo) to synthesize custom MQL5 bots & indicators.
+                      Mako AI Studio is included with Mako Pro Pass ($19/mo). Subscribe to synthesize custom MQL5 bots & indicators.
                     </p>
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function AiStudio() {
                   rel="noopener noreferrer"
                   className="block w-full py-3 rounded-xl bg-mako-blue hover:bg-blue-600 text-white text-center font-bold text-xs shadow-sm transition-all"
                 >
-                  Unlock Mako AI Studio ($29/mo)
+                  Unlock Mako AI Studio ($19/mo)
                 </a>
               </div>
             )}
