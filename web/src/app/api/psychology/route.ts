@@ -1,56 +1,53 @@
 import { NextRequest, NextResponse } from "next/server";
+import { callGemini } from "@/lib/gemini";
+import { extractBearerToken, getEntitlementByAccessToken } from "@/lib/entitlements";
 
 export async function POST(req: NextRequest) {
   try {
     const { message } = await req.json();
 
-    if (!message) {
-      return NextResponse.json({ error: "Message is required" }, { status: 400 });
+    if (!message || typeof message !== "string" || !message.trim()) {
+      return NextResponse.json({ error: "Message is required", success: false }, { status: 400 });
     }
 
-    const apiKey = process.env.GEMINI_API_KEY || "AQ.Ab8RN6LXjiOmoKthENVdfqZi2uPCZXwxGKv3VnUvdQRqA0nHKA";
+    const token = extractBearerToken(req);
+    const entitlement = token ? await getEntitlementByAccessToken(token) : null;
+    if (!entitlement?.hasPro) {
+      return NextResponse.json(
+        {
+          error: "An active Mako Pro Pass is required to use the Mindset mentor.",
+          success: false,
+          code: "pro_required",
+        },
+        { status: 403 }
+      );
+    }
 
     const systemInstruction = `
 You are the "Mako Trader Mindset Mentor & Trading Psychologist" at Mako Trading Lab (makotradinglab.com).
 Your mission:
-1. Provide empathetic, realistic, ground-to-earth psychological support for traders who feel frustrated, revenge-traded, blew accounts, took heavy drawdown in prop firms, or are struggling with fear and greed.
-2. Maintain a positive, compassionate, yet disciplined tone: "Trading is one of the hardest psychological professions on earth. Losses are not a reflection of your self-worth; they are statistical operating expenses."
-3. Encourage strict risk management: Focus on capital preservation, reducing lot sizes, stepping away from charts when tilted, and using automated guards (like daily max drawdown shields).
-4. Share perspective from veteran traders: Every professional trader went through blowing accounts before learning that discipline and automated risk rules outweigh predictive guessing.
-5. Answer in the same language as the user (if user speaks Portuguese, answer in Portuguese; if English, answer in English). Keep answers practical, clear, and constructive.
+1. Provide empathetic, realistic psychological support for traders who feel frustrated, revenge-traded, blew accounts, took heavy drawdown in prop firms, or struggle with fear and greed.
+2. Maintain a compassionate yet disciplined tone.
+3. Encourage strict risk management and capital preservation.
+4. Answer in the same language as the user (Portuguese -> Portuguese, English -> English).
+5. Keep answers practical, clear, and constructive. Avoid medical claims.
 `;
 
-    if (apiKey) {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: systemInstruction }] },
-          contents: [{ parts: [{ text: message }] }],
-          generationConfig: {
-            maxOutputTokens: 3000,
-            thinkingConfig: { thinkingBudget: 0 }
-          }
-        })
-      });
+    const result = await callGemini({
+      systemInstruction,
+      userText: message,
+      maxOutputTokens: 2000,
+    });
 
-      const data = await response.json();
-      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-      if (reply) {
-        return NextResponse.json({ reply, success: true });
-      }
+    if (result.ok === false) {
+      return NextResponse.json(
+        { error: result.error, success: false, code: "gemini_error" },
+        { status: result.status && result.status >= 400 ? result.status : 502 }
+      );
     }
 
-    // High quality empathetic fallback if API key is not yet set
-    const fallbackReply = `Take a deep breath and step away from your MT5 terminal for at least an hour. What you are feeling right now is completely human — every single profitable trader alive today has felt that exact punch in the stomach after a bad session or revenge trade.
-
-The market did not defeat you; emotional impulse did. When you trade angry or anxious, you stop executing a mathematical edge and start gambling with your future. Remember: your account balance can be rebuilt, but only if you protect your psychological capital first.
-
-Here is your actionable reset for today: Close all charts. Do not attempt to "make it back" today. Log the mistake in your trade journal without beating yourself up. Tomorrow, cut your risk to 0.5% per trade and let our automated risk shields handle the exit rules. You are in this for a 10-year career, not a single afternoon.`;
-
-    return NextResponse.json({ reply: fallbackReply, success: true });
-
+    return NextResponse.json({ reply: result.text, success: true, model: result.model });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message || "Psychology API failed", success: false }, { status: 500 });
   }
 }
