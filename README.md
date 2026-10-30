@@ -30,7 +30,7 @@ mako-trading-lab/
 │   └── src/
 │       ├── app/
 │       │   ├── page.tsx           # Hugging Face-style Hub & Pricing
-│       │   ├── dashboard/page.tsx # License & MT5 Account slots Manager
+│       │   ├── dashboard/page.tsx # License & MT5 Account Slots Manager
 │       │   ├── ai-studio/page.tsx # Prompt-to-MQL5 Studio with code viewer
 │       │   └── api/
 │       │       ├── v1/verify/     # MT5 WebRequest verification endpoint
