@@ -111,6 +111,12 @@ export default function TerminalPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+      {downloadError && (
+        <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 flex items-center justify-between gap-3">
+          <span>{downloadError}</span>
+          <button type="button" className="font-bold" onClick={() => setDownloadError(null)}>Dismiss</button>
+        </div>
+      )}
       {/* High-Contrast Light Hero Section */}
       <section className="relative rounded-3xl border border-slate-300 bg-white p-8 sm:p-14 overflow-hidden tech-grid-light shadow-sm">
         {/* Subtle Watermark Logo */}
@@ -137,7 +143,7 @@ export default function TerminalPage() {
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a 
-              href="/#pricing" 
+              href="#pricing" 
               className="px-7 py-3.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-sm shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 flex items-center gap-2.5 transition-all transform hover:-translate-y-0.5"
             >
               <span>{t.heroBtnPlans}</span>
@@ -367,9 +373,10 @@ export default function TerminalPage() {
                       type="button"
                       onClick={() => handleDownload(p.slug, "mq5")}
                       disabled={downloading === `${p.slug}.mq5`}
-                      title="Download MQL5 Source (.mq5)"
+                      title="Download MQL5 Source Code (.mq5)"
                       className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all disabled:opacity-60"
                     >
+                      <Code2 className="w-3.5 h-3.5 text-mako-blue" />
                       <span>.MQ5</span>
                     </button>
                   ) : (
@@ -498,7 +505,7 @@ export default function TerminalPage() {
                 {(isProOrOwner) ? (
                   <button
                     type="button"
-                    onClick={() => handleDownload(selectedProduct.slug, "mq5")
+                    onClick={() => handleDownload(selectedProduct.slug, "mq5")}
                     className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 font-mono font-bold text-xs flex items-center gap-1.5 transition-all"
                   >
                     <Code2 className="w-4 h-4 text-mako-blue" />
@@ -518,7 +525,7 @@ export default function TerminalPage() {
                 {isProOrOwner ? (
                   <button
                     type="button"
-                    onClick={() => handleDownload(selectedProduct.slug, "ex5")
+                    onClick={() => handleDownload(selectedProduct.slug, "ex5")}
                     className="px-6 py-2.5 rounded-xl bg-mako-blue hover:bg-blue-600 text-white font-bold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all"
                   >
                     <Download className="w-4 h-4" />
