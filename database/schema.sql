@@ -1,5 +1,6 @@
 -- ====================================================================
 -- MAKO TRADING LAB - PRODUCTION DATABASE SCHEMA (PostgreSQL / Supabase)
+-- Pro Pass only commercial model (free/starter no longer entitles downloads)
 -- ====================================================================
 
 -- 1. ENUMS
@@ -15,18 +16,21 @@ CREATE TYPE product_category AS ENUM (
 CREATE TYPE product_type AS ENUM ('indicator', 'ea', 'script', 'utility');
 
 -- 2. USERS PROFILE TABLE (Linked to auth.users in Supabase)
+-- plan_tier 'free' = account exists but NO catalog/license entitlements until Pro Pass is active
 CREATE TABLE IF NOT EXISTS public.profiles (
     id UUID REFERENCES auth.users(id) PRIMARY KEY,
     email TEXT UNIQUE NOT NULL,
     full_name TEXT,
     plan_tier user_plan_tier DEFAULT 'free' NOT NULL,
-    subscription_status subscription_status DEFAULT 'active' NOT NULL,
+    subscription_status subscription_status DEFAULT 'incomplete' NOT NULL,
     stripe_customer_id TEXT,
     stripe_subscription_id TEXT,
+    lemon_squeezy_customer_id TEXT,
+    lemon_squeezy_subscription_id TEXT,
     current_period_end TIMESTAMPTZ,
-    max_mt5_slots INT DEFAULT 1 NOT NULL, -- 1 for free, 3 for pro
+    max_mt5_slots INT DEFAULT 0 NOT NULL, -- 0 until Pro; 3 for pro; 5 for studio/owner
     ai_generations_used INT DEFAULT 0 NOT NULL,
-    ai_generations_limit INT DEFAULT 1 NOT NULL, -- 1/mo for free, 20/mo for pro
+    ai_generations_limit INT DEFAULT 0 NOT NULL, -- 0 for free; unlimited/high for pro
     created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
     updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
 );
@@ -37,7 +41,7 @@ CREATE TABLE IF NOT EXISTS public.mt5_accounts (
     user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE NOT NULL,
     account_login BIGINT NOT NULL,
     broker_server TEXT,
-    label TEXT, -- e.g. "FTMO 100k Demo", "ICMarkets Real"
+    label TEXT,
     slot_index INT NOT NULL CHECK (slot_index BETWEEN 1 AND 5),
     cooldown_until TIMESTAMPTZ DEFAULT NOW() NOT NULL,
     last_verified_at TIMESTAMPTZ,
@@ -46,7 +50,7 @@ CREATE TABLE IF NOT EXISTS public.mt5_accounts (
     UNIQUE(account_login)
 );
 
--- 4. PRODUCTS CATALOG
+-- 4. PRODUCTS CATALOG (entire catalog is Pro Pass)
 CREATE TABLE IF NOT EXISTS public.products (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     slug TEXT UNIQUE NOT NULL,
@@ -61,14 +65,14 @@ CREATE TABLE IF NOT EXISTS public.products (
     inputs_documentation JSONB DEFAULT '[]'::jsonb,
     tags TEXT[] DEFAULT '{}',
     download_count INT DEFAULT 0 NOT NULL,
-    ex5_storage_path TEXT, -- e.g. "binaries/mako_propfirm_shield.ex5"
+    ex5_storage_path TEXT,
     preview_image_url TEXT,
     is_published BOOLEAN DEFAULT TRUE NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
     updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
 );
 
--- 5. VALIDATION LOGS (Lightweight telemetry for MT5 licensing)
+-- 5. VALIDATION LOGS
 CREATE TABLE IF NOT EXISTS public.validation_logs (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     account_login BIGINT NOT NULL,
@@ -92,7 +96,7 @@ CREATE TABLE IF NOT EXISTS public.ai_generations (
     created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
 );
 
--- INDEXES FOR ULTRA-FAST VERIFICATION (MT5 License API)
 CREATE INDEX IF NOT EXISTS idx_mt5_accounts_login ON public.mt5_accounts(account_login);
 CREATE INDEX IF NOT EXISTS idx_products_slug ON public.products(slug);
 CREATE INDEX IF NOT EXISTS idx_validation_logs_created ON public.validation_logs(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_profiles_plan_tier ON public.profiles(plan_tier);

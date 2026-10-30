@@ -5,7 +5,7 @@ Mako Trading Lab is an institutional-grade SaaS platform offering:
 - **Hugging Face / Model Hub Catalog:** 51 pre-compiled `.ex5` tools across 5 categories.
 - **Mako AI Studio:** On-demand MQL5 code generator powered by Google Gemini 2.5 Flash.
 - **LicenseGuard & MT5 Verification API:** Friction-free, zero-password license validation via MetaTrader 5 `WebRequest` with a 24-hour local offline cache.
-- **Multi-Slot Account Manager:** 1 slot on Free tier, 3 slots on Pro tier, equipped with a 7-day cooldown anti-abuse mechanism.
+- **Multi-Slot Account Manager:** 3 slots on Pro Pass (studio/owner up to 5), equipped with a 7-day cooldown anti-abuse mechanism.
 
 ---
 
@@ -44,7 +44,7 @@ mako-trading-lab/
 2. Link the repository to [Vercel](https://vercel.com).
 3. Set the following Environment Variables in Vercel:
    - `GEMINI_API_KEY`: Your Google Gemini API Key (obtainable free at [aistudio.google.com](https://aistudio.google.com/)).
-   - `NEXT_PUBLIC_STRIPE_PAYMENT_LINK`: Your Stripe checkout link for the $10/mo pass.
+   - `Lemon Squeezy Pro Pass checkout (live on makotradinglab.com).
 
 ---
 
