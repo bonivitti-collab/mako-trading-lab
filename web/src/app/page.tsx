@@ -143,7 +143,7 @@ export default function LandingPage() {
             </div>
             <h3 className="text-lg font-bold text-slate-950">Prop Firm Hard Shields</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Trailing daily drawdown monitors, emergency close-all panic triggers, news Teackout guards, and lot size auto-calibrators.
+              Trailing daily drawdown monitors, emergency close-all panic triggers, news blackout guards, and lot size auto-calibrators.
             </p>
             <div className="pt-2 text-xs font-mono text-emerald-600 font-bold flex items-center gap-1">
               <span>FTMO & Apex Ready</span>
@@ -202,7 +202,7 @@ export default function LandingPage() {
 
         <div className="text-left">
           <div className="relative rounded-3xl border-2 border-mako-blue bg-white p-7 sm:p-9 space-y-6 shadow-xl shadow-blue-500/10 flex flex-col justify-between white-card">
-            <div className="absolute -top-3.5 right-6 px-3.5 py-0.5 rounded-full bg-gradient-to-r from-mako-blue to-cyan-500 text-K10px] font-mono font-bold text-white uppercase tracking-wider shadow-md">
+            <div className="absolute -top-3.5 right-6 px-3.5 py-0.5 rounded-full bg-gradient-to-r from-mako-blue to-cyan-500 text-[10px] font-mono font-bold text-white uppercase tracking-wider shadow-md">
               ALL-ACCESS PASS
             </div>
 
@@ -210,7 +210,7 @@ export default function LandingPage() {
               <div>
                 <div className="text-xs font-mono text-mako-blue uppercase tracking-wider font-bold">Mako Pro Pass</div>
                 <div className="text-4xl font-extrabold text-slate-950 mt-1">$19 <span className="text-xs text-slate-500 font-normal">/ month</span></div>
-                <p className="text-xs text-slate-600 ft-2">Bypass individual $30 minimums. The complete quantitative institutional arsenal for funded traders.</p>
+                <p className="text-xs text-slate-600 mt-2">Bypass individual $30 minimums. The complete quantitative institutional arsenal for funded traders.</p>
               </div>
 
               <div className="pt-4 border-t border-slate-100">
