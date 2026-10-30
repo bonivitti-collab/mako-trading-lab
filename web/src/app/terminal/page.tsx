@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import productsData from "@/lib/products.json";
@@ -19,6 +19,26 @@ export default function TerminalPage() {
   const [filterType, setFilterType] = useState<"all" | "ea" | "indicator" | "script">("all");
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
+  const [userSession, setUserSession] = useState<{ role?: string; plan_tier?: string; simulated_role?: string } | null>(null);
+
+  useEffect(() => {
+    const syncSession = () => {
+      if (typeof window !== "undefined") {
+        const stored = localStorage.getItem("mako_user");
+        if (stored) {
+          try {
+            setUserSession(JSON.parse(stored));
+          } catch(e) {}
+        }
+      }
+    };
+    syncSession();
+    window.addEventListener("storage", syncSession);
+    return () => window.removeEventListener("storage", syncSession);
+  }, []);
+
+  const effectiveRole = userSession?.simulated_role || (userSession?.role === "owner" ? "owner" : userSession?.plan_tier);
+  const isProOrOwner = effectiveRole === "owner" || effectiveRole === "pro" || effectiveRole === "studio";
 
   const categories = [
     { id: "all", label: t.catAll, count: 533 },
@@ -313,17 +333,28 @@ export default function TerminalPage() {
                 </button>
 
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <a 
-                    href={`/downloads/${p.slug}.mq5`} 
-                    download
-                    title="Download MQL5 Source Code (.mq5)"
-                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all"
-                  >
-                    <Code2 className="w-3.5 h-3.5 text-mako-blue" />
-                    <span>.MQ5</span>
-                  </a>
+                  {(!p.is_pro || isProOrOwner) ? (
+                    <a 
+                      href={`/downloads/${p.slug}.mq5`} 
+                      download
+                      title="Download MQL5 Source Code (.mq5)"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all"
+                    >
+                      <Code2 className="w-3.5 h-3.5 text-mako-blue" />
+                      <span>.MQ5</span>
+                    </a>
+                  ) : (
+                    <a 
+                      href="#pricing"
+                      title="MQL5 Source Code for Pro Tools requires Mako Pro Pass ($29/mo)"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-slate-100 text-slate-400 border border-slate-200 transition-all"
+                    >
+                      <Lock className="w-3 h-3 text-slate-400" />
+                      <span>.MQ5</span>
+                    </a>
+                  )}
 
-                  {p.is_pro ? (
+                  {isProOrOwner ? (
                     <a 
                       href={`/downloads/${p.slug}.ex5`} 
                       download
@@ -336,7 +367,7 @@ export default function TerminalPage() {
                   ) : (
                     <a 
                       href="#pricing"
-                      title="Compiled .EX5 available with Mako Pro Pass"
+                      title="Compiled .EX5 Binary requires Mako Pro Pass ($29/mo)"
                       className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-400 border border-slate-200 transition-all cursor-pointer"
                     >
                       <Lock className="w-3.5 h-3.5 text-slate-400" />
@@ -434,16 +465,27 @@ export default function TerminalPage() {
               </button>
 
               <div className="flex items-center gap-2">
-                <a 
-                  href={`/downloads/${selectedProduct.slug}.mq5`} 
-                  download
-                  className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 font-mono font-bold text-xs flex items-center gap-1.5 transition-all"
-                >
-                  <Code2 className="w-4 h-4 text-mako-blue" />
-                  <span>Download .MQ5 Source</span>
-                </a>
+                {(!selectedProduct.is_pro || isProOrOwner) ? (
+                  <a 
+                    href={`/downloads/${selectedProduct.slug}.mq5`} 
+                    download
+                    className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 font-mono font-bold text-xs flex items-center gap-1.5 transition-all"
+                  >
+                    <Code2 className="w-4 h-4 text-mako-blue" />
+                    <span>Download .MQ5 Source</span>
+                  </a>
+                ) : (
+                  <a 
+                    href="#pricing"
+                    onClick={() => setSelectedProduct(null)}
+                    className="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-400 border border-slate-200 font-mono font-bold text-xs flex items-center gap-1.5 transition-all"
+                  >
+                    <Lock className="w-4 h-4 text-slate-400" />
+                    <span>.MQ5 Source (Pro Only)</span>
+                  </a>
+                )}
                 
-                {selectedProduct.is_pro ? (
+                {isProOrOwner ? (
                   <a 
                     href={`/downloads/${selectedProduct.slug}.ex5`} 
                     download

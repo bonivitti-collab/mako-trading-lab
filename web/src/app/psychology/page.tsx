@@ -8,7 +8,7 @@ import { HeartHandshake, ShieldCheck, Send, Sparkles, MessageCircle, RefreshCw, 
 export default function PsychologyPage() {
   const [ventMessage, setVentMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [userSession, setUserSession] = useState<{ role?: string; plan_tier?: string } | null>(null);
+  const [userSession, setUserSession] = useState<{ role?: string; plan_tier?: string; simulated_role?: string } | null>(null);
   const [chatLog, setChatLog] = useState<Array<{ sender: "user" | "mentor"; text: string }>>([
     {
       sender: "mentor",
@@ -17,17 +17,23 @@ export default function PsychologyPage() {
   ]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("mako_user");
-      if (stored) {
-        try {
-          setUserSession(JSON.parse(stored));
-        } catch(e) {}
+    const syncSession = () => {
+      if (typeof window !== "undefined") {
+        const stored = localStorage.getItem("mako_user");
+        if (stored) {
+          try {
+            setUserSession(JSON.parse(stored));
+          } catch(e) {}
+        }
       }
-    }
+    };
+    syncSession();
+    window.addEventListener("storage", syncSession);
+    return () => window.removeEventListener("storage", syncSession);
   }, []);
 
-  const isProOrOwner = userSession?.role === "owner" || userSession?.plan_tier === "pro" || userSession?.plan_tier === "studio";
+  const effectiveRole = userSession?.simulated_role || (userSession?.role === "owner" ? "owner" : userSession?.plan_tier);
+  const isProOrOwner = effectiveRole === "owner" || effectiveRole === "pro" || effectiveRole === "studio";
 
   const handleSend = async (customText?: string) => {
     const textToSend = customText || ventMessage;

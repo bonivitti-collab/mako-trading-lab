@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Cpu, Send, Copy, Check, Download, Terminal, Sparkles, BookOpen, ChevronRight, Zap, Code2, AlertCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Cpu, Send, Copy, Check, Download, Terminal, Sparkles, BookOpen, ChevronRight, Zap, Code2, AlertCircle, Lock } from "lucide-react";
 
 export default function AiStudio() {
   const [prompt, setPrompt] = useState("");
@@ -9,6 +9,26 @@ export default function AiStudio() {
   const [loading, setLoading] = useState(false);
   const [code, setCode] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [userSession, setUserSession] = useState<{ role?: string; plan_tier?: string; simulated_role?: string } | null>(null);
+
+  useEffect(() => {
+    const syncSession = () => {
+      if (typeof window !== "undefined") {
+        const stored = localStorage.getItem("mako_user");
+        if (stored) {
+          try {
+            setUserSession(JSON.parse(stored));
+          } catch(e) {}
+        }
+      }
+    };
+    syncSession();
+    window.addEventListener("storage", syncSession);
+    return () => window.removeEventListener("storage", syncSession);
+  }, []);
+
+  const effectiveRole = userSession?.simulated_role || (userSession?.role === "owner" ? "owner" : userSession?.plan_tier);
+  const isProOrOwner = effectiveRole === "owner" || effectiveRole === "pro" || effectiveRole === "studio";
 
   const samplePrompts = [
     {
@@ -121,24 +141,48 @@ export default function AiStudio() {
               />
             </div>
 
-            {/* Submit Button */}
-            <button
-              onClick={() => handleGenerate()}
-              disabled={loading || !prompt.trim()}
-              className="w-full py-4 bg-mako-blue hover:bg-blue-600 disabled:opacity-40 text-white rounded-2xl text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
-            >
-              {loading ? (
-                <>
-                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                  <span>Synthesizing MQL5 Architecture...</span>
-                </>
-              ) : (
-                <>
-                  <Code2 className="w-4 h-4" />
-                  <span>Synthesize MQL5 Algorithm (.mq5)</span>
-                </>
-              )}
-            </button>
+            {/* Submit Button or Paywall */}
+            {isProOrOwner ? (
+              <button
+                onClick={() => handleGenerate()}
+                disabled={loading || !prompt.trim()}
+                className="w-full py-4 bg-mako-blue hover:bg-blue-600 disabled:opacity-40 text-white rounded-2xl text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5"
+              >
+                {loading ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                    <span>Synthesizing MQL5 Architecture...</span>
+                  </>
+                ) : (
+                  <>
+                    <Code2 className="w-4 h-4" />
+                    <span>Synthesize MQL5 Algorithm (.mq5)</span>
+                  </>
+                )}
+              </button>
+            ) : (
+              <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-3">
+                <div className="flex items-start gap-2.5">
+                  <div className="p-2 rounded-xl bg-amber-100 text-amber-800">
+                    <Lock className="w-4 h-4" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <div className="text-xs font-bold text-slate-900">Mako AI Studio is Exclusive to Pro Pass</div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed">
+                      Starter accounts include our 20 pre-built utilities. Upgrade to Mako Pro Pass ($29/mo) to synthesize custom MQL5 bots & indicators.
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="https://makotrading.lemonsqueezy.com/checkout/buy/5928ad57-c624-4697-b474-0a40ce1568af"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-3 rounded-xl bg-mako-blue hover:bg-blue-600 text-white text-center font-bold text-xs shadow-sm transition-all"
+                >
+                  Unlock Mako AI Studio ($29/mo)
+                </a>
+              </div>
+            )}
 
             {/* Preset Inspiration Cards */}
             <div className="space-y-3 pt-3 border-t border-slate-100">
@@ -149,7 +193,7 @@ export default function AiStudio() {
                     key={idx}
                     onClick={() => {
                       setPrompt(s.text);
-                      handleGenerate(s.text);
+                      if (isProOrOwner) handleGenerate(s.text);
                     }}
                     className="w-full text-left p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-mako-blue hover:bg-blue-50/40 transition-all space-y-1 group"
                   >

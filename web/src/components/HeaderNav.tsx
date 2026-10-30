@@ -32,9 +32,12 @@ export default function HeaderNav() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [userSession, setUserSession] = useState<{ email?: string; role?: string; plan_tier?: string } | null>(null);
+  const [userSession, setUserSession] = useState<{ email?: string; role?: string; plan_tier?: string; simulated_role?: string } | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
+
+  const effectiveRole = userSession?.simulated_role || (userSession?.role === "owner" ? "owner" : userSession?.plan_tier === "pro" ? "pro" : userSession ? "starter" : null);
+  const isOwnerSession = userSession?.role === "owner";
 
   // Sync logged in user from localStorage and cookie
   useEffect(() => {
@@ -313,7 +316,11 @@ export default function HeaderNav() {
               className="text-xs font-semibold px-3 py-2 rounded-xl text-mako-blue bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all whitespace-nowrap flex items-center gap-1.5"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>{userSession.role === "owner" ? "Admin Panel" : "My Account"}</span>
+              <span>
+                {isOwnerSession 
+                  ? (effectiveRole === "pro" ? "Admin (Pro View)" : effectiveRole === "starter" ? "Admin (Starter View)" : "Admin Panel")
+                  : "My Account"}
+              </span>
             </Link>
           ) : (
             <Link 
@@ -330,11 +337,11 @@ export default function HeaderNav() {
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span>
-              {userSession?.role === "owner" 
+              {effectiveRole === "owner" 
                 ? "MT5 Slots: Owner (5)" 
-                : userSession?.plan_tier === "pro" 
+                : effectiveRole === "pro" 
                 ? "MT5 Slots: Pro (3)" 
-                : userSession 
+                : effectiveRole === "starter" 
                 ? "MT5 Slots: Starter (1)" 
                 : "Contas MT5: Ativas"}
             </span>
