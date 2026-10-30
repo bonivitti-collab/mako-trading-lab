@@ -26,7 +26,6 @@ export default function GuidePage() {
         </p>
       </div>
 
-      {/* Step 1 */}
       <div className="rounded-3xl border border-slate-300 bg-white p-8 space-y-5 white-card">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -66,7 +65,6 @@ export default function GuidePage() {
         </div>
       </div>
 
-      {/* Step 2 */}
       <div className="rounded-3xl border border-slate-300 bg-white p-8 space-y-5 white-card">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-xl bg-slate-900 text-white font-mono font-bold flex items-center justify-center text-sm">
@@ -87,7 +85,6 @@ export default function GuidePage() {
         </div>
       </div>
 
-      {/* Step 3 */}
       <div className="rounded-3xl border border-slate-300 bg-white p-8 space-y-5 white-card">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-xl bg-slate-900 text-white font-mono font-bold flex items-center justify-center text-sm">
