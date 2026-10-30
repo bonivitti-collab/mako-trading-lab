@@ -45,15 +45,20 @@ export default function PsychologyPage() {
     setLoading(true);
 
     try {
+      const { authHeaders } = await import("@/lib/client-auth");
       const res = await fetch("/api/psychology", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: await authHeaders(),
         body: JSON.stringify({ message: textToSend })
       });
       const data = await res.json();
-      setChatLog([...newLog, { sender: "mentor" as const, text: data.reply }]);
+      const reply = res.ok && data.reply
+        ? data.reply
+        : (data.error || "Mindset mentor unavailable. Sign in with an active Pro Pass and try again.");
+      setChatLog([...newLog, { sender: "mentor" as const, text: reply }]);
     } catch (err) {
       console.error(err);
+      setChatLog([...newLog, { sender: "mentor" as const, text: "Network error. Please try again in a moment." }]);
     } finally {
       setLoading(false);
     }
