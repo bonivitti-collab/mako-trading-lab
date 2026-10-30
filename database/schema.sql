@@ -18,7 +18,7 @@ CREATE TYPE product_type AS ENUM ('indicator', 'ea', 'script', 'utility');
 -- 2. USERS PROFILE TABLE (Linked to auth.users in Supabase)
 -- plan_tier 'free' = account exists but NO catalog/license entitlements until Pro Pass is active
 CREATE TABLE IF NOT EXISTS public.profiles (
-    id UUID REFERENCES auth.users(id) PRIMARY KEY,
+    id UUID REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
     email TEXT UNIQUE NOT NULL,
     full_name TEXT,
     plan_tier user_plan_tier DEFAULT 'free' NOT NULL,
@@ -100,3 +100,10 @@ CREATE INDEX IF NOT EXISTS idx_mt5_accounts_login ON public.mt5_accounts(account
 CREATE INDEX IF NOT EXISTS idx_products_slug ON public.products(slug);
 CREATE INDEX IF NOT EXISTS idx_validation_logs_created ON public.validation_logs(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_profiles_plan_tier ON public.profiles(plan_tier);
+
+-- ====================================================================
+-- RLS / AUTH (also in migrations/20261030_mako_rls_and_auth_trigger.sql)
+-- New signups get plan_tier=free, max_mt5_slots=0, ai_generations_limit=0
+-- until Lemon Squeezy / admin upgrades them to pro or studio.
+-- Apply migrations after this schema on a fresh project.
+-- ====================================================================
