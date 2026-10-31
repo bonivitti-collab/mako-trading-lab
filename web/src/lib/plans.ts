@@ -1,4 +1,8 @@
-/** Single commercial plan: Mako Pro Pass — billed via PayPal */
+/**
+ * Single commercial plan: Mako Pro Pass — billed via Hotmart (international checkout).
+ * In-app CTAs go to `/checkout` (bridge). The Hotmart payment link is only used on that page
+ * via NEXT_PUBLIC_HOTMART_CHECKOUT_URL.
+ */
 export const PRO_CHECKOUT_URL = "/checkout";
 
 export const PRO_PRICE_LABEL = "$19/mo";
