@@ -46,7 +46,7 @@ mako-trading-lab/
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY` (server-only; required for MT5 `/api/v1/verify`)
    - `GEMINI_API_KEY` (from [aistudio.google.com](https://aistudio.google.com/))
-3. Pro Pass checkout is wired in-app via Lemon Squeezy (`src/lib/plans.ts`).
+3. Pro Pass checkout is wired in-app via Hotmart (`/checkout`, `src/lib/plans.ts`).
 
 ---
 
@@ -90,9 +90,11 @@ npm run dev -- -p 43123 -H 0.0.0.0
 
 ## 6. Sell-ready ops checklist
 1. **Downloads** are blocked at `/downloads/*` — only `/api/v1/download` with a Pro Supabase session works.
-2. **Auth** is pemail + password only (confirm email before sign-in). Google OAuth is not enabled.
-3. **Lemon webhook** URL: `https://makotradinglab.com/api/webhooks/lemonsqueezy`
-   - In Lemon Squeezy → Settings → Webhooks, create webhook with events: `subscription_*`, `order_created`
-   - Signing secret must match Vercel env `LEMONSQUEZZY_WEBHOOK_SECRET`
-4. **Gemini**: set a valid `GEMINI_API_KEY` on Vercel Production + optional `GEMINI_MODEL` (default `gemini-3.8-flash`)
-5. Buyer email on Lemon checkout should match the email they use to Sign Up / Sign In.
+2. **Auth** is email + password only (confirm email before sign-in). Google OAuth is not enabled.
+3. **Hotmart** (Pro Pass $19/mo — international cards OK)
+   - Checkout: `/checkout` → your Hotmart payment link (`NEXT_PUBLIC_HOTMART_CHECKOUT_URL`)
+   - Webhook URL: `https://makotradinglab.com/api/webhooks/hotmart`
+   - Env: `HOTMART_HOTTOK` (must match Hotmart webhook hottok / `X-HOTMART-HOTTOK`)
+   - Events: `PURCHASE_APPROVED`, `PURCHASE_COMPLETE`, refunds/chargebacks/cancel, subscription cancellation
+   - Buyer email on Hotmart must match Sign Up / Sign In email
+4. **Gemini**: `GEMINI_API_KEY` + `GEMINI_MODEL` (default `gemini-3.8-flash`)
